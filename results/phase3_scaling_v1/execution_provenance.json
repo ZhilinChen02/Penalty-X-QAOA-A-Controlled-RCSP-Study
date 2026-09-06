@@ -1,0 +1,92 @@
+{
+  "available_ram_mb_at_start": 671220.2265625,
+  "cpu": "x86_64",
+  "host": "<REDACTED_HOST>",
+  "numpy": "2.4.6",
+  "platform": "Linux-4.18.0-553.139.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+  "recorded_wall_time_s": 12834.764504437335,
+  "scipy": "1.18.0",
+  "stages": {
+    "adequacy": {
+      "claim_ceiling": false,
+      "rows": 12,
+      "substantial": 5,
+      "wall_time_s": 264.6395838521421
+    },
+    "analyze": {
+      "objective_verdict": "MIXED_OBJECTIVE_SCALING",
+      "primary_verdict": "RESOURCE_CENSORED_SCALING",
+      "status": "RESOURCE_CENSORED",
+      "wall_time_s": 7.238992972299457
+    },
+    "characterize": {
+      "contract_pass": 180,
+      "tasks": 180,
+      "wall_time_s": 41.4098564106971
+    },
+    "development": {
+      "p2": 288,
+      "p3": 288,
+      "rows": 576,
+      "wall_time_s": 2426.9430126212537
+    },
+    "extrapolation": {
+      "resource_censored": 180,
+      "rows": 360,
+      "wall_time_s": 9407.405335817486
+    },
+    "freeze-execution": {
+      "pytest_result": "83 passed in 2.37s",
+      "scientific_input_count": 16,
+      "wall_time_s": 0.12284625694155693
+    },
+    "freeze-model": {
+      "O0": "M1",
+      "O2": "M1",
+      "O3": "M1",
+      "wall_time_s": 0.5512437736615539
+    },
+    "generate": {
+      "base_graphs": 30,
+      "tasks": 180,
+      "wall_time_s": 1.9335316503420472
+    },
+    "interpolation": {
+      "resource_censored": 0,
+      "rows": 144,
+      "wall_time_s": 646.2081436058506
+    },
+    "preflight": {
+      "budget_equality_pass": true,
+      "common_initialization_pass": true,
+      "cvar_correctness_pass": true,
+      "memory_accounting_pass": true,
+      "objective_correctness_pass": true,
+      "p2_rows": 6,
+      "p3_rows": 6,
+      "resume_semantics_pass": true,
+      "row_writing_pass": true,
+      "scaling_analysis_pipeline_pass": true,
+      "status": "PASSED",
+      "task_ids": [
+        "task-p3-49c4d5dae6a8f92a",
+        "task-p3-6d8c1ca8f1cd0b67"
+      ],
+      "wall_time_s": 0.09513277374207973
+    },
+    "resource": {
+      "censored_sizes": [
+        22
+      ],
+      "largest_allowed_m": 20,
+      "wall_time_s": 38.1239973353222
+    },
+    "verify-hashes": {
+      "inventory_sha256": "4bb59676d4be07c2b8403d97f39faa9dba3bceb2507182606d124123fac45ac4",
+      "verified_files": 156,
+      "wall_time_s": 0.09282736759632826
+    }
+  },
+  "worker_blas_threads": 1
+}

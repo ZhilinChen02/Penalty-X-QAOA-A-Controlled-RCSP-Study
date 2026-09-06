@@ -1,0 +1,145 @@
+# Canonical pipeline and entry-point map
+
+Public defaults: `python scripts/reproduce_core_results.py` reconstructs frozen
+claims; `python scripts/reproduce_figures.py` replots Figure v3 without optimization.
+The optional `--paper` mode requires TeX, PyMuPDF and a separately supplied
+Springer template. See `RESULT_PROVENANCE.md` for the current figure mapping.
+
+The canonical evidence follows the actual script/module names below. Existing
+frozen files are the default reproduction inputs. No stage is implicitly rerun.
+
+```text
+scripts/run_phase0.py (175-task v1 audit; retained predecessor evidence)
+    -> scripts/run_phase05.py (duplicate audit and corrected 140-task v2 universe)
+    -> scripts/run_phase06.py (Hamiltonian/penalty audit and global scale contract)
+    -> scripts/run_phase1_pilot_v1.py (56 discovery tasks, p=1/2/3 pilot)
+    -> scripts/run_phase1_1_diagnostic.py (nested p=2 -> p=3 and optimizer attribution)
+    -> scripts/run_phase1_2_objective_alignment.py (O0/O1/O2/O3 discovery)
+    -> scripts/run_phase2_confirmatory_v1.py (84 held-out tasks; H1/H2)
+    -> scripts/run_phase3_scaling_v1.py (180 planned tasks; scaling/censoring)
+    -> reproduction/reproduce_{headlines,heldout,scaling_verdict}.py
+    -> paper_scripts/rebuild_publication_results.py / build_paper_assets.py
+    -> overleaf/main.tex and overleaf/ESM_1.tex
+```
+
+`src/qroute_dilution/graph_generator.py`, `rcsp.py` and `exact.py` construct layered
+graphs, enumerate routes, solve exact RCSP and characterize edge-bit membership.
+`penalties.py` constructs the diagonal cost; `qaoa.py` simulates the full state
+space; the phase-specific optimizer and statistics modules retain their original
+floating-point, ordering and seed behavior.
+
+| Stage | Frozen inputs/results | Scope |
+|---|---|---|
+| Phase 0 v1 and smoke | `configs/phase0_v1.yaml`, `results/phase0/`, `results/smoke/` | Historical universe and hash-regression evidence, not corrected discovery |
+| Phase 0.5 v2 | `configs/phase0_v2_dilution_stress.yaml`, `data/manifests/phase0_v2_dilution_stress.json`, `results/phase0_v2_dilution_stress/` | Corrected 140 tasks/25 graphs; distinct-cardinality stress schedule |
+| Phase 0.6 scale audit | `configs/penalty_contract_v2_scale_controlled.yaml`, Hamiltonian CSV/JSON under the v2 result root | Exact feasible/optimal ground-state and global scale-control checks |
+| Phase 1 pilot | `data/manifests/phase1_pilot_v1.json`, `results/phase1_pilot_v1/master_seed_level_results.csv` | 56 tasks/10 graphs; historical p=1/2/3 endpoints and initialization provenance |
+| Phase 1.1 diagnostic | `nested_ansatz_identity.csv`, `p3_random_vs_embedded.csv`, `analysis/continuation_paired_comparison.csv` in its result root | 168 comparisons; continuation, budget and optimizer controls; state/energy decomposition |
+| Phase 1.2 discovery | `objective_results.csv`, `capacity_gap.csv` in its result root | 56 tasks; CVaR alpha selection belongs to discovery only |
+| Phase 2 held-out | `configs/phase2_confirmatory_v1.yaml`, manifest, `PREREGISTRATION.md`, `p3_objective_results.csv` | 84 tasks/15 graphs; graph-cluster bootstrap, exact sign flips and Holm H1/H2 |
+| Phase 3 scaling | `protocols/phase3_scaling_v1/`, three split manifests, `canonical_results.csv`, `resource_preflight.csv`, `failure_census.csv`, `base_graph_exponents.csv` | 180 planned tasks/30 graphs, splits 96/24/60; 75 completed graph-objective exponents; m=20 reversal; 180 m=22 run rows censored |
+| Theory v1 | `scripts/validate_global_dilution_bound.py`, `run_grover_tightness_validation.py`, `results/theory_validation_v1/` | Membership/global hybrid bound and Grover tightness |
+| Theory v2 | `scripts/validate_adaptive_dilution_bound.py`, `audit_rcsp_bridge.py`, `results/theory_validation_v2/` | Adaptive/deferred-measurement equivalence and RCSP description barrier |
+| Theory v3 | `scripts/validate_explicit_rcsp_query_constructions.py`, `validate_structure_advice_bound.py`, `build_structure_cost_matrix.py`, `results/theory_validation_v3/` | Explicit-attribute subclass, padding counterexamples, posterior/advice bounds and structure cost ledger |
+
+The four discovery objectives are defined verbatim in
+`src/qroute_dilution/phase1_2_objectives.py`: O0 mean energy; O1 expected flow plus
+resource penalty; O2 `1-P_feas` mechanistic exact-feasibility control; O3 exact
+weighted lowest-energy CVaR with alpha=0.10 and fractional cutoff mass. Objective
+choice does not redefine the ansatz cost Hamiltonian. Do not rewrite these
+objectives, seeds or feasible-set membership rules during release cleanup.
+
+## Existing results and post-hoc material
+
+Use `python scripts/validate_release.py --from-existing-results` for scientific
+reconstruction without optimization. Add `--assets` for isolated primary asset
+generation. The original lower-level builders write fixed result/paper paths;
+the wrapper confines those writes to a disposable copy.
+
+`results/posthoc_finite_shot_endpoint_v1/` is fixed-endpoint sampling, generated by
+`paper_scripts/run_posthoc_finite_shot_endpoint.py`. It is distinct from training
+with a noisy objective. `analysis/reviewer_robustness/protocol_v1.json` and
+`results/reviewer_robustness/manifests/` define the separate reviewer analyses:
+A1 optimizer, A2 alpha, A3 finite-shot, B1 depth/budget and B2 classical context.
+Their drivers are `paper_scripts/reviewer_robustness/run_reviewer_robustness.py`,
+`build_revision_assets.py` and `run_final_scientific_audits.py`. These are post-hoc;
+none changes the preregistered confirmatory family. B3 external-family evidence
+was not tested. Reviewer smoke outputs and obsolete revision PDFs are development
+artifacts; canonical formal rows, manifests, summaries and run receipts are kept.
+
+`manuscript/`, `paper/`, `review_package/`, `docs/manuscript/`, `docs/synthesis/`
+and `results/synthesis_v1/` are earlier synthesis/scaffold provenance. They are
+retained where scientific integrity tests refer to them, not designated as the
+current paper. `submission/` contains several editorial alternatives; selection
+of a final submission source is a human decision. The public snapshot excludes that
+duplicate packaging tree while preserving its original files untouched.
+
+## Restore instance payloads without optimization
+
+```bash
+python scripts/materialize_release_tasks.py
+```
+
+This new wrapper calls the existing deterministic graph/RCSP routines, reconstructs
+140 corrected-v2 and 180 Phase-3 task JSON files in a unique temporary directory,
+and checks graph/task identities, feasible/optimal counts and optimal cost against
+the frozen characterization rows. It does not enumerate full statevectors or run
+optimization. The original data and result directories remain untouched. Copy the
+printed directory's `data/tasks/` into a separate experiment workspace when needed.
+New task timing fields are provenance only and are not canonical reference timings.
+
+## Full experiment execution (expensive; separate copy only)
+
+Historical entry points have no universal output-root flag. They also skip known
+run IDs, so executing `full` against retained rows is a resume operation, not a
+fresh reproduction. Make a separate working copy of the source/configs/manifests
+and the relevant predecessor evidence, and use a separate empty stage output
+root for a truly fresh run. Preserve every frozen release file. Do not run
+freeze/re-freeze operations in the release snapshot. Earlier-stage SHA values
+can legitimately differ across dependency versions; compare numerical outputs
+and stop on substantive discrepancies instead of rewriting hash references.
+
+These are actual CLI stages, listed so the expensive boundaries are explicit:
+
+```bash
+# Task generation and exhaustive characterization (can also be expensive).
+python scripts/run_phase0.py --config configs/phase0_v1.yaml
+python scripts/run_phase05.py --config configs/phase0_v2_dilution_stress.yaml
+python scripts/run_phase06.py
+# Discovery pilot: these stages include real optimization.
+python scripts/run_phase1_pilot_v1.py preflight
+python scripts/run_phase1_pilot_v1.py execute
+python scripts/run_phase1_1_diagnostic.py nested
+python scripts/run_phase1_1_diagnostic.py continuation
+python scripts/run_phase1_1_diagnostic.py budget
+python scripts/run_phase1_1_diagnostic.py control
+python scripts/run_phase1_2_objective_alignment.py preflight
+python scripts/run_phase1_2_objective_alignment.py full
+# Frozen held-out schedule: p2 endpoints feed p3 continuation.
+python scripts/run_phase2_confirmatory_v1.py p2
+python scripts/run_phase2_confirmatory_v1.py p3
+# Prospective scaling: generation, preflight and frozen development/holdouts.
+python scripts/run_phase3_scaling_v1.py generate
+python scripts/run_phase3_scaling_v1.py characterize
+python scripts/run_phase3_scaling_v1.py resource
+python scripts/run_phase3_scaling_v1.py preflight
+python scripts/run_phase3_scaling_v1.py development
+python scripts/run_phase3_scaling_v1.py adequacy
+python scripts/run_phase3_scaling_v1.py interpolation
+python scripts/run_phase3_scaling_v1.py extrapolation
+```
+
+This is an entry-point/stage map, not a one-command clean rerun recipe: the
+historical freeze identities, prerequisite endpoints, manifests and development
+model freeze must be present at their respective boundaries. Stage protocols in
+each result root/config specify the full execution contracts. The public release
+fully validates reconstruction from the included evidence; a fresh end-to-end
+optimization campaign was not validated in this audit. In particular, later
+experiments read generated task JSON that was not included in the supplied tree.
+
+The retained configs control budgets, process counts, seeds, initialization and
+censoring. Actual execution uses CPU/RAM; GPU speedups are not available here.
+Full pilot, optimizer diagnostics, held-out continuation, m=20 scaling and
+finite-shot training should be treated as expensive. m=22 remains censored in
+the reported study; a stronger new machine does not retroactively change that
+result. Raw statevectors are not persisted as canonical data.

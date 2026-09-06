@@ -1,0 +1,47 @@
+\section{Related Work}
+\label{sec:related}
+
+Constrained QAOA spans penalty encodings and algorithms that restrict the
+state support or dynamics. The alternating-operator framework formalizes
+problem-aware initial states and feasible-subspace mixers
+\cite{hadfield2019alternating}; broader constructions cover constraint
+encodings and preserving mixers \cite{fuchs2022mixers,ruan2023constraints}.
+Grover mixers transfer part of the burden to feasible-state preparation
+\cite{bartschi2020grover}, Zeno dynamics uses repeated projections
+\cite{herman2023zeno}, and indicator-function methods evaluate inequalities in
+ancillas \cite{bucher2025penaltyfree}. These are alternatives to, rather than
+matched variants of, the uniform full-space Penalty-X design studied here.
+
+Recent structured approaches sharpen that contrast. Onah, Firt, and
+Michielsen introduce a constraint-enhanced one-hot construction with $W$
+states and block-$XY$ mixing \cite{onahfirt2025encoded}; related analysis
+studies shallow feasibility limits for permutation constraints
+\cite{onah2025limitations}. Bucher et al. combine iterative warm starts with
+one-hot $XY$ mixers \cite{bucher2026iterative}, extending the wider warm-start
+and initial-state/mixer-alignment literature
+\cite{egger2021warm,he2023alignment}. RCSP flow and resource feasibility is
+not a simple fixed-Hamming-weight constraint, so those constructions are not
+treated as automatic RCSP baselines.
+
+Classical loss design provides a different intervention. CVaR emphasizes a
+low-energy tail \cite{barkoutsos2020cvar}; validation-oracle objectives can
+target feasibility directly \cite{li2026feasibilityloss}; and feasibility-
+driven penalty scheduling jointly varies constraint penalties
+\cite{ferrari2026scheduling}. Onah and Michielsen give finite-depth,
+finite-shot guarantees for a Fej\'er-filtered constrained model with explicit
+phase-normalization assumptions \cite{onah2026fejer}. These studies motivate
+careful separation of objective information, spectral assumptions, and
+sampling resources. Our O2 instead serves only as an exact-statevector
+capacity control, while O3 retains the same $H_C$ and ansatz as O0.
+
+Finally, QAOA initialization and continuation are standard responses to
+outer-loop difficulty \cite{zhou2020qaoa}; general training hardness and
+reachability results warn against identifying a terminal local-optimizer
+result with the global variational optimum
+\cite{bittel2021training,akshay2021reachability}. The exact zero-layer test is
+narrower: it certifies only that a reported deeper point is worse than a known
+embedded point. The contribution of this study is the combined attribution
+design---scale control, nested optimizer diagnosis, O2 capacity measurement,
+and graph-held-out O3 confirmation---not a new ansatz, CVaR definition, or
+generic optimizer-hardness theorem. Extended study-by-study comparisons are
+in Online Resource~1, Tables~S14--S15.

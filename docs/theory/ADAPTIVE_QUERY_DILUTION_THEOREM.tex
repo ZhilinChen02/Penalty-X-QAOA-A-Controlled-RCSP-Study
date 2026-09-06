@@ -1,0 +1,109 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,booktabs}
+\newcommand{\F}{\mathcal F}
+\newcommand{\tagclaim}[1]{\textsf{[#1]}}
+\begin{document}
+\section*{Adaptive hard-cap feasible-space dilution theorem}
+
+\tagclaim{V1\_THEOREM} The fixed-query theorem is unchanged. Let $\F$ be
+uniform over size-$M$ subsets of an $N$-label basis and let $\phi=M/N$.
+
+\subsection*{Model}
+\tagclaim{V2\_NEW\_PROOF} An algorithm begins in an $\F$-independent state,
+may use arbitrary ancillas, intermediate measurements, discarded environments,
+classical randomness and feed-forward, and makes at most $q$ membership-oracle
+calls on every branch. No other input or operation depends on $\F$. It outputs
+a label $x$ and succeeds iff $x\in\F$.
+
+\subsection*{Hard-cap theorem}
+\tagclaim{V2\_NEW\_PROOF} For the phase-flip oracle
+$O_\F=I-2\Pi_\F$,
+\[
+ \mathbb E_\F P_\F\le \min\{1,(2q+1)^2\phi\}.
+\]
+The expectation also averages internal measurement and random outcomes.
+
+\subsection*{Proof}
+\tagclaim{V2\_NEW\_PROOF} Introduce query, work, transcript, random-seed,
+environment, halt, scratch, and output registers. Replace every instrument by
+its Stinespring isometry, retaining its outcome and discarded data in
+orthogonal transcript/environment registers. Purify random choices and make
+feed-forward coherently controlled. Pad to $q$ slots by controlled-swapping an
+isolated scratch query register into the oracle port on halted branches,
+applying the ordinary oracle unconditionally, and swapping back. Halted scratch
+data never recouple to the output. Reversibly copy the selected classical output
+label into the final query register.
+
+The resulting pure algorithm has $q$ oracle uses and $\F$-independent
+inter-query unitaries. In the identity-oracle reference algorithm,
+\[
+ \mathbb E_\F\|(\Pi_\F\otimes I)|\varphi_t\rangle\|^2=\phi.
+\]
+Since
+\[
+ \|(O_\F-I)|\varphi_t\rangle\|
+ =2\|(\Pi_\F\otimes I)|\varphi_t\rangle\|,
+\]
+the hybrid recursion and Minkowski imply
+$(\mathbb E d_q^2)^{1/2}\le2q\sqrt\phi$. The reference output has average
+marked mass $\phi$, so a second projection/Minkowski step gives
+$\sqrt{\mathbb E P_\F}\le(2q+1)\sqrt\phi$. Squaring and capping at one proves
+the result.
+
+\subsection*{Membership-bit corollary}
+\tagclaim{V2\_NEW\_PROOF} For
+$B_\F|x,b\rangle=|x,b\oplus1[x\in\F]\rangle$,
+\[
+ B_\F-I=\Pi_\F\otimes(X-I),\qquad\|X-I\|=2,
+\]
+so the same coarse theorem holds. Preparing $|-\rangle$ converts one bit query to a
+phase flip. The reverse direction requires a controlled phase interface and is
+not used in the proof.
+
+\subsection*{History-dependent phases}
+\tagclaim{V2\_NEW\_PROOF} If slot $t$ applies the transcript-controlled direct
+sum of phases $\gamma_t(h)$, set
+\[
+ c_t=\sup_h|e^{-i\gamma_t(h)}-1|.
+\]
+The controlled multiplier has operator norm $c_t$, and hence
+\[
+ \mathbb E_\F P_\F\le
+ \min\left\{1,\left(1+\sum_{t=1}^q c_t\right)^2\phi\right\}.
+\]
+This assumes the controlled direct sum is the counted oracle interface.
+
+\subsection*{Trained total-query corollary}
+\tagclaim{V2\_NEW\_PROOF} A variational controller satisfying the same
+oracle-only condition and a deterministic total cap $q_{\rm total}$ obeys
+\[
+ \mathbb E_\F P_{\rm success}
+ \le\min\{1,(2q_{\rm total}+1)^2\phi\}.
+\]
+Every training circuit, shot, validation call and final execution is counted.
+The result does not lower-bound final trained depth alone.
+
+\subsection*{Expected-query caveat}
+\tagclaim{COUNTEREXAMPLE} Substituting $\mathbb E Q$ for a hard cap is invalid.
+\tagclaim{V2\_NEW\_PROOF} If $\mathbb E Q\le\bar q$, truncation gives, for every
+integer $T\ge0$,
+\[
+ \mathbb E P\le\min\left\{1,\frac{\bar q}{T+1}
+ +\min\{1,(2T+1)^2\phi\}\right\}.
+\]
+If $Q$ is sampled independently before the interaction, conditioning on
+$Q=k$ also gives
+\[
+ \mathbb E P\le
+ \mathbb E\!\left[\min\{1,(2Q+1)^2\phi\}\right]
+ \le\min\{1,\phi\,\mathbb E(2Q+1)^2\}.
+\]
+This expected-square statement is not asserted for transcript-dependent
+stopping.
+
+\subsection*{Nonclaims}
+\tagclaim{OPEN\_GAP} Rich value oracles and standard explicit-input RCSP are
+not covered. Free instance-dependent coefficients, feasible-state preparation,
+or feasible-subspace mixers violate the oracle-only assumption. No claim is
+made that all QAOA requires $\Omega(\phi^{-1/2})$ final circuit depth.
+\end{document}

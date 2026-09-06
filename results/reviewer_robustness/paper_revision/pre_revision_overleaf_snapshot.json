@@ -1,0 +1,250 @@
+{
+  "aggregate_sha256": "359c4ad3cf5efe6a5ff1851149576c7fdc662fc3ce268c9a768804f0e07d2cab",
+  "created_at_utc": "2026-09-04T09:41:01.697939+00:00",
+  "git_status_short": [
+    "A  KEY.txt",
+    " M overleaf/README.md",
+    " M overleaf/appendices/appendix_artifact.tex",
+    " M overleaf/appendices/appendix_statistics.tex",
+    " M overleaf/figures/fig01_experimental_concept.pdf",
+    " M overleaf/figures/fig02_dilution_scale_control.pdf",
+    " M overleaf/figures/fig03_optimizer_attribution.pdf",
+    " M overleaf/figures/fig04_objective_misalignment.pdf",
+    " M overleaf/figures/fig05_objective_discovery.pdf",
+    " M overleaf/figures/fig06_heldout_confirmation.pdf",
+    " M overleaf/figures/fig07_feasibility_optimality.pdf",
+    " M overleaf/figures/fig08_scaling_response.pdf",
+    " M overleaf/figures/fig09_theory_scope.pdf",
+    " M overleaf/figures/fig10_structure_cost_relocation.pdf",
+    " M overleaf/main.tex",
+    " M overleaf/references.bib",
+    " M overleaf/sections/01_introduction.tex",
+    " M overleaf/sections/03_methods.tex",
+    " M overleaf/sections/04_optimizer_attribution.tex",
+    " M overleaf/sections/05_objective_alignment.tex",
+    " M overleaf/sections/06_heldout_results.tex",
+    " M overleaf/sections/07_scaling.tex",
+    " M overleaf/sections/08_theory.tex",
+    " M overleaf/sections/09_related_work.tex",
+    " M overleaf/sections/10_discussion.tex",
+    " M overleaf/sections/11_limitations.tex",
+    " M overleaf/sections/12_conclusion.tex",
+    " M overleaf/supplementary/artifact_manifest.txt",
+    " M overleaf/tables/table01_protocol_summary.tex",
+    " M overleaf/tables/table02_objectives.tex",
+    " M overleaf/tables/table03_optimizer_attribution.tex",
+    " M overleaf/tables/table04_heldout_results.tex",
+    " M overleaf/tables/tableS1_failure_census.tex",
+    " M paper_audit/citation_verification.csv",
+    " M paper_audit/claim_usage.csv",
+    " M paper_audit/figure_manifest.csv",
+    " M paper_audit/package_validation.json",
+    " M paper_audit/static_validation.json",
+    " M paper_audit/table_manifest.csv",
+    " M paper_scripts/build_paper_assets.py",
+    " M paper_scripts/package_overleaf.py",
+    "?? FINAL_PUBLICATION_READINESS.md",
+    "?? FINAL_PUBLICATION_READINESS_v4.md",
+    "?? analysis/",
+    "?? docs/finalization_inventory.md",
+    "?? docs/human_proof_review_packet.md",
+    "?? docs/related_work_audit.md",
+    "?? docs/sncs_v3_journal_requirements.md",
+    "?? goals_1.sqlite",
+    "?? logs_2.sqlite",
+    "?? logs_2.sqlite-shm",
+    "?? logs_2.sqlite-wal",
+    "?? memories_1.sqlite",
+    "?? overleaf/figures/fig11_finite_shot_endpoint_robustness.pdf",
+    "?? overleaf/tables/table07_related_work.tex",
+    "?? paper_assets/",
+    "?? paper_audit/sncs_v3_validation.json",
+    "?? paper_audit/sncs_v4_validation.json",
+    "?? paper_scripts/build_sncs_submission_v3.py",
+    "?? paper_scripts/build_sncs_submission_v4.py",
+    "?? paper_scripts/rebuild_publication_results.py",
+    "?? paper_scripts/reviewer_robustness/",
+    "?? paper_scripts/run_posthoc_finite_shot_endpoint.py",
+    "?? queue_1.sqlite",
+    "?? queue_1.sqlite-shm",
+    "?? queue_1.sqlite-wal",
+    "?? reproduction/",
+    "?? results/finalization_audit_v1/",
+    "?? results/posthoc_finite_shot_endpoint_v1/",
+    "?? results/reviewer_robustness/",
+    "?? src/qroute_dilution/reviewer_robustness/",
+    "?? state_5.sqlite",
+    "?? submission/",
+    "?? tests/test_reviewer_robustness.py",
+    "?? thread_history_1.sqlite"
+  ],
+  "schema": "reviewer-paper-pre-revision-snapshot-v1",
+  "source_count": 33,
+  "sources": [
+    {
+      "path": "overleaf/README.md",
+      "sha256": "0364e3b297850014a4ebf929ea576edb59872352f3a03b32916abf83c523dd29",
+      "size_bytes": 1153
+    },
+    {
+      "path": "overleaf/appendices/appendix_artifact.tex",
+      "sha256": "4a15a997383cf69be270e78114b9d1444f0b68fc2d60c0e62e201737e7f29f24",
+      "size_bytes": 3499
+    },
+    {
+      "path": "overleaf/appendices/appendix_optimization.tex",
+      "sha256": "f44a4da016863fadfc714ae2e5387af215474afeb0df5c815032f665b6cd3e71",
+      "size_bytes": 5523
+    },
+    {
+      "path": "overleaf/appendices/appendix_scaling.tex",
+      "sha256": "ab2b58626a61fe0149adea7ddb5a394e9ab4a2b3e3f9f5f1c2778a5bb5eee1d2",
+      "size_bytes": 3508
+    },
+    {
+      "path": "overleaf/appendices/appendix_statistics.tex",
+      "sha256": "323fae685b6c1110e3c992ce714f3179f17160112f304c25c106d6ba2e7e30c5",
+      "size_bytes": 6959
+    },
+    {
+      "path": "overleaf/appendices/appendix_tasks.tex",
+      "sha256": "5acb8d173577de2e0497d3159f42490a1c34197194ca3046a0925930376765dd",
+      "size_bytes": 3669
+    },
+    {
+      "path": "overleaf/appendices/appendix_theory.tex",
+      "sha256": "1129c25bb21cd34feb000455dbeee1b20e2eb5d36d7a83aa792bca75c50ac121",
+      "size_bytes": 15527
+    },
+    {
+      "path": "overleaf/main.tex",
+      "sha256": "e768fa8f4be5c1a0af192fdda681b054f50382e5f1e248f99871775733833bc9",
+      "size_bytes": 3828
+    },
+    {
+      "path": "overleaf/references.bib",
+      "sha256": "936bdd2193b8e2cf682a80fa1fd6705cb87a5ff122df7167533511db6f52f30f",
+      "size_bytes": 11611
+    },
+    {
+      "path": "overleaf/sections/01_introduction.tex",
+      "sha256": "e718b564820250226284c5b33847bdb356a61802c93d58c0df32903e1085cc05",
+      "size_bytes": 7312
+    },
+    {
+      "path": "overleaf/sections/02_problem.tex",
+      "sha256": "29789572b127d43b0d52711602941c368604bb27cfba94d1a531c45545128c01",
+      "size_bytes": 6173
+    },
+    {
+      "path": "overleaf/sections/03_methods.tex",
+      "sha256": "20e57a4305315a0fb710610f3a96d8e28826bbe9a2073e8847436884c52e95d3",
+      "size_bytes": 8003
+    },
+    {
+      "path": "overleaf/sections/04_optimizer_attribution.tex",
+      "sha256": "87e8e3d45210469040dabb5a8eab89520067975be89b1029ec40225532c0c118",
+      "size_bytes": 6643
+    },
+    {
+      "path": "overleaf/sections/05_objective_alignment.tex",
+      "sha256": "dde298bb5b1b13d5efc911df615fca926c99d2b474a6ed49b9e0d8078ff1cfcc",
+      "size_bytes": 5758
+    },
+    {
+      "path": "overleaf/sections/06_heldout_results.tex",
+      "sha256": "ef99f468234c81996a6e7ab6b27739b04dff6b7c6ba48d2baa7c4eefc600ae59",
+      "size_bytes": 5799
+    },
+    {
+      "path": "overleaf/sections/07_scaling.tex",
+      "sha256": "cf8b769cdc97d0df1fe19506e3a18d80905f007d8a32af8243676576dac96354",
+      "size_bytes": 5618
+    },
+    {
+      "path": "overleaf/sections/08_theory.tex",
+      "sha256": "068f0cdfdd4d57ebe5377a4bb2dce439432cb15644da244342f1dd5991a8be9f",
+      "size_bytes": 7106
+    },
+    {
+      "path": "overleaf/sections/09_related_work.tex",
+      "sha256": "a5c1fc9e4173d7aff194aa7d65eb4e057b1bdb3152149a9d31270bde84556cc1",
+      "size_bytes": 4734
+    },
+    {
+      "path": "overleaf/sections/10_discussion.tex",
+      "sha256": "9c6d0560a54679b6a86b5040b42af66f98ca2ba2bf79c17801fb559ae6f5732b",
+      "size_bytes": 4426
+    },
+    {
+      "path": "overleaf/sections/11_limitations.tex",
+      "sha256": "842152078386ae7d6dca79c157b4d76f68d450ff278591a691ee1ac72858aac0",
+      "size_bytes": 2286
+    },
+    {
+      "path": "overleaf/sections/12_conclusion.tex",
+      "sha256": "b1a40acb8d053d1af1e23f69da76d4667fdba1a2d660b246990ceabec352a15a",
+      "size_bytes": 1517
+    },
+    {
+      "path": "overleaf/tables/table01_protocol_summary.tex",
+      "sha256": "211adfca42d49459567ae099d4eb7d9fcfd9f07d5e1e75a8331abd695439b478",
+      "size_bytes": 962
+    },
+    {
+      "path": "overleaf/tables/table02_objectives.tex",
+      "sha256": "9914b4a5b060c2285fa344fb6724280951e77f8019e14920ee4ef56be45b1431",
+      "size_bytes": 833
+    },
+    {
+      "path": "overleaf/tables/table03_optimizer_attribution.tex",
+      "sha256": "8f89a06426f186fcc6502bd4ecc2afc83f43b5ff1fc4010b7f30acd56548a512",
+      "size_bytes": 630
+    },
+    {
+      "path": "overleaf/tables/table04_heldout_results.tex",
+      "sha256": "7716c5ee7bb91ae038a6d87ec6e742e8a517af587f435afcb4f0f8d335dda79a",
+      "size_bytes": 588
+    },
+    {
+      "path": "overleaf/tables/table05_scaling_response.tex",
+      "sha256": "7ab5afa28d284b2b5eeff48cd40d23c96299d2ad755feddf47ff2f2481b8ea1e",
+      "size_bytes": 579
+    },
+    {
+      "path": "overleaf/tables/table06_theory_scope.tex",
+      "sha256": "aa4011cdde009a33bd7e4306d6c62525ddce780fa83f10aeca89ebdfebf354c3",
+      "size_bytes": 1164
+    },
+    {
+      "path": "overleaf/tables/table07_related_work.tex",
+      "sha256": "ed5e30f26d670ac9571fccad4e68eb19f1f2210cc31e069825d776aff69d3192",
+      "size_bytes": 4387
+    },
+    {
+      "path": "overleaf/tables/tableS1_failure_census.tex",
+      "sha256": "adfae0477e8cab5056b3de665390cedcb0eb2b43e1bc93d0cccb1a1b3fc76200",
+      "size_bytes": 604
+    },
+    {
+      "path": "overleaf/tables/tableS2_task_strata.tex",
+      "sha256": "eb222950f6ef46bd053e69174c75ce05ab0d268a63b619523a2222bf99ae8acc",
+      "size_bytes": 503
+    },
+    {
+      "path": "overleaf/tables/tableS3_statistics.tex",
+      "sha256": "f75529c363678521c0e44248d91d563290143878b89561771b44d2f067c1de22",
+      "size_bytes": 736
+    },
+    {
+      "path": "overleaf/tables/tableS4_proof_assumptions.tex",
+      "sha256": "5565093383c1daa27ba5627a491a4c6869e2dbedd023e026e14227c9352849d1",
+      "size_bytes": 1144
+    },
+    {
+      "path": "overleaf/tables/tableS5_artifact_hashes.tex",
+      "sha256": "24b5466433dedf2804d08d40ac72072e7c8b4e77acad7c302ef18f739e5be0a9",
+      "size_bytes": 590
+    }
+  ]
+}

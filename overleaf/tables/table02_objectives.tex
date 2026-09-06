@@ -1,0 +1,17 @@
+
+\begin{table}[t]
+\centering
+\caption{Classical training losses applied to the same $p=3$ Penalty-X ansatz and the same normalized cost-phase Hamiltonian.}
+\label{tab:objectives}
+\small
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{1.8cm}>{\raggedright\arraybackslash}p{5.0cm}X@{}}
+\toprule
+ID & Name & Loss minimized & Role \\
+\midrule
+O0 & Mean energy & $\mathbb{E}_{\theta}[H_C]$ & Standard variational baseline \\
+O1 & Expected penalty & $\mathbb{E}_{\theta}[P_{\mathrm{flow}}+P_{\mathrm{resource}}]$ & Mechanistic feasibility surrogate \\
+O2 & Exact feasibility & $1-P_{\mathrm{feas}}(\theta)$ & Statevector-only ansatz-capacity control; not deployable \\
+O3 & CVaR-0.10 & Mean of the lowest-energy probability mass $\alpha=0.10$ & Tail-focused rich-energy objective \\
+\bottomrule
+\end{tabularx}
+\end{table}

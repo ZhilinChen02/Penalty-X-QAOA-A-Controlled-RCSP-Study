@@ -1,0 +1,23 @@
+{
+  "H1": {
+    "bootstrap_standard_error": 0.07472582111285479,
+    "effect_mean": 0.3547149490180106,
+    "holm_adjusted_p_value": 0.000244140625,
+    "null_margin": 0.0,
+    "one_sided_95_lower_bound": 0.23737853648218638,
+    "pass": true,
+    "raw_p_value": 0.0001220703125
+  },
+  "H2": {
+    "bootstrap_standard_error": 0.016676047763212343,
+    "effect_mean": -0.008595149938274194,
+    "holm_adjusted_p_value": 0.000244140625,
+    "null_margin": -0.1,
+    "one_sided_95_lower_bound": -0.03604874990402986,
+    "pass": true,
+    "raw_p_value": 0.000152587890625
+  },
+  "analysis_unit": "base_graph_id",
+  "formal_complete_15_graph_family": true,
+  "n_base_graphs": 15
+}

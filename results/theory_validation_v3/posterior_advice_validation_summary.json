@@ -1,0 +1,25 @@
+{
+  "advice_channel_kinds": [
+    "constant_advice",
+    "noisy_bucket_advice",
+    "one_marked_label_advice",
+    "partition_advice",
+    "random_deterministic_map",
+    "random_stochastic_map"
+  ],
+  "declared_alphabet_sizes": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "master_seed": 1400510909,
+  "maximum_lambda_residual": 2.220446049250313e-16,
+  "maximum_phase_success_residual": 3.3306690738754696e-16,
+  "maximum_success_residual": 3.3306690738754696e-16,
+  "maximum_trace_error": 5.773159728050814e-15,
+  "parameter_cells_N_M_q": 44,
+  "parameter_rows": 1056,
+  "subset_evaluations": 80860,
+  "violations": 0
+}

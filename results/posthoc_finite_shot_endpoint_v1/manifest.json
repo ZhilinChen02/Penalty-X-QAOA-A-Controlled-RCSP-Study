@@ -1,0 +1,50 @@
+{
+  "base_graph_count": 15,
+  "endpoint_count": 168,
+  "evidence_label": "POSTHOC_FINITE_SHOT_ENDPOINT_ROBUSTNESS",
+  "exact_reconstruction_tolerance": 5e-12,
+  "input_sha256": {
+    "configs/penalty_contract_v2_scale_controlled.yaml": "2593110a4e703b02a4d50e0fbbe1b5dbe4f553dc0f2f46923d039a201c940408",
+    "configs/phase0_v2_dilution_stress.yaml": "05c40b7927a60a9e19a5f2ff2d159ff011c3c1c6114cfa9aadea0940d1194307",
+    "configs/phase1_pilot_v1.yaml": "578f9277d133d8ceb301a69b51ff3f2c04030194549f26296b2b80536697e0d5",
+    "data/manifests/phase0_v2_dilution_stress.json": "33a2c1b68906595124e4045103763cd106b69d68ad546881642074a55c50a573",
+    "data/manifests/phase2_confirmatory_v1.json": "0556bb659521e570cde5deac881cf1e0f771fcc46408750c2ef934f41054e0f6",
+    "paper_scripts/run_posthoc_finite_shot_endpoint.py": "91588d479beb8bcb4e2e5269a76ac7d23ef804c1361be2e677c3f176ba0916a1",
+    "results/phase0_v2_dilution_stress/task_characterization.csv": "51951545e6fc828859e3e44f3466e5626b416266f2dc6aeb854b0c6424883dcb",
+    "results/phase2_confirmatory_v1/p3_objective_results.csv": "c77985c0a69f90cae6e278a934b21b2322b277a5e67c4ca7ee2ac4d7996bb832",
+    "src/qroute_dilution/graph_generator.py": "566aff4bd507668ff58079187fceb609c920ef1969c0c3727bbd1650c2f14731",
+    "src/qroute_dilution/penalties.py": "28a8226721f335e0cdc872cb3608ef7c60d18ced53e5ad8cb4f335b4099320a4",
+    "src/qroute_dilution/qaoa.py": "97dc46ce45327af4dc29653d9482da8af3814a4202ab3b5764419fab5275f45e",
+    "src/qroute_dilution/stress.py": "1a69f0cca87a08d04558f81fd851a51cdabcc0be90bdc74a81e794fe6d629ba2"
+  },
+  "interpretation_boundary": "Endpoint estimator robustness only; not finite-shot training, hardware, noise, compilation, or device robustness.",
+  "maximum_exact_metric_abs_difference_vs_authoritative": 7.327471962526033e-15,
+  "optimizer_invoked": false,
+  "optimizer_parameters_changed": false,
+  "output_sha256": {
+    "README.md": "c2c56738336be732ca364b763418dffa66461b96a217570570b56ca6eeb9af85",
+    "aggregate.csv": "f13be9815f00ff630d0f3c71aa5e9eb1bc413776cfa19135121b04b5cf98e0ac",
+    "exact_reference.csv": "df5b679d231d6327fc81d9010a1b352cce0e137c51dd7da3434e53c32310d706",
+    "figure11_finite_shot_endpoint_robustness.pdf": "be02e3ef57a285fac30cbd73c300fa96a752e4390fa7e44aa093e5d3f843a03f",
+    "figure11_finite_shot_endpoint_robustness.png": "6d61965041ec4166590c950ff7a0aebfbc41a5ff0d55533da216a7a33b685822",
+    "metrics.csv": "f4b755e50dcb210adcbc20119bde95c09d148b55f53b4c909581a1db56f3020e",
+    "sampling_config.json": "a7e6db9f29b4d9b3d4ac3e5df771b139d79f57351a9f6e1ec6965406749b6c4e"
+  },
+  "primary_inference_changed": false,
+  "replicate_metric_rows": 10080,
+  "schema_version": "posthoc_finite_shot_endpoint_v1.manifest.v1",
+  "scientific_role": "POSTHOC_ROBUSTNESS_ONLY",
+  "status": "COMPLETE",
+  "task_count": 84,
+  "task_reconstruction_audit": {
+    "characterization_mismatches": 0,
+    "manifest_identity_mismatches": 0,
+    "maximum_characterization_abs_difference": 0.0,
+    "regenerated_base_graph_count": 25,
+    "regenerated_task_count": 140,
+    "task_payload_hash_definition": "SHA-256 of sorted compact Task JSON excluding nondeterministic build-time fields"
+  },
+  "task_selection": "ALL_84_HELDOUT_TASKS_OUTCOME_BLIND",
+  "terminal_parameter_availability": "168/168 O0/O3 endpoints",
+  "total_measurement_draws": 372960000
+}

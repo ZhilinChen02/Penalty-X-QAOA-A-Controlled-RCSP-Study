@@ -1,0 +1,17 @@
+# Phase 3 resource preflight
+
+Only deterministic fixed-parameter simulation kernels were benchmarked; no QAOA
+performance outcome was used. Runtime is classical CPU simulation/runtime scaling,
+not quantum complexity.
+
+- Available RAM: 663205.0 MB
+- Largest allowed size: m=20
+- Resource-censored sizes: [22]
+
+ size_m                  task_id  state_space_size  available_ram_mb  statevector_memory_mb  energy_array_memory_mb  context_build_time_s  single_cost_layer_time_s  single_x_mixer_layer_time_s  single_p3_forward_time_s  predicted_memory_per_worker_mb  predicted_objective_evaluation_s  predicted_full_optimization_s  memory_guard_pass  time_guard_pass  numerical_statevector_pass  resource_guard_pass  resource_censored  safe_worker_count  peak_process_memory_mb
+     12 task-p3-49c4d5dae6a8f92a              4096     663204.992188                 0.0625                 0.03125              0.011877                  0.000111                     0.000291                  0.001225                        0.507812                          0.001531                       0.367555               True             True                        True                 True              False                  8              153.335938
+     14 task-p3-aa18c0fe25b7a1f8             16384     663204.992188                 0.2500                 0.12500              0.018039                  0.000809                     0.001300                  0.006262                        2.031250                          0.007828                       1.878602               True             True                        True                 True              False                  8              182.531250
+     16 task-p3-534079cbcb6aa71c             65536     663204.992188                 1.0000                 0.50000              0.043984                  0.003164                     0.007608                  0.032063                        8.125000                          0.040079                       9.618946               True             True                        True                 True              False                  8              219.917969
+     18 task-p3-e5b1288aa9c9bfcf            262144     663204.992188                 4.0000                 2.00000              0.110947                  0.013382                     0.035774                  0.130849                       32.500000                          0.163561                      39.254722               True             True                        True                 True              False                  8              295.199219
+     20 task-p3-dd5fb5e56bb32b7a           1048576     663204.992188                16.0000                 8.00000              0.433161                  0.056488                     0.337863                  1.142899                      130.000000                          1.428624                     342.869668               True             True                        True                 True              False                  8              451.386719
+     22 task-p3-a0a59bb625d2f414           4194304     663204.992188                64.0000                32.00000              1.849026                  0.175145                     2.347272                  7.497603                      520.000000                          9.372004                    2249.280961               True            False                        True                False               True                  8             1041.910156

@@ -1,0 +1,33 @@
+{
+  "amended_code_file_sha256": {
+    "analysis/reviewer_robustness/protocol_v1.json": "2b4137f55019c4492f3d824d5e7da84d7f330ef468c0dc7e37b02834acb35c54",
+    "paper_scripts/reviewer_robustness/run_reviewer_robustness.py": "1a4b789c96d5e411f52a40fcf497854ac968f9981fc293b910ca8430e01920e6",
+    "src/qroute_dilution/reviewer_robustness/__init__.py": "918565fdebe8f36dfc80d93c13ffa08f5e44edd8f94f288def674a3d21edb738",
+    "src/qroute_dilution/reviewer_robustness/alpha_sensitivity.py": "1cbaac73dd96b8e2140c501266081e5e30101e1ed9e3d865e40be31d189eaf8a",
+    "src/qroute_dilution/reviewer_robustness/audit.py": "ec10a03cff0e27a263815fac0872a528c485f633a19c56c281c4a2616f63e47c",
+    "src/qroute_dilution/reviewer_robustness/classical_rcsp.py": "f5995f38866a133f2ed8f1fd0c9eb203c27a7cfd2c925b6e7ae940997f39ee9e",
+    "src/qroute_dilution/reviewer_robustness/common.py": "78555b6a2169a108c4d1c79b8dd4d030e7cd09a420513ffa51b0957ad7662d44",
+    "src/qroute_dilution/reviewer_robustness/depth_budget.py": "fe5758117f7cafb5660a759fe763dbdedcc13945f3b9fa794cbee6a13b3b4ede",
+    "src/qroute_dilution/reviewer_robustness/finite_shot.py": "22fcd3957ba837c7a580907df08a2390c0cb263ef95dba88b38f2c0f47fb504b",
+    "src/qroute_dilution/reviewer_robustness/manifests.py": "adbe4bada5cff35c643edd387a044f1fdce8fc4cde422f761b0eb666a88b446f",
+    "src/qroute_dilution/reviewer_robustness/optimization.py": "00831a4df3dba32cf3585bbb2302e47d723d09fe0a00431888077ff6cb533518",
+    "src/qroute_dilution/reviewer_robustness/optimizer_robustness.py": "a05b5e376824ea9be16c4c3e3563ce12ba75110e39ecc52472da39059e5e1222",
+    "src/qroute_dilution/reviewer_robustness/registry.py": "766074a4f817719d2cf5bb4c495e7f81d161c2ba9e86b27277ecd868a91e0548",
+    "src/qroute_dilution/reviewer_robustness/selection.py": "5f8ada63d57e2a07a6ba07f07ef63fecc402a7e2cd4354203c4e45bbb456af2b",
+    "src/qroute_dilution/reviewer_robustness/statistical_audit.py": "8dbb79a697e02296088891f23e9e94fd79b92cca202b945e4ba0ddf17a3dd0d8",
+    "src/qroute_dilution/reviewer_robustness/statistics.py": "ae7696bb404089943ed12d19bedcf96aafe901578956290d619778a510daca10"
+  },
+  "amended_code_fingerprint": "f8c23ecf893f3e7ab05000dc374f073c2ec933e5f7f4e4cb3b6e544c51f52e98",
+  "amendment_id": "amendment_002",
+  "canonical_outputs_mutable": false,
+  "git_commit": "4d1111f3661f4b2df852eec2b382555a63e434d2",
+  "original_manifest_code_fingerprint": "03650ac08726781a26a7539a8cea722a142550c59316468fc3e2d32a5dd5e235",
+  "previous_execution_code_fingerprint": "5681788be14f374f441cfc91f51c029ca3cbc341c7dbe47881f0c6235b1720bb",
+  "protocol_changed": false,
+  "reason": "Post-A3 bookkeeping fix only: define the unified run_registry.csv as the formal-run ledger and exclude isolated smoke/ records, whose deliberately identical scientific run IDs otherwise trigger duplicate-ID protection. Smoke JSON remains preserved. Added a regression test. No execution logic, scientific choice, completed result, task, seed, objective, or budget changed.",
+  "recorded_at": "2026-09-04T04:31:51+02:00",
+  "schema_version": "qroute-dilution.reviewer-robustness.code-amendment.v1",
+  "scientific_choices_changed": false,
+  "task_selection_changed": false,
+  "worktree_dirty": true
+}

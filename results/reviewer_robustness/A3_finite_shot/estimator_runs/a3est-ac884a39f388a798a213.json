@@ -1,0 +1,141 @@
+{
+  "alphas": [
+    0.02,
+    0.05,
+    0.1,
+    0.25,
+    0.5
+  ],
+  "endpoint_objective": "O3",
+  "exact_by_alpha": {
+    "0.02": {
+      "G_feas": 2.159706432139724,
+      "cvar": 0.06993679837577943,
+      "cvar_cutoff_energy": 0.0755813953488372,
+      "feasible_fraction_phi": 0.00048828125,
+      "mean_energy": 1.43753454603184,
+      "p_feas": 0.07053042159369571,
+      "p_opt": 0.019417413587318785,
+      "p_opt_given_feas": 0.27530550858148267,
+      "state_norm": 1.0000000000000009,
+      "tail_feasible_fraction": 1.0,
+      "tail_fully_feasible": true
+    },
+    "0.05": {
+      "G_feas": 2.159706432139724,
+      "cvar": 0.07537019504915966,
+      "cvar_cutoff_energy": 0.08139534883720931,
+      "feasible_fraction_phi": 0.00048828125,
+      "mean_energy": 1.43753454603184,
+      "p_feas": 0.07053042159369571,
+      "p_opt": 0.019417413587318785,
+      "p_opt_given_feas": 0.27530550858148267,
+      "state_norm": 1.0000000000000009,
+      "tail_feasible_fraction": 1.0,
+      "tail_fully_feasible": true
+    },
+    "0.1": {
+      "G_feas": 2.159706432139724,
+      "cvar": 0.3718697116027504,
+      "cvar_cutoff_energy": 1.0625,
+      "feasible_fraction_phi": 0.00048828125,
+      "mean_energy": 1.43753454603184,
+      "p_feas": 0.07053042159369571,
+      "p_opt": 0.019417413587318785,
+      "p_opt_given_feas": 0.27530550858148267,
+      "state_norm": 1.0000000000000009,
+      "tail_feasible_fraction": 0.7053042159369571,
+      "tail_fully_feasible": false
+    },
+    "0.25": {
+      "G_feas": 2.159706432139724,
+      "cvar": 0.797885934549085,
+      "cvar_cutoff_energy": 1.0973837209302326,
+      "feasible_fraction_phi": 0.00048828125,
+      "mean_energy": 1.43753454603184,
+      "p_feas": 0.07053042159369571,
+      "p_opt": 0.019417413587318785,
+      "p_opt_given_feas": 0.27530550858148267,
+      "state_norm": 1.0000000000000009,
+      "tail_feasible_fraction": 0.28212168637478285,
+      "tail_fully_feasible": false
+    },
+    "0.5": {
+      "G_feas": 2.159706432139724,
+      "cvar": 0.9628674734632899,
+      "cvar_cutoff_energy": 1.1555232558139534,
+      "feasible_fraction_phi": 0.00048828125,
+      "mean_energy": 1.43753454603184,
+      "p_feas": 0.07053042159369571,
+      "p_opt": 0.019417413587318785,
+      "p_opt_given_feas": 0.27530550858148267,
+      "state_norm": 1.0000000000000009,
+      "tail_feasible_fraction": 0.14106084318739143,
+      "tail_fully_feasible": false
+    }
+  },
+  "experiment": "A3_ALPHA_SHOT_ESTIMATOR",
+  "finished_at": "2026-09-04T09:36:57+02:00",
+  "maximum_exact_difference_vs_frozen": 1.3322676295501878e-15,
+  "registry": {
+    "actual_nfev": null,
+    "alpha": null,
+    "depth": 3,
+    "dirty_state_fingerprint": "623e42097292a26032959f6f8e7b3e7727d30efbdea743940336438e888777e8",
+    "error_message": "",
+    "experiment": "A3_ALPHA_SHOT_ESTIMATOR",
+    "finished_at": "2026-09-04T09:36:57+02:00",
+    "git_commit": "4d1111f3661f4b2df852eec2b382555a63e434d2",
+    "graph_id": "g-fc8e50acd167f0aa",
+    "nfev_budget": null,
+    "objective": "O3",
+    "optimizer": null,
+    "run_id": "a3est-ac884a39f388a798a213",
+    "runtime_s": 0.0015408098697662354,
+    "seed": 8925408010936390519,
+    "shots": 10000,
+    "started_at": "2026-09-04T09:36:57+02:00",
+    "status": "COMPLETE",
+    "task_id": "task-v2-5da0eece9ed4"
+  },
+  "replicate": 45,
+  "run_id": "a3est-ac884a39f388a798a213",
+  "runtime_s": 0.0015408098697662354,
+  "sampled": {
+    "cvar_by_alpha": {
+      "0.02": 0.06976744186046512,
+      "0.05": 0.07519767441860466,
+      "0.1": 0.390578488372093,
+      "0.25": 0.8056362125626972,
+      "0.5": 0.9668706613556427
+    },
+    "mean_energy": 1.4348131933187047,
+    "p_feas": 0.0686,
+    "p_opt": 0.0205
+  },
+  "sampling_seed": 8925408010936390519,
+  "schema_version": "qroute-dilution.A3.estimator.v1",
+  "shots": 10000,
+  "source_run_id": "phase2-p3-62e4e4a9d64f33f209b5",
+  "started_at": "2026-09-04T09:36:57+02:00",
+  "status": "COMPLETE",
+  "task": {
+    "base_instance_id": "v2-S3-b002-g-fc8e50acd167f0aa",
+    "dilution_score": 3.311329952303793,
+    "feasible_fraction_phi": 0.00048828125,
+    "graph_id": "g-fc8e50acd167f0aa",
+    "m": 13,
+    "size_stratum": "S3",
+    "stress_level": "D4",
+    "task_id": "task-v2-5da0eece9ed4",
+    "task_path": "data/tasks/phase0_v2_dilution_stress/task-v2-5da0eece9ed4.json"
+  },
+  "terminal_parameters": [
+    2.7513175655403925,
+    4.374174483660529,
+    0.6046576231757606,
+    3.044293291503528,
+    -0.34550283777240764,
+    -0.2015903866264034
+  ]
+}

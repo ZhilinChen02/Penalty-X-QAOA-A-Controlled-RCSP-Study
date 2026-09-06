@@ -1,0 +1,151 @@
+\section{Objective-Alignment Details}
+\label{app:objective-details}
+
+\subsection{Discovery objective summaries}
+
+The four-objective comparison contains 224 successful task--objective cells:
+56 historical O0 cells reused from the matched 240-evaluation continuation and
+168 newly evaluated O1/O2/O3 cells. The common statevector ansatz and
+initialization make taskwise contrasts meaningful, while the discovery status
+precludes confirmatory interpretation.
+
+The complete descriptive median summary appears in
+\cref{tab:discovery-medians}.
+\begin{table}[ht]
+\centering
+\caption{Discovery-stage metric medians over 56 tasks.}
+\label{tab:discovery-medians}
+\small
+\begin{tabular}{@{}lrrrrrr@{}}
+\toprule
+Arm & $\pfeas$ & $\gfeas$ & $\popt$ & $\pcond$ & $\mathbb{E}[C\mid\mathrm{feas}]$ & median $\kappa$ \\
+\midrule
+O0 mean energy & 0.021678 & 2.1161 & 0.009563 & 0.4373 & 13.0425 & 0.0777 \\
+O1 expected penalty & 0.023357 & 2.1728 & 0.009509 & 0.4347 & 13.0131 & 0.0457 \\
+O2 exact feasibility & 0.039915 & 2.3209 & 0.016458 & 0.4345 & 12.9871 & 0.1885 \\
+O3 CVaR-0.10 & 0.042787 & 2.4275 & 0.016696 & 0.4082 & 13.0241 & 0.1726 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The taskwise median O2--O0 gap is 0.2192983546 decades, with interquartile
+range 0.2928. The O2--O1 and O2--O3 residual medians are 0.2417 and 0.006897.
+Because medians do not distribute over ratios, the reported 2.8\% and 97.9\%
+gap closures are medians of per-task closure fractions, not ratios of the
+displayed median gaps.
+
+The exploratory mechanistic tags were frozen before evaluation and are
+nonexclusive: 44/56 tasks met the objective-limited criterion, 7/56 the
+capacity-limited criterion, 2/56 penalty-surrogate success, and 7/56 partial
+CVaR alignment. Continuous gaps and taskwise metrics remain primary; these
+tags are not latent-class estimates.
+
+\subsection{Energy-tail checks}
+
+For each task, the maximum energy over all valid feasible states was compared
+with the minimum energy over all other states. Strict separation held on
+140/140 v2 tasks. The O3 tail check compares the Boolean event
+$\pfeas\geq\alpha$ with whether every probability contribution to the exact
+lowest-energy $\alpha$ tail is feasible, including the fractional cutoff mass.
+It held on 56/56 discovery and 84/84 held-out O3 cells.
+
+\section{Held-Out Preregistration and Statistics}
+\label{app:statistics}
+
+\subsection{Frozen hypotheses and analysis unit}
+
+For graph $g$, let $L_g$ denote its full set of planned dilution levels and
+define
+\begin{align}
+ \Delta_{1g}
+ &=|L_g|^{-1}\sum_{\ell\in L_g}
+ [\gfeas(\mathrm{O3};g,\ell)-\gfeas(\mathrm{O0};g,\ell)],\\
+ \Delta_{2g}
+ &=|L_g|^{-1}\sum_{\ell\in L_g}
+ [\gfeas(\mathrm{O3};g,\ell)-\gfeas(\mathrm{O2};g,\ell)].
+\end{align}
+All 15 graphs were complete. The population estimands are arithmetic means of
+$\Delta_{1g}$ and $\Delta_{2g}$ over graph units. H1 has null margin zero. H2
+has non-inferiority margin $-0.10$ decades and is tested after shifting
+$\Delta_{2g}$ by $+0.10$.
+
+The exact randomization-style $p$-value enumerates all sign vectors
+$s\in\{-1,+1\}^{15}$ and compares
+$15^{-1}\sum_gs_g\Delta_g$ with the observed mean in the one-sided direction.
+The two resulting values enter Holm's two-hypothesis step-down correction.
+The grouped bootstrap samples 15 graph identifiers with replacement 10,000
+times under seed 20261017 and takes the fifth percentile of the bootstrap mean
+as its one-sided lower bound. Individual task rows are never resampled as
+independent units.
+
+The frozen inferential contract is summarized in
+\cref{tab:statistics-contract}.
+\input{tables/tableS3_statistics.tex}
+
+\subsection{Confirmatory and secondary outcomes}
+
+The H1 estimate is 0.3547149490180106, with bootstrap standard error
+0.07472582111285479 and lower bound 0.23737853648218638. Its raw sign-flip
+value is $p=0.0001220703125$, and its Holm-adjusted value is
+$p=0.000244140625$. The H2 estimate is $-0.008595149938274194$, with standard
+error 0.016676047763212343 and lower bound $-0.03604874990402986$. Its raw
+shifted sign-flip value is $p=0.000152587890625$, with the same Holm-adjusted
+value. These are the only members of the preregistered confirmatory
+multiplicity family.
+
+Secondary task-level results include 80 O3-over-O0 $\popt$ wins, four losses,
+and no ties; 79 tasks improve both $\pfeas$ and $\popt$. O3 ends at a higher
+mean Hamiltonian energy than O0 on 81/84 tasks, which is expected to be
+possible because O3 optimizes CVaR rather than the mean. Median feasible-
+probability change from the common initialization is 0.004496 for O0 and
+0.023135 for O3. These values contextualize the primary graph-level endpoint
+but do not enlarge its hypothesis family.
+
+\section{Post-Hoc Finite-Shot Endpoint Robustness}
+\label{app:finite-shot}
+
+\subsection{Status and Design}
+This analysis is labeled
+\texttt{POSTHOC\_FINITE\_SHOT\_ENDPOINT\_ROBUSTNESS} and has the
+scientific role \texttt{POSTHOC\_ROBUSTNESS\_ONLY}. It samples the frozen
+O0 and O3 $p=3$ terminal distributions for all 84 held-out tasks; it does not
+rerun optimization, change terminal parameters, or enter the preregistered
+H1/H2 family. The 168 endpoint distributions were regenerated
+deterministically from the task generator, penalty contract, simulator
+convention, and stored terminal angles. The maximum absolute difference from
+the authoritative exact endpoint metrics was
+$7.33\times10^{-15}$.
+
+Each endpoint was sampled at 1,000, 10,000, and 100,000 shots with 20
+deterministic replicates. A seed is the SHA-256-derived identity of task,
+objective, shot count, and replicate. Every replicate estimates $\pfeas$,
+$\popt$, mean normalized energy, and empirical lowest-energy CVaR-0.10.
+The CVaR implementation accumulates probability mass in ascending energy
+order and fractionally weights the cutoff observation when
+$\alpha N_{\mathrm{shots}}$ is noninteger; for the three reported shot
+counts the cutoff is integral.
+
+\subsection{Estimator Summary}
+For O0/O3, respectively, CVaR mean absolute error decreases from
+0.0275/0.0352 at 1,000 shots to 0.0027/0.0034 at 100,000 shots.
+The corresponding $\pfeas$ mean absolute errors decrease from
+0.0041/0.0056 to 0.00043/0.00054. Across task--replicate comparisons, the
+sampled sign of the O3-versus-O0 $\pfeas$ contrast agrees with the exact
+sign in 94.8\%, 99.3\%, and 100.0\% of cases at 1,000, 10,000, and
+100,000 shots. Full bias, standard deviation, RMSE, percentile, relative-
+error, and ordering summaries are retained in the post-hoc result directory.
+Ordering recovery is conditioned on a non-tied exact comparison, and exact
+ties are reported separately.
+
+\Cref{fig:finite-shot} displays the estimator errors and ordering recovery.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig11_finite_shot_endpoint_robustness.pdf}
+  \caption{Post-hoc finite-shot endpoint robustness. \textbf{a}, empirical
+  CVaR-0.10 mean absolute error. \textbf{b}, feasible-probability mean
+  absolute error. \textbf{c}, fraction of sampled O3-versus-O0 orderings
+  matching the exact endpoint ordering, conditioned on non-tied exact
+  comparisons. These fixed-endpoint simulator results do not evaluate
+  finite-shot training, hardware noise, or device robustness}
+  \label{fig:finite-shot}
+\end{figure}

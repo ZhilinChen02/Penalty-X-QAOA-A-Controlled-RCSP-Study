@@ -1,0 +1,27 @@
+{
+  "H1_minimum_met": true,
+  "H1_preferred_met": true,
+  "H2_minimum_met": true,
+  "H2_preferred_met": true,
+  "discovery_effect_mean": {
+    "H1_Delta1": 0.24541517107134153,
+    "H2_Delta2": -0.023306781337945524
+  },
+  "discovery_effect_sd": {
+    "H1_Delta1": 0.2169461829727983,
+    "H2_Delta2": 0.04806300839030086
+  },
+  "heldout_graph_count": 15,
+  "minimum_target": 0.8,
+  "power_gate": "PASS_CONFIRMATORY",
+  "preferred_target": 0.9,
+  "projected_Holm_power": {
+    "H1": 0.99385,
+    "H2": 0.9999,
+    "both": 0.99385
+  },
+  "seed": 20260828,
+  "simulations": 100000,
+  "source": "Phase 1.2 discovery base graphs only",
+  "source_graph_count": 10
+}

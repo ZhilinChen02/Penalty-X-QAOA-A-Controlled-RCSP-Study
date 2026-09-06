@@ -1,0 +1,57 @@
+{
+  "schema_version": "theory_validation_v1.summary.v1",
+  "theory_audit_status": "COMPLETE",
+  "primary_theorem_verdict": "THEOREM_VALID_AS_STATED",
+  "corollary_verdicts": {
+    "PHASE_SENSITIVE_BOUND": "VALID_AS_STATED",
+    "COARSE_QUERY_BOUND": "VALID_AS_STATED",
+    "WORST_CASE_QUERY_LOWER_BOUND": "VALID_AFTER_REFINEMENT",
+    "AVERAGE_CASE_QUERY_LOWER_BOUND": "VALID_AFTER_REFINEMENT",
+    "FIXED_SCHEDULE_QAOA_DEPTH_BOUND": "VALID_AFTER_REFINEMENT",
+    "TRAINED_QAOA_TOTAL_QUERY_BOUND": "VALID_STANDARD_REDUCTION_NOT_FORMALIZED",
+    "EXPONENTIAL_DILUTION_COROLLARY": "VALID_AFTER_REFINEMENT",
+    "GROVER_ASYMPTOTIC_TIGHTNESS": "VALID_AFTER_REFINEMENT",
+    "DIRECT_RCSP_APPLICABILITY": "OPEN_GAP"
+  },
+  "proof_steps": {
+    "ancilla_subset_expectation": "PASS",
+    "single_query_perturbation": "PASS",
+    "hybrid_recursion": "REFINED",
+    "l2_minkowski": "PASS",
+    "final_reference_expectation": "PASS",
+    "final_success_projection": "PASS"
+  },
+  "numerical_validation": {
+    "parameter_cells": 208,
+    "random_algorithms": 7400,
+    "feasible_set_evaluations": 732000,
+    "distinct_feasible_sets_in_validation_pools": 2650,
+    "maximum_phase_bound_residual": 5.551115123125783e-16,
+    "maximum_phase_to_coarse_residual": 0.0,
+    "violations": 0
+  },
+  "grover_validation": {
+    "rows": 48,
+    "maximum_formula_absolute_error": 1.1102230246251565e-15,
+    "dilute_rows": 11,
+    "maximum_dilute_relative_leading_term_error": 0.08159722222222261,
+    "exact_optimality_proved": false
+  },
+  "generality": {
+    "G1_direct_black_box": "PROVED",
+    "G2_worst_case_global_qaoa": "PROVED_AFTER_SCOPE_REFINEMENT",
+    "G3_structured_rcsp": "UNPROVED"
+  },
+  "formal_proof_assistant": "FORMAL_PROOF_ASSISTANT_NOT_AVAILABLE",
+  "historical_artifacts": {
+    "file_count": 1314,
+    "inventory_sha256": "a4bbd21a183f1621f721e6fe46e604d3d7542db64ba96da695510bdf778f63f2",
+    "unchanged": true
+  },
+  "remaining_open_gaps": [
+    "adaptive-query formalization beyond the stated bounded-query standard reduction",
+    "structured-cost-oracle extension",
+    "RCSP-specific reduction or lower bound",
+    "external prior-art verification"
+  ]
+}

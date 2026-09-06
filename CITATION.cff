@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: >-
+  Unreleased research candidate prepared in 2026. TODO: confirm final author
+  list/order, public repository URL, release date, DOI and arXiv identifier.
+  Do not use placeholders as final citation metadata.
+type: software
+title: 'Q-RouteDilution: Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA'
+version: 0.1.0
+authors:
+  - name: 'TODO: confirm final author list'
+abstract: >-
+  Controlled exact-statevector RCSP study of feasible-space dilution,
+  optimizer failure and objective alignment, with frozen discovery and
+  held-out CVaR evaluation and scoped membership/advice theory checks.
+keywords:
+  - QAOA
+  - RCSP
+  - feasible-space dilution
+  - CVaR
+  - reproducibility
+# Manuscript year: 2026. No DOI, arXiv ID, URL or release date is asserted.

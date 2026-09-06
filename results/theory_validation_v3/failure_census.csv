@@ -1,0 +1,21 @@
+test_id,target_claim,adversarial_case,result,disposition,evidence_location
+F01,Finite advice bound,Advice alphabet larger than declared,NO_THEOREM_VIOLATION,Use actual positive support; rejecting a false declaration is required,src/qroute_dilution/theory/posterior_structure_bound.py
+F02,Finite advice bound,Advice directly names a marked element,BOUND_SATURATED,Requires enough support and yields Lambda=1,tests/test_advice_query_tradeoff.py
+F03,Advice alphabet lemma,Duplicate advice maximizers,NO_THEOREM_VIOLATION,Repeated unconditional events only loosen the sum bound,tests/test_advice_query_tradeoff.py
+F04,Posterior theorem,Nonuniform posterior,NO_THEOREM_VIOLATION,lambda uses maximum posterior inclusion rather than M/N,posterior_advice_validation.csv
+F05,Known candidate corollary,Candidate set contains all feasible states but posterior is nonuniform,CLAIM_REFINED,Do not assert lambda=M/K without conditional uniformity,tests/test_effective_support.py
+F06,Quantum advice,Instance-dependent finite-dimensional quantum state,BOUND_PROVED,Single-state dimension-d hybrid gives d phi; interactive extensions remain outside model,docs/theory/POSTERIOR_STRUCTURE_DILUTION_THEOREM.md
+F07,Explicit attribute lower bound,Entire resource array supplied free,OUTSIDE_MODEL,Zero input-query charge; time/bytes remain separate resources,tests/test_explicit_attribute_rcsp_bound.py
+F08,Explicit attribute lower bound,Resource array under counted quantum random access,BOUND_VALID,One feasibility check is exactly one marked-bit query,parallel_branch_validation.csv
+F09,Posterior theorem,Zero-query warm start depending on the instance,MODEL_DEPENDENT,Count as advice/explicit side information; constant warm start remains bounded,docs/theory/STRUCTURE_INJECTION_METHOD_MATRIX.md
+F10,Membership theorem,Rich distance or multilevel cost oracle,OUTSIDE_MODEL,No membership simulation established; rich-cost lower bound remains open,docs/theory/THEORY_V3_CLAIM_BOUNDARY.md
+F11,Padding lemma,Serial split with rational weights,NO_THEOREM_VIOLATION,Exact Fraction validation preserves totals and polynomial coefficient bits,representation_padding_validation.csv
+F12,Raw edge-bit interpretation,Disconnected edge selections in denominator,EXPECTED_REPRESENTATION_EFFECT,Invalid edge selections remain in raw denominator and do not define path-query hardness,docs/theory/RAW_EDGE_BIT_DILUTION_COUNTEREXAMPLE.md
+F13,Posterior logarithmic quantities,M=0,EDGE_CASE_EXCLUDED,No feasible output; b_eff and K_eff require phi>0 and M>0,src/qroute_dilution/theory/posterior_structure_bound.py
+F14,Posterior theorem,M=N and phi=1,TRIVIAL_BOUND_VALID,lambda=Lambda=1 and zero-query success is one,tests/test_advice_query_tradeoff.py
+F15,Posterior theorem,q=0,BOUND_VALID,Success is bounded by posterior concentration Lambda,posterior_advice_validation.csv
+F16,Finite advice theorem,b=0,BOUND_VALID,Support one recovers Lambda=phi,posterior_advice_validation.csv
+F17,RCSP branch theorem,M=K,CLAIM_REFINED,Bounded-error and exact search need zero queries at the all-feasible endpoint,tests/test_explicit_attribute_rcsp_bound.py
+F18,Phase-sensitive averaging,S-dependent coefficients,NO_THEOREM_VIOLATION,Average conditional capped products; do not factor unrelated averages,tests/test_posterior_structure_bound.py
+F19,Numerical posterior theorem,Random deterministic and stochastic advice maps,NO_VIOLATIONS,Maximum residual at floating roundoff only,posterior_advice_validation_summary.json
+F20,Structure oracle accounting,Feasible mixer with no efficient membership simulation,OUTSIDE_MODEL,Classify as strictly stronger structure oracle,tests/test_structure_generated_by_queries.py

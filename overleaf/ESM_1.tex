@@ -1,0 +1,94 @@
+% Online Resource 1 for SN Computer Science (author-action draft).
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array,multirow,longtable}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\graphicspath{{figures/}}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\setlist{nosep,leftmargin=*}
+\setlength{\emergencystretch}{3em}
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{thmstylethree}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{thmstyletwo}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\pfeas}{P_{\mathrm{feas}}}
+\newcommand{\popt}{P_{\mathrm{opt}}}
+\newcommand{\pcond}{P_{\mathrm{opt}\mid\mathrm{feas}}}
+\newcommand{\gfeas}{G_{\mathrm{feas}}}
+\newcommand{\phistate}{\phi_{\mathrm{state}}}
+\newcommand{\phipath}{\phi_{\mathrm{path}}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\cvar}{\operatorname{CVaR}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\authoraction}[1]{\textcolor{red}{\textbf{AUTHOR ACTION REQUIRED: #1}}}
+\newcommand{\authorfield}[1]{\textcolor{red}{\textbf{[#1 REQUIRED]}}}
+
+\begin{document}
+
+\articletype{Supplementary Information}
+\title[Online Resource 1]{Online Resource 1: Supplementary Information for ``Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study''}
+\subtitle{Journal: SN Computer Science\\\textcolor{red}{AUTHOR-ACTION DRAFT --- NOT FOR SUBMISSION}}
+
+\author*[1]{\fnm{Zhilin} \sur{Chen}}
+\email{\authorfield{ACTIVE CORRESPONDING-AUTHOR E-MAIL}}
+\affil*[1]{\orgdiv{\authorfield{DEPARTMENT}},
+  \orgname{\authorfield{INSTITUTION}},
+  \orgaddress{\city{\authorfield{CITY}},
+  \country{\authorfield{COUNTRY}}}}
+
+\abstract{This Online Resource contains supplementary methods, mathematical
+proofs, frozen protocol and robustness details, additional figures and tables,
+and reproducibility provenance for the accompanying Original Research article.}
+
+\maketitle
+
+\renewcommand{\thesection}{S\arabic{section}}
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\thesubsection.\arabic{subsubsection}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thetheorem}{S\arabic{theorem}}
+\renewcommand{\theHsection}{esm.section.\arabic{section}}
+\renewcommand{\theHsubsection}{esm.subsection.\arabic{section}.\arabic{subsection}}
+\renewcommand{\theHsubsubsection}{esm.subsubsection.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\renewcommand{\theHfigure}{esm.figure.\arabic{figure}}
+\renewcommand{\theHtable}{esm.table.\arabic{table}}
+\renewcommand{\theHequation}{esm.equation.\arabic{equation}}
+
+% The default article ToC reserves too little space for two-digit S-numbers.
+\makeatletter
+\renewcommand*\l@section{\@dottedtocline{1}{1.5em}{3.2em}}
+\makeatother
+
+{\small\tableofcontents}
+\clearpage
+
+\input{appendices/appendix_theory}
+\input{appendices/appendix_tasks}
+\input{appendices/appendix_optimization}
+\input{appendices/appendix_statistics}
+\input{appendices/appendix_reviewer_robustness}
+\input{appendices/appendix_scaling}
+\input{appendices/appendix_artifact}
+\input{appendices/appendix_context_tables}
+
+\end{document}

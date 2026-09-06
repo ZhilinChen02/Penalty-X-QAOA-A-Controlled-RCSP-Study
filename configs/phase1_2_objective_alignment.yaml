@@ -1,0 +1,90 @@
+experiment_name: phase1_2_objective_alignment
+evidence_identity: PHASE1_2_OBJECTIVE_ALIGNMENT_AND_FEASIBILITY_CAPACITY_DIAGNOSTIC
+pre_run_git_sha: ec0e37616ae41a9eb9960c62874c191db3f246c6
+
+source_pilot_manifest: data/manifests/phase1_pilot_v1.json
+source_pilot_results: results/phase1_pilot_v1/master_seed_level_results.csv
+source_pilot_config: configs/phase1_pilot_v1.yaml
+source_phase1_1_b2_results: results/phase1_1_optimization_diagnostic/p3_budget_scaling.csv
+source_characterization: results/phase0_v2_dilution_stress/task_characterization.csv
+source_v2_manifest: data/manifests/phase0_v2_dilution_stress.json
+expected_task_count: 56
+expected_v2_task_count: 140
+
+depth: 3
+optimizer: COBYLA
+original_phase1_p3_eval_budget: 120
+objective_eval_budget: 240
+objective_budget_multiplier: 2
+cobyla_rhobeg: 0.5
+cobyla_catol: 1.0e-8
+timeout_s: 3600
+parameter_order: gammas_then_betas
+parameter_bounds: none_periodic_phases
+initialization_rule: minimum_frozen_p2_objective_final_then_append_zero_gamma3_beta3
+seed_selection_tiebreak: optimizer_seed_ascending
+
+ansatz_cost_phase_hamiltonian: normalized_mean_energy_H_C
+penalty_contract: penalty_contract_v2_scale_controlled
+hamiltonian_normalization_mode: global_fixed
+hamiltonian_normalization_factor: 172.0
+
+objectives:
+  O0:
+    name: MEAN_ENERGY
+    definition: E_theta[H_C]
+    role: HISTORICAL_MEAN_ENERGY_BASELINE
+    reuse_exact_phase1_1_b2: true
+  O1:
+    name: EXPECTED_PENALTY
+    definition: E_theta[P_flow + P_resource]
+    role: FEASIBILITY_ALIGNED_MECHANISTIC_OBJECTIVE_CONTROL
+  O2:
+    name: EXACT_FEASIBILITY_CONTROL
+    definition: 1 - P_feas(theta)
+    role: STATEVECTOR_MECHANISTIC_CONTROL
+  O3:
+    name: CVAR_ENERGY
+    definition: exact_weighted_lowest_energy_CVaR_alpha_0.10
+    role: EXACT_DISTRIBUTIONAL_ENERGY_CONTROL
+
+cvar:
+  primary_alpha: 0.10
+  optional_alpha_0_25_enabled: false
+  shots: none_exact_distribution
+
+preflight:
+  task_ids:
+    - task-v2-e442db508705
+    - task-v2-4746dcc3bd93
+  objective_ids: [O1, O2, O3]
+
+classification:
+  objective_limited_delta_G_tolerance_decades: 0.10
+  substantial_gap_closure_fraction: 0.50
+  capacity_weak_G_threshold_decades: 0.0
+  capacity_degrading_kappa_threshold: 0.0
+
+audits:
+  numerical_tolerance: 1.0e-10
+  one_deterministic_haar_state_per_v2_task: true
+  random_state_seed_namespace: phase1.2-feasibility-penalty-bound-v1
+
+execution:
+  max_workers: 8
+  worker_blas_threads: 1
+  raw_statevectors_persisted: false
+  full_phase1_expansion_authorized: false
+  warm_start_authorized: false
+  optional_response_slice_enabled: false
+
+representative_trajectory_rule: first_frozen_base_graph_per_size_stratum
+
+immutable_paths:
+  - results/phase0
+  - results/phase0_v2_dilution_stress
+  - results/phase1_pilot_v1
+  - results/phase1_1_optimization_diagnostic
+  - results/smoke
+  - data/manifests/phase0_v2_dilution_stress.json
+  - data/manifests/phase1_pilot_v1.json

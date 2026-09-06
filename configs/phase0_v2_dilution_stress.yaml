@@ -1,0 +1,27 @@
+experiment_name: phase0_v2_dilution_stress
+master_seed: 20260827
+instances_per_stratum: 5
+resource_range: [1, 1000]
+resource_policy: deterministic_integer_wide_support
+preferred_feasible_route_counts: [1, 2, 4, 8, 16, 32]
+max_distinct_levels: 7
+
+size_strata:
+  S1: {target_n_edges: 7, layer_widths: [1, 2, 2, 1]}
+  S2: {target_n_edges: 10, layer_widths: [1, 2, 2, 2, 1]}
+  S3: {target_n_edges: 13, layer_widths: [1, 3, 3, 1]}
+  S4: {target_n_edges: 16, layer_widths: [1, 2, 3, 3, 1]}
+  S5: {target_n_edges: 19, layer_widths: [1, 3, 3, 3, 1]}
+
+pilot_qaoa:
+  depths: [1, 2, 3]
+  optimizer_seeds: [1103, 2207, 3301]
+  optimizer: COBYLA
+  eval_budget: 120
+  timeout_s: 1800
+  max_qubits: 19
+  active_penalty_contracts: [medium]
+  penalty_contracts:
+    weak: {flow_penalty_strength: 12.5, resource_penalty_strength: 5.0}
+    medium: {flow_penalty_strength: 50.0, resource_penalty_strength: 20.0}
+    strong: {flow_penalty_strength: 200.0, resource_penalty_strength: 80.0}

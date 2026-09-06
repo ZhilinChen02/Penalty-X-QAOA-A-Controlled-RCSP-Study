@@ -1,0 +1,23 @@
+{
+  "all_penalty_bounds_pass": true,
+  "maximum_nfev": 240,
+  "objective_ids": [
+    "O1",
+    "O2",
+    "O3"
+  ],
+  "row_count": 6,
+  "run_ids": [
+    "objective-run-9eb5aefb53de2735269e",
+    "objective-run-a272fbab81febace160d",
+    "objective-run-b8c5e6183d21c9fc2889",
+    "objective-run-cb3a40793b87c38058ed",
+    "objective-run-d0e79bf321c567540279",
+    "objective-run-d8208e362f8bb90f4f5f"
+  ],
+  "status": "PASSED",
+  "task_ids": [
+    "task-v2-e442db508705",
+    "task-v2-4746dcc3bd93"
+  ]
+}

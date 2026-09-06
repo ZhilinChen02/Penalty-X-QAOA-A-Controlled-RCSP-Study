@@ -1,0 +1,48 @@
+{
+  "host": "<REDACTED_HOST>",
+  "implementation_device": "CPU NumPy exact statevector",
+  "numpy_version": "2.4.6",
+  "platform": "Linux-4.18.0-553.139.1.el8_10.x86_64-x86_64-with-glibc2.28",
+  "python_version": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+  "scipy_version": "1.18.0",
+  "stages": {
+    "analyze": {
+      "next_recommendation": "PREREGISTER_FEASIBILITY_ALIGNED_PHASE2",
+      "scientific_verdict": "CVAR_PARTIALLY_CLOSES_GAP",
+      "status": "COMPLETE",
+      "wall_time_s": 4.199728076346219
+    },
+    "audit": {
+      "basis_contract_pass": 140,
+      "random_bound_pass": 140,
+      "rows": 140,
+      "wall_time_s": 10.017790409736335
+    },
+    "freeze": {
+      "frozen_initialization_count": 56,
+      "historical_file_count": 93,
+      "wall_time_s": 0.24945740401744843
+    },
+    "full": {
+      "rows": 224,
+      "successful": 224,
+      "tasks": 56,
+      "wall_time_s": 1621.798575037159
+    },
+    "preflight": {
+      "rows": 6,
+      "status": "PASSED",
+      "wall_time_s": 147.93714139051735
+    },
+    "reuse-o0": {
+      "O0_rows": 56,
+      "total_rows": 62,
+      "wall_time_s": 11.029847159050405
+    },
+    "verify-hashes": {
+      "verified_files": 93,
+      "wall_time_s": 0.0651605436578393
+    }
+  },
+  "total_recorded_wall_time_s": 1795.2977000204846
+}

@@ -1,0 +1,64 @@
+\section{Discussion and Limitations}
+\label{sec:discussion}
+\label{sec:limitations}
+
+\subsection*{Optimizer inadequacy is not objective misalignment}
+
+The nested test changes what a poor deeper run means: a terminal objective
+above an embedded shallower point is certified optimizer inadequacy under that
+run's budget. It does not certify global success when passed. Conversely,
+lower mean energy can accompany lower feasible mass, and the O3--O0 contrast
+remains positive after both arms pass the diagnostic under each tested
+optimizer. Optimization quality and choice of loss must therefore be assessed
+separately.
+
+\subsection*{O2 identifies unused feasible-concentration capacity}
+
+O2 supplies the missing counterfactual: what can the same ansatz and matched
+optimizer do when feasible mass itself is requested? Its improvement over O0
+prevents the O0 shortfall from being attributed wholly to ansatz capacity.
+The held-out H2 result then gives O3 a sharper interpretation than a simple
+O3--O0 win: CVaR approached this exact-feasibility capacity control within the
+frozen margin. O2 requires exact membership aggregation and is neither a
+shot-efficient nor deployment-ready objective.
+
+\subsection*{Depth adds capacity and optimization difficulty}
+
+The $p=4$ subset illustrates why depth should not be read from one endpoint.
+It improves terminal feasible mass while producing more $p=3\to4$ than
+$p=2\to3$ nested failures. The tested 120--480-call trajectories do not show
+a monotone failure reduction, but they cannot establish behavior under much
+larger budgets, broad multi-start policies, or other optimizers. Depth expands
+the variational family and can simultaneously make its classical navigation
+less reliable.
+
+\subsection*{Endpoint robustness exceeds training robustness}
+
+Sampling fixed exact-trained endpoints recovers the objective ordering
+reliably as shots increase. Retraining with a freshly sampled loss is a harder
+problem: both shot-trained point estimates preserve the O3--O0 direction, yet
+both graph intervals cross zero and the 1,000-shot condition is less
+consistent. The evidence supports finite-shot endpoint robustness and only a
+qualified, mixed training result; it supplies no device-noise or hardware-
+readiness evidence.
+
+\subsection*{Scope}
+
+The benchmark uses synthetic layered DAGs, one additive resource, exact CPU
+statevectors, and small classically tractable tasks. The exact classical
+solver confirms that the study is a mechanism probe, not a quantum--classical
+performance contest. Its conclusions concern uniform-initialized, transverse-
+$X$ Penalty-X QAOA and do not extend to all constrained QAOA. The $m=20$
+reversal and administratively censored $m=22$ cells preclude a global scaling
+claim; the latter records this study's preregistered computational budget, not
+a fundamental limit at 22 qubits.
+
+Structured or feasibility-preserving approaches change the information and
+resource model by moving cost into state preparation, mixer construction, or
+constraint-aware operators; they are therefore contextual comparators rather
+than matched baselines for the present Penalty-X attribution study. In
+particular, no XY, Dicke, Grover, or path mixer is assumed to solve general
+RCSP feasibility. The membership-query discussion likewise does not
+lower-bound the rich-energy CVaR experiment. Real-network validity, hardware
+noise, compilation, and independent external reproduction remain outside the
+tested scope, and no quantum-advantage claim is made.

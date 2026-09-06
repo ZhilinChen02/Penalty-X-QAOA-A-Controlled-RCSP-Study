@@ -1,0 +1,9 @@
+{
+  "achievability_only": true,
+  "dilute_rows": 11,
+  "exact_formula_universal_upper_bound_claimed": false,
+  "maximum_dilute_relative_leading_term_error": 0.08159722222222261,
+  "maximum_formula_absolute_error": 1.1102230246251565e-15,
+  "rows": 48,
+  "schema_version": "theory_validation_v1.grover_summary.v1"
+}

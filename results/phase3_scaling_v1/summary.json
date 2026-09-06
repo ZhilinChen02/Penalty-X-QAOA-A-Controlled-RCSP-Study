@@ -1,0 +1,414 @@
+{
+  "allowed_paper_claim": "Within the completed Penalty-X QAOA / controlled-RCSP range, feasible-state density showed an objective-specific empirical scaling response, but the prospectively censored upper size prevents claiming the full preregistered empirical scaling law; the objective-exponent comparison is reported only for the completed development and held-out graphs.",
+  "claim_wording_class": "SCALING_RESPONSE",
+  "confirmatory_statistics": {
+    "analysis_unit": "base_graph_id",
+    "base_graph_count": 5,
+    "bootstrap_method": "grouped resampling of independent base-graph exponents",
+    "bootstrap_resamples": 10000,
+    "bootstrap_seed": 20260828,
+    "family_alpha": 0.05,
+    "hypotheses": {
+      "S-H1": {
+        "effect": 0.6149865941678273,
+        "estimand": "mean eta_O0",
+        "holm_adjusted_p": 0.00029997000299970003,
+        "pass": true,
+        "raw_p": 9.999000099990002e-05
+      },
+      "S-H2": {
+        "effect": 0.6671519587486413,
+        "estimand": "mean eta_O3-eta_O0",
+        "holm_adjusted_p": 1.0,
+        "pass": false,
+        "raw_p": 1.0
+      },
+      "S-H3": {
+        "effect": 0.2327481173771151,
+        "estimand": "mean absolute-distance closeness contrast",
+        "holm_adjusted_p": 1.0,
+        "pass": false,
+        "raw_p": 0.7008299170082992
+      }
+    },
+    "multiplicity": "Holm three-hypothesis family",
+    "split": "extrapolation_holdout"
+  },
+  "critical_validity_pass": true,
+  "execution": {
+    "completed_p2_rows": 540,
+    "completed_p3_rows": 540,
+    "failure_rows_excluding_resource_censoring": 0,
+    "peak_memory_mb": 362.60546875,
+    "planned_p2_runs": 540,
+    "planned_p3_runs": 540,
+    "final_pytest_result": "83 passed in 2.67s",
+    "recorded_stage_wall_time_s": 12834.764504437333,
+    "resource_censored_rows": 180
+  },
+  "exponent_summaries": {
+    "development": {
+      "O0": {
+        "IQR": 0.960537420789986,
+        "ci_lower": 0.6012968028714609,
+        "ci_upper": 1.4340665880575214,
+        "max": 3.3116768964570262,
+        "mean": 1.0004674603627521,
+        "median": 0.9880890394470236,
+        "min": -0.6151869873331419,
+        "n": 16,
+        "q1": 0.4261883917694572,
+        "q3": 1.3867258125594433
+      },
+      "O2": {
+        "IQR": 0.22076032421984904,
+        "ci_lower": 0.4650160259685932,
+        "ci_upper": 0.828427731110162,
+        "max": 1.3512770287049582,
+        "mean": 0.6467314084680748,
+        "median": 0.6526765806373873,
+        "min": -0.14324416052678818,
+        "n": 16,
+        "q1": 0.5416016629669713,
+        "q3": 0.7623619871868204
+      },
+      "O3": {
+        "IQR": 0.2695523658622899,
+        "ci_lower": 0.4364990565979688,
+        "ci_upper": 0.8143568655371978,
+        "max": 1.4819993963802276,
+        "mean": 0.6308945383469862,
+        "median": 0.6083654944206915,
+        "min": -0.39910420025970655,
+        "n": 16,
+        "q1": 0.49712654121503774,
+        "q3": 0.7666789070773277
+      }
+    },
+    "extrapolation_holdout": {
+      "O0": {
+        "IQR": 0.4092603240749779,
+        "ci_lower": 0.3962646807868822,
+        "ci_upper": 0.8337085075487722,
+        "max": 0.9443457031719584,
+        "mean": 0.6149865941678273,
+        "median": 0.6664260649386602,
+        "min": 0.259996460342211,
+        "n": 5,
+        "q1": 0.39745220915566437,
+        "q3": 0.8067125332306423
+      },
+      "O2": {
+        "IQR": 0.15772830802255067,
+        "ci_lower": 0.5589832808398288,
+        "ci_upper": 0.9792459010939041,
+        "max": 1.0609721480423429,
+        "mean": 0.7884817736749649,
+        "median": 0.8219358354912817,
+        "min": 0.3461878234987078,
+        "n": 5,
+        "q1": 0.7777923766599708,
+        "q3": 0.9355206846825215
+      },
+      "O3": {
+        "IQR": 0.4149939374192826,
+        "ci_lower": 0.7708769973888348,
+        "ci_upper": 2.0490182890844872,
+        "max": 2.7951989529747765,
+        "mean": 1.2821385529164686,
+        "median": 0.9653836887865288,
+        "min": 0.6538851127558897,
+        "n": 5,
+        "q1": 0.7906155363229328,
+        "q3": 1.2056094737422154
+      }
+    },
+    "interpolation_holdout": {
+      "O0": {
+        "IQR": 0.5377738337172268,
+        "ci_lower": 0.40731753667264786,
+        "ci_upper": 1.7216960841118611,
+        "max": 2.025409863812166,
+        "mean": 0.999785652179316,
+        "median": 0.8703433357534391,
+        "min": 0.23304607339821962,
+        "n": 4,
+        "q1": 0.6661775771077642,
+        "q3": 1.203951410824991
+      },
+      "O2": {
+        "IQR": 0.2360134362482212,
+        "ci_lower": 0.13843064983460857,
+        "ci_upper": 0.7380536680814999,
+        "max": 0.8707927489863719,
+        "mean": 0.4126680671275156,
+        "median": 0.36151988346643826,
+        "min": 0.05683975259081386,
+        "n": 4,
+        "q1": 0.26908725717286636,
+        "q3": 0.5051006934210875
+      },
+      "O3": {
+        "IQR": 0.4184000888326236,
+        "ci_lower": 0.11326627874319768,
+        "ci_upper": 0.5845515305610076,
+        "max": 0.6068812093874203,
+        "mean": 0.3489089046521026,
+        "median": 0.3794643888108762,
+        "min": 0.029825631599237862,
+        "n": 4,
+        "q1": 0.1549866023151776,
+        "q3": 0.5733866911478012
+      }
+    }
+  },
+  "heldout_validation": {
+    "extrapolation": [
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.22608535774300376,
+        "centered_response_RMSE": 0.3133711101893634,
+        "eta_MAE": 0.6149865941678272,
+        "objective": "O0",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.2205514748996194,
+        "centered_response_RMSE": 0.2529482900662873,
+        "eta_MAE": 0.38501340583217275,
+        "objective": "O0",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.2158355303110148,
+        "centered_response_RMSE": 0.24808477230542275,
+        "eta_MAE": 0.35847477820019336,
+        "objective": "O0",
+        "predictor": "SELECTED_FROZEN",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.24960610741428063,
+        "centered_response_RMSE": 0.3329125472122803,
+        "eta_MAE": 0.788481773674965,
+        "objective": "O2",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.1447254706160484,
+        "centered_response_RMSE": 0.1810562250904371,
+        "eta_MAE": 0.2359070855419722,
+        "objective": "O2",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.1298270790916837,
+        "centered_response_RMSE": 0.1765876880998967,
+        "eta_MAE": 0.2679269398349913,
+        "objective": "O2",
+        "predictor": "SELECTED_FROZEN",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.4633431936247801,
+        "centered_response_RMSE": 0.6652761806634354,
+        "eta_MAE": 1.2821385529164686,
+        "objective": "O3",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.2899553329976739,
+        "centered_response_RMSE": 0.4660199308837004,
+        "eta_MAE": 0.5181848177703281,
+        "objective": "O3",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "extrapolation_holdout"
+      },
+      {
+        "base_graphs": 5,
+        "centered_response_MAE": 0.30768141065402976,
+        "centered_response_RMSE": 0.5163300752564827,
+        "eta_MAE": 0.6320393004056166,
+        "objective": "O3",
+        "predictor": "SELECTED_FROZEN",
+        "split": "extrapolation_holdout"
+      }
+    ],
+    "interpolation": [
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.3064836485437298,
+        "centered_response_RMSE": 0.41773109498857924,
+        "eta_MAE": 0.999785652179316,
+        "objective": "O0",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.2342418795509344,
+        "centered_response_RMSE": 0.3030970721950419,
+        "eta_MAE": 0.512919279726767,
+        "objective": "O0",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.23362190530078347,
+        "centered_response_RMSE": 0.3028872493390704,
+        "eta_MAE": 0.4996499659107766,
+        "objective": "O0",
+        "predictor": "SELECTED_FROZEN",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.16507575070468666,
+        "centered_response_RMSE": 0.19031584983414654,
+        "eta_MAE": 0.4126680671275156,
+        "objective": "O2",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.17685831480955,
+        "centered_response_RMSE": 0.2353052615649822,
+        "eta_MAE": 0.5873319328724844,
+        "objective": "O2",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.12835252411518733,
+        "centered_response_RMSE": 0.16626188027389793,
+        "eta_MAE": 0.3411280610660783,
+        "objective": "O2",
+        "predictor": "SELECTED_FROZEN",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.1507221253300319,
+        "centered_response_RMSE": 0.17008124402871289,
+        "eta_MAE": 0.34890890465210267,
+        "objective": "O3",
+        "predictor": "B_FLAT_ETA_0",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.16858587235793257,
+        "centered_response_RMSE": 0.2306636047227662,
+        "eta_MAE": 0.6510910953478973,
+        "objective": "O3",
+        "predictor": "B_UNIFORM_ETA_1",
+        "split": "interpolation_holdout"
+      },
+      {
+        "base_graphs": 4,
+        "centered_response_MAE": 0.1113579778948347,
+        "centered_response_RMSE": 0.15582883341756007,
+        "eta_MAE": 0.3011903478587486,
+        "objective": "O3",
+        "predictor": "SELECTED_FROZEN",
+        "split": "interpolation_holdout"
+      }
+    ]
+  },
+  "model_selection": {
+    "O0": "M1",
+    "O2": "M1",
+    "O3": "M1"
+  },
+  "next_recommendation": "REDESIGN_SCALING_SUITE",
+  "objective_comparison_verdict": "MIXED_OBJECTIVE_SCALING",
+  "optimization_adequacy": {
+    "claim_ceiling_triggered": false,
+    "substantial_cell_count": 5
+  },
+  "phase": "Phase 3 \u2014 Empirical Dilution Scaling",
+  "phase3_status": "RESOURCE_CENSORED",
+  "post_holdout_descriptive_refit": "generated separately from frozen validation",
+  "predecessor_rows_used_in_phase3_model_fit": 0,
+  "primary_scientific_verdict": "RESOURCE_CENSORED_SCALING",
+  "resource_preflight": {
+    "available_ram_mb": 663204.9921875,
+    "implementation": "CPU NumPy exact statevector",
+    "largest_allowed_m": 20,
+    "m20_pass": true,
+    "m22_pass": false,
+    "planned_objective_evaluations_upper_bound": 194400,
+    "planned_primary_optimization_runs": 1080,
+    "resource_censored_sizes": [
+      22
+    ]
+  },
+  "scaling_model_freeze_sha256": "6c0df9df4f7a1c002bb94677fbfa95b87581062cb9540065e080a65777d138da",
+  "scaling_validity_checklist": {
+    "at_least_4_development_graphs_per_size": true,
+    "at_least_5_levels_per_analyzed_graph": true,
+    "curvature_compared": true,
+    "frozen_cv_rule_used": true,
+    "graph_heterogeneity_reported": true,
+    "holdout_reported_without_refit": true,
+    "interpolation_completed": true,
+    "model_frozen_before_holdout": true,
+    "new_universe_before_qaoa": true,
+    "no_split_leakage": true,
+    "no_universal_asymptotic_wording": true,
+    "objective_uncertainty_reported": true,
+    "optimizer_adequacy_reported": true,
+    "unseen_larger_size_completed": true,
+    "zeros_failures_not_hidden": true
+  },
+  "task_universe": {
+    "base_graphs": 30,
+    "completed_size_ceiling": 20,
+    "size_range": [
+      12,
+      22
+    ],
+    "tasks": 180
+  },
+  "verdict_diagnostics": {
+    "extrapolation_support_by_objective": {
+      "O0": true,
+      "O2": true,
+      "O3": false
+    },
+    "interpolation_support_by_objective": {
+      "O0": true,
+      "O2": true,
+      "O3": false
+    },
+    "median_Delta_eta_CVAR_CAPACITY_extrapolation": -0.031320299168348886,
+    "median_Delta_eta_CVAR_MEAN_extrapolation": 0.3988969405115731,
+    "optimization_limited": false,
+    "resource_censored": true,
+    "selected_models": {
+      "O0": "M1",
+      "O2": "M1",
+      "O3": "M1"
+    },
+    "systematic_size_residual_check_by_objective": {
+      "O0": true,
+      "O2": true,
+      "O3": true
+    }
+  }
+}

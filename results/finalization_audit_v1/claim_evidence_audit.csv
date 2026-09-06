@@ -1,0 +1,22 @@
+claim_id,evidence_stage,reconstructed_value,authoritative_value,authoritative_source,authoritative_abs_difference,authoritative_tolerance,manuscript_display_value,manuscript_abs_difference,manuscript_tolerance,manuscript_pattern,manuscript_pattern_found,status
+task_universe_count,PHASE0_V2,140,140,phase0_v2/summary.json,0.0,0.0,140,0.0,0.0,140\s+tasks,True,PASS
+duplicate_primary_feasible_sets,PHASE0_V2,0,0,phase0_v2/summary.json,0.0,0.0,0,0.0,0.0,(?:zero|0)\s+duplicate,True,PASS
+nested_identity,PHASE1_1,168,168,phase1_1/summary.json,0.0,0.0,168,0.0,0.0,168/168,True,PASS
+certified_optimizer_failures,PHASE1_1,29,29,phase1_1/summary.json,0.0,0.0,29,0.0,0.0,(?:29/168|29\s+(?:of|out of)\s+168),True,PASS
+continuation_objective_repairs,PHASE1_1,29,29,phase1_1/summary.json,0.0,0.0,29,0.0,0.0,29/29,True,PASS
+continuation_feasibility_improvements,PHASE1_1,27,27,phase1_1/summary.json,0.0,0.0,27,0.0,0.0,27/29,True,PASS
+energy_feasibility_mismatch,PHASE1_1,82,82,phase1_1/summary.json,0.0,0.0,82,0.0,0.0,(?:82/168|82\s+(?:of|out of)\s+168),True,PASS
+discovery_cvar_gap_closure_percent,PHASE1_2_DISCOVERY,97.87827559814971,97.87827559814973,phase1_2/capacity_gap.csv,1.4210854715202004e-14,5e-12,97.9,0.021724401850292452,0.050001,97\.9\\%,True,PASS
+heldout_H1_effect_mean,PHASE2_HELDOUT,0.3547149490180106,0.3547149490180106,phase2/confirmatory_statistics.json,0.0,5e-12,0.3547,1.4949018010579351e-05,5.0001e-05,0\.3547,True,PASS
+heldout_H1_one_sided_95_lower_bound,PHASE2_HELDOUT,0.23737853648218638,0.23737853648218638,phase2/confirmatory_statistics.json,0.0,5e-12,0.2374,2.1463517813624655e-05,5.0001e-05,0\.2374,True,PASS
+heldout_H1_holm_adjusted_p_value,PHASE2_HELDOUT,0.000244140625,0.000244140625,phase2/confirmatory_statistics.json,0.0,5e-12,0.000244,1.406250000000051e-07,5.0001e-07,(?:0\.000244|2\.44(?:\\times|e)\s*10\^?\{?-4\}?),True,PASS
+heldout_H2_effect_mean,PHASE2_HELDOUT,-0.008595149938274194,-0.008595149938274194,phase2/confirmatory_statistics.json,0.0,5e-12,-0.0086,4.85006172580571e-06,5.0001e-05,-0\.0086,True,PASS
+heldout_H2_one_sided_95_lower_bound,PHASE2_HELDOUT,-0.03604874990402986,-0.03604874990402986,phase2/confirmatory_statistics.json,0.0,5e-12,-0.036,4.8749904029865565e-05,5.0001e-05,-0\.0360,True,PASS
+heldout_H2_margin,PHASE2_HELDOUT,-0.1,-0.1,phase2/confirmatory_statistics.json,0.0,5e-12,-0.1,0.0,1e-07,-0\.10,True,PASS
+heldout_Popt_wins,PHASE2_SECONDARY,80,80,phase2/summary.json,0.0,0.0,80,0.0,0.0,(?:80/84|80\s+(?:of|out of)\s+84),True,PASS
+heldout_both_wins,PHASE2_SECONDARY,79,79,phase2/summary.json,0.0,0.0,79,0.0,0.0,(?:79/84|79\s+(?:of|out of)\s+84|79\s+tasks),True,PASS
+m20_mean_eta_O0,PHASE3_SCALING,0.6149865941678266,0.6149865941678273,phase3/summary.json,6.661338147750939e-16,5e-12,0.615,1.3405832173352117e-05,5.0001e-05,0.6150,True,PASS
+m20_mean_eta_O2,PHASE3_SCALING,0.7884817736749641,0.7884817736749649,phase3/summary.json,7.771561172376096e-16,5e-12,0.7885,1.8226325035897162e-05,5.0001e-05,0.7885,True,PASS
+m20_mean_eta_O3,PHASE3_SCALING,1.282138552916467,1.2821385529164686,phase3/summary.json,1.5543122344752192e-15,5e-12,1.2821,3.85529164670384e-05,5.0001e-05,1.2821,True,PASS
+m20_ordering_reversal,PHASE3_SCALING,True,True,phase3 canonical exponents,0.0,0.0,True,0.0,0.0,"m=20[^\n]{0,160}(?:revers|ordering)",True,PASS
+m22_resource_censor,PHASE3_SCALING,True,True,phase3/summary.json,0.0,0.0,True,0.0,0.0,"m=22[^\n]{0,160}(?:censor|resource)",True,PASS

@@ -1,0 +1,140 @@
+experiment_name: phase3_scaling_v1
+phase: PHASE_3_EMPIRICAL_DILUTION_SCALING
+evidence_identity: PREREGISTERED_EMPIRICAL_DILUTION_SCALING
+predecessor_git_sha: 1729aa044a84dfb12b0edcacf4ea2d9d25c35b74
+predecessor_inventory_sha256: 4bb59676d4be07c2b8403d97f39faa9dba3bceb2507182606d124123fac45ac4
+
+master_seed: 20260828
+sizes: [12, 14, 16, 18, 20, 22]
+base_graphs_per_size: 5
+dilution_levels_per_graph: 6
+minimum_candidate_routes: 6
+minimum_distinct_thresholds: 6
+maximum_generation_attempts: 100
+cost_range: [1, 9]
+resource_range: [1, 1000]
+layer_width_templates:
+  12: [[1, 3, 3, 1], [1, 2, 3, 2, 1], [1, 2, 2, 2, 1]]
+  14: [[1, 3, 3, 1], [1, 2, 3, 2, 1], [1, 2, 2, 3, 1]]
+  16: [[1, 3, 4, 1], [1, 2, 3, 2, 1], [1, 3, 2, 3, 1]]
+  18: [[1, 3, 4, 1], [1, 2, 4, 2, 1], [1, 3, 3, 2, 1]]
+  20: [[1, 4, 4, 1], [1, 3, 4, 2, 1], [1, 2, 3, 3, 2, 1]]
+  22: [[1, 4, 4, 1], [1, 3, 4, 3, 1], [1, 2, 4, 3, 2, 1]]
+
+split_policy:
+  development_sizes: [12, 14, 16, 18]
+  development_base_indices: [0, 1, 2, 3]
+  interpolation_holdout_sizes: [12, 14, 16, 18]
+  interpolation_holdout_base_indices: [4]
+  extrapolation_holdout_sizes: [20, 22]
+  extrapolation_holdout_base_indices: [0, 1, 2, 3, 4]
+
+algorithm: Penalty-X
+primary_depth: 3
+optimizer: COBYLA
+parameter_order: gammas_then_betas
+cobyla_rhobeg: 0.5
+cobyla_catol: 1.0e-8
+cvar_alpha: 0.10
+
+global_cost_upper_bound: 198.0
+raw_penalty_coefficient: 199.0
+hamiltonian_normalization_mode: global_fixed
+hamiltonian_normalization_factor: 199.0
+penalty_contract: phase3_scale_controlled_lambda_199
+
+p2_preparation:
+  objective_id: P2_O0
+  objective_name: MEAN_ENERGY_PREPARATION
+  depth: 2
+  optimizer_seeds: [1103, 2207, 3301]
+  eval_budget: 120
+  timeout_s: 1200
+  selection_rule: minimum_objective_final_only
+  selection_tiebreak: optimizer_seed_ascending
+
+p3_comparison:
+  objective_ids: [O0, O2, O3]
+  eval_budget: 240
+  timeout_s: 1200
+  initialization_rule: selected_p2_then_append_zero_gamma3_beta3
+  O0:
+    name: MEAN_ENERGY
+    definition: E_theta[H_C]
+    role: STANDARD_BASELINE
+  O2:
+    name: EXACT_FEASIBILITY_CAPACITY_CONTROL
+    definition: 1 - P_feas(theta)
+    role: STATEVECTOR_MECHANISTIC_CAPACITY_CONTROL
+  O3:
+    name: CVAR_ENERGY
+    definition: exact_weighted_lowest_energy_CVaR_alpha_0.10
+    role: TAIL_FOCUSED_ROUTING_OBJECTIVE
+
+planned_runs:
+  development_p2: 288
+  development_p3: 288
+  interpolation_p2: 72
+  interpolation_p3: 72
+  extrapolation_p2: 180
+  extrapolation_p3: 180
+  primary_total: 1080
+  adequacy_2B_additional: 12
+
+resource_guards:
+  maximum_worker_fraction_available_ram: 0.40
+  maximum_predicted_single_optimization_s: 1200.0
+  representative_parameters: [0.17, 0.31, 0.53, 0.29, 0.41, 0.67]
+  timing_repeats: 3
+  require_numerically_valid_statevector: true
+
+optimization_adequacy:
+  sizes: [12, 14, 16, 18]
+  base_index: 0
+  dilution_level_index_zero_based: 2
+  budgets: [240, 480]
+  substantial_delta_G_decades: 0.10
+  claim_ceiling_rule: any_objective_substantial_at_m16_or_m18
+
+model_selection:
+  candidates: [M1, M2, M3, M4]
+  complexity_order: [M1, M2, M3, M4]
+  validation: leave_one_base_graph_out
+  criterion: CV_RMSE
+  selection_rule: one_standard_error_choose_simplest
+  minimum_valid_levels: 5
+  eta_kappa_tolerance: 1.0e-10
+  material_rmse_improvement_fraction_vs_flat: 0.10
+  holdout_reasonable_rule: selected_rmse_below_or_equal_both_interpretable_baselines
+  systematic_size_residual_tolerance_eta: 0.20
+
+objective_verdict:
+  eta_equivalence_margin: 0.10
+  capacity_approach_margin: 0.10
+
+confirmatory_hypotheses:
+  family: [S-H1, S-H2, S-H3]
+  family_alpha: 0.05
+  multiplicity: Holm
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20260828
+  analysis_unit: base_graph_id
+  primary_evaluation_split: extrapolation_holdout
+
+zero_policy:
+  regression: exclude_and_census
+  epsilon_added: false
+  censored_sensitivity_trigger_fraction: 0.05
+
+execution:
+  worker_blas_threads: 1
+  maximum_workers: 8
+  raw_statevectors_persisted: false
+  result_dependent_reruns: false
+  gpu_rewrite: false
+
+paths:
+  task_root: data/tasks/phase3_scaling_v1
+  manifest_root: data/manifests/phase3_scaling_v1
+  protocol_root: protocols/phase3_scaling_v1
+  result_root: results/phase3_scaling_v1

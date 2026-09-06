@@ -1,0 +1,8 @@
+procedure,membership_oracle_theorem_applies,why
+Hidden marked-set oracle QAOA,YES,All F-dependence is charged to membership queries.
+Explicit-QUBO QAOA,NO,QUBO coefficients are free F-dependent side information.
+Explicit RCSP graph + penalties,NO,Topology and coefficients expose structure and richer values.
+Feasible-subspace state preparation,NO,Feasible structure enters through initialization.
+Learned parameters transferred from unrelated instances,CONDITIONAL,Covered if transfer data are independent of the hidden F.
+Same-instance parameters trained through oracle calls only,YES_WITH_TOTAL_CAP,"Count every training shot, evaluation, and final query."
+Parameters from complete feasible enumeration,NO,Enumeration supplies F outside the oracle account.

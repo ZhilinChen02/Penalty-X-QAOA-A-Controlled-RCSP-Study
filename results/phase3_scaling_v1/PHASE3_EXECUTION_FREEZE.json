@@ -1,0 +1,31 @@
+{
+  "base_graph_count": 30,
+  "development_qaoa_started": false,
+  "holdout_qaoa_started": false,
+  "planned_adequacy_2B_additional_runs": 12,
+  "planned_primary_optimization_runs": 1080,
+  "predecessor_file_count": 156,
+  "predecessor_git_sha": "1729aa044a84dfb12b0edcacf4ea2d9d25c35b74",
+  "predecessor_inventory_sha256": "4bb59676d4be07c2b8403d97f39faa9dba3bceb2507182606d124123fac45ac4",
+  "pytest_result": "83 passed in 2.37s",
+  "schema_version": "phase3_scaling_v1.execution_freeze.v1",
+  "scientific_input_hashes": {
+    "configs/phase3_scaling_v1.yaml": "d7edcf4ca084e975b0b8d916d003c9c772e9c801b06175ee7112ef86cdea99f3",
+    "data/manifests/phase3_scaling_v1/development.json": "e1c5e78a405de18a3a0cf5607fa839a99e9324f6df09c51b2d95bd6b2110b6c6",
+    "data/manifests/phase3_scaling_v1/extrapolation_holdout.json": "0ad772b6460967a4a6ee64394b35bdb90dc6f37554b3abcbb5afcfdb9ab5c30c",
+    "data/manifests/phase3_scaling_v1/interpolation_holdout.json": "e6a0f8767816d903b577b9616e9f331a58a72d449905981d11283edd93fcd7c4",
+    "data/manifests/phase3_scaling_v1/manifest_hashes.json": "af84c18e29d15a986eaf699300b45992f24a9a24012aef76f780412f7da718fa",
+    "data/manifests/phase3_scaling_v1/task_universe.json": "018e499280521e6e6764118d14af76ed4cee74fd501addf4dd69087da5bcc557",
+    "docs/SCALING_LAW_DERIVATION.md": "03991f78725f01a8ff669434ac75bffcc8eb3d7afd51d390156bb309913dda96",
+    "protocols/phase3_scaling_v1/PREREGISTRATION.md": "b25985f8e033971503a6b0294e4738345cf08cecab177ea8cdc724c183e5d06a",
+    "results/phase3_scaling_v1/preflight/preflight_summary.json": "e49cc7a21dbd1560aa616a9e255d1500e0a5448102959a98b3486517cf7373cf",
+    "results/phase3_scaling_v1/resource_preflight.csv": "7306c895bd0260c689c48d34b0609539531a0f491dc812ca119f608fccd62fbc",
+    "results/phase3_scaling_v1/resource_preflight.json": "c207f6f9b56e72f2e6ef1ff06c79d86f71b31c69ddc87da44b4a07a287d9b3e6",
+    "results/phase3_scaling_v1/task_characterization.csv": "140cbc17c21ddcf9862a8e438e69925be1d0591272b62d7ce171ac8a6feea9eb",
+    "src/qroute_dilution/phase3_analysis.py": "3ed2ca43fcf7eb1794fd5f3c6c438546523ba361c3b24b4818d6454d9936f6e6",
+    "src/qroute_dilution/phase3_execution.py": "4a02df68d418d7a0f81c24e26074d8fbdb4bf961434aa629da94e41adf51b843",
+    "src/qroute_dilution/phase3_models.py": "4b44978074c01d61998e41511d5ec8d6b439fac4ef29c3272f490da950030913",
+    "src/qroute_dilution/phase3_tasks.py": "3659243735b138f18b196c6bfdd21077074c964b31ff9ff8ee38b225d3f7795f"
+  },
+  "task_count": 180
+}

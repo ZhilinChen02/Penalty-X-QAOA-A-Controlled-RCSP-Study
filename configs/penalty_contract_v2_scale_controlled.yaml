@@ -1,0 +1,29 @@
+contract_name: penalty_contract_v2_scale_controlled
+status: prospective
+qaoa_result_dependent: false
+
+# Frozen globally from the declared v2 generator bounds:
+# maximum edge count 19, maximum edge objective cost 9, so C(x) <= 171.
+flow_penalty_strength: 172.0
+resource_penalty_strength: 172.0
+global_routing_cost_bound: 171.0
+
+flow_penalty:
+  formula: indicator(flow_penalty_raw > 0) + min(flow_penalty_raw / S_flow, 1)
+  scale_rule: S_flow = max_x flow_penalty_raw(x) for the fixed base graph
+  range_if_valid: 0
+  range_if_invalid: "(1, 2]"
+
+resource_penalty:
+  formula: indicator(resource_excess > 0) + min((resource_excess / S_resource)^2, 1)
+  scale_rule: S_resource = sum of all edge resources in the fixed base graph
+  range_if_feasible: 0
+  range_if_infeasible: "(1, 2]"
+
+total_energy: routing_cost + 172 * flow_penalty + 172 * resource_penalty
+
+semantics:
+  classification_preserved: true
+  same_base_graph_scales_shared_across_stress_levels: true
+  per_instance_coefficient_tuning: false
+  intended_for_phase1: true

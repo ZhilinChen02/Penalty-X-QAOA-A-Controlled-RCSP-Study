@@ -1,0 +1,138 @@
+\section{Results}
+\label{sec:results}
+
+\subsection{Controlled dilution and optimizer diagnosis}
+\label{sec:optimizer}
+
+The scale contract in \cref{fig:dilution-scale} removed the large numerical-
+span confound while preserving all exact optima. The nested results are
+summarized in \cref{fig:optimizer-attribution,tab:optimizer-attribution}. The 56-task depth pilot then
+completed 504/504 planned optimizations. Its independently initialized $p=3$
+fit appeared worse than $p=2$, but the nesting test changed that
+interpretation: all 168 zero-layer identities held exactly, and 29/168
+reported $p=3$ mean-energy objectives were worse than their embedded $p=2$
+points. Continuation lowered the objective in 29/29 certified failures and
+increased $\gfeas$ in 27/29. The remaining 139 runs simply passed this
+necessary test; they were not certified global optima.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig03_optimizer_attribution.pdf}
+  \caption{Nested optimizer diagnosis. \textbf{a}, original $p=3$ objective
+  relative to the exactly embedded $p=2$ point; 29 positive gaps certify
+  failure. \textbf{b}, matched feasibility gain before and after continuation}
+  \label{fig:optimizer-attribution}
+\end{figure}
+
+\input{tables/table03_optimizer_attribution.tex}
+
+Mean-energy improvement was not equivalent to feasible-mass improvement. In
+82/168 matched comparisons, the state with lower mean energy also had lower
+$\gfeas$; component accounting showed redistribution among infeasible energy
+levels. Certified optimizer inadequacy also occurred under every tested local
+optimizer. O0/O3 nested-failure counts were 28/168 and 38/168 for COBYLA,
+54/168 and 61/168 for Nelder--Mead, and 46/168 and 72/168 for SLSQP.
+Accordingly, certified optimizer inadequacy occurs under several tested
+optimizers and evaluation budgets; this is not a claim about arbitrary
+classical budgets or extensive multi-start search.
+
+\subsection{Capacity control and objective alignment}
+\label{sec:objective-alignment}
+\label{sec:heldout}
+
+On discovery, O2 increased $\pfeas$ over O0 on 53/56 tasks. The median
+O2--O0 capacity gap was 0.2193 decades in $\gfeas$, demonstrating feasible-
+concentration capacity that mean-energy training did not induce under the
+matched design. O3 increased $\pfeas$ over O0 on 50/56 tasks, left a median
+O2--O3 residual of 0.00690 decades, and closed a median 97.9\% of the
+taskwise O2--O0 gap. These discovery results selected O3 and
+$\alpha=0.10$; O2 remains an exact-statevector capacity control, not a
+deployable objective.
+
+Both preregistered held-out criteria passed
+(\cref{fig:heldout,tab:heldout-tests}). Across 15 held-out graph units and 84 tasks, H1 estimated
+O3--O0 $\gfeas$ at $+0.3547$ decades, with one-sided 95\% lower bound
+$+0.2374$ and Holm-adjusted $p=2.44\times10^{-4}$. H2 estimated O3--O2 at
+$-0.0086$ decades; its lower bound $-0.0360$ exceeded the frozen
+$-0.10$-decade non-inferiority margin, with the same adjusted $p$-value. Thus
+CVaR approached the measured exact-feasibility capacity at the graph analysis
+unit. O3 also increased $\popt$ on 80/84 tasks, while changes in $\pcond$
+remained heterogeneous.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig06_heldout_confirmation.pdf}
+  \caption{Preregistered held-out objective alignment. Points are complete
+  graph means; solid lines are mean effects, dotted lines are one-sided 95\%
+  lower bounds, and dashed lines are the H1 null or H2 non-inferiority margin}
+  \label{fig:heldout}
+\end{figure}
+
+\input{tables/table04_heldout_results.tex}
+
+The distinction survives exclusion of certified failures. Requiring both O0
+and O3 to pass the nested test leaves 113, 72, and 70 pairs under COBYLA,
+Nelder--Mead, and SLSQP; their graph-cluster O3--O0 $\gfeas$ intervals are
+$[0.5770,0.9971]$, $[0.5796,1.2473]$, and $[0.6096,1.3458]$. This supports
+separation of optimizer inadequacy from objective misalignment under the
+tested diagnostic, not universal independence.
+
+\subsection{Depth and robustness boundaries}
+\label{sec:depth-robustness}
+
+In the preselected 24-task depth--budget subset, pooled $p=2\to3$ nested-
+failure rates were 20.8\%, 21.5\%, and 26.4\% at 120, 240, and 480 calls;
+$p=3\to4$ rates were 31.2\%, 31.2\%, and 32.6\%. Increasing the tested
+evaluation budget did not monotonically reduce nested failures in this
+controlled subset. Yet at 120 calls, graph-mean $p=4$ minus $p=3$ $\gfeas$
+was $+0.7206$ for O0 and $+0.2021$ for O3, positive on 10/10 graphs in each
+arm; the analogous effects remained positive at 240 and 480 calls. Depth can
+therefore add usable capacity while making the tested optimization problem
+harder. We do not claim that these instances remain difficult under
+arbitrarily large classical optimization budgets or extensive multi-start
+search.
+
+The post-hoc discovery scan also bounded tail-fraction sensitivity. Equal-
+weight graph means were similar around the frozen choice for
+$\alpha=0.05$, 0.10, and 0.25, but optimized responses were non-monotone on
+54/56 tasks. At $\alpha=1$, exact weighted CVaR equaled mean energy to within
+$2.42\times10^{-13}$; separately executed optimizer trajectories need not
+coincide. No post-hoc tail fraction revises the frozen H1/H2 result.
+
+\subsection{Finite-shot and scaling limits}
+\label{sec:scaling}
+
+Fixed-endpoint sampling recovered the exact sign of non-tied O3--O0
+$\pfeas$ comparisons in 94.8\%, 99.3\%, and 100.0\% of cases at
+$10^3$, $10^4$, and $10^5$ shots. End-to-end finite-shot training was less
+decisive (\cref{fig:robustness-boundaries}). The matched exact-trained effect
+on ten held-out graphs was 0.3599
+(95\% graph-cluster CI $[0.1641,0.5697]$); effects were 0.1706
+($[-0.0106,0.3862]$) at $10^4$ shots per call and 0.1246
+($[-0.0050,0.3351]$) at $10^3$. Both point estimates retained the O3--O0
+direction, but both intervals crossed zero.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig12_reviewer_depth_budget.pdf}
+  \includegraphics[width=\textwidth]{fig15_reviewer_finite_shot_training.pdf}
+  \caption{Robustness boundaries. Upper: nested diagnostics and terminal
+  quality across tested depths and evaluation budgets. Lower: exact-terminal
+  evaluation after exact or finite-shot training; both shot-trained graph
+  intervals cross zero}
+  \label{fig:robustness-boundaries}
+\end{figure}
+
+The completed size-conditioned study also prevents extrapolation. At $m=20$,
+mean response exponents were 0.6150 for O0, 0.7885 for O2, and 1.2821 for O3,
+reversing the earlier O3--O0 ordering. At $m=22$, runs exceeded the
+preregistered computational budget and were administratively censored. This
+is a limitation of the study's computational budget, not a principled quantum-
+algorithm barrier, a claim that 22 qubits cannot be simulated, or a
+statevector-memory limit. We therefore make no extrapolative scaling claim
+beyond the completed range.
+
+Finally, an exact label-setting solver reproduced 140/140 frozen optima with
+small label sets and microsecond-scale descriptive timings. The benchmark is
+classically tractable by design. Complete optimizer, depth, alpha, finite-shot,
+classical, and scaling matrices are in Online Resource~1, Secs.~S4--S8.

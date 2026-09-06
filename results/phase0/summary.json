@@ -1,0 +1,69 @@
+{
+  "base_graph_count": 25,
+  "duplicate_budget_count": 53,
+  "duplicate_feasible_set_count": 53,
+  "experiment_name": "phase0",
+  "feasible_state_fraction_max": 0.0234375,
+  "feasible_state_fraction_min": 1.9073486328125e-06,
+  "figures": [
+    "figures/phase0_figure1_feasible_state_fraction_vs_n_edges.png",
+    "figures/phase0_figure2_route_vs_state_feasible_fraction.png",
+    "figures/phase0_figure3_dilution_heatmap.png"
+  ],
+  "instances_per_cell": 5,
+  "largest_n_qubits": 19,
+  "largest_state_space_size": 524288,
+  "manifest": "data/manifests/phase0_tasks.csv",
+  "phase0_wall_time_s": 2.2755984123796225,
+  "resource_projection": {
+    "active_penalty_contracts": [
+      "medium"
+    ],
+    "conservative_peak_process_rss_mb": 320.0,
+    "depths": [
+      1,
+      2,
+      3
+    ],
+    "estimated_canonical_csv_mb": 6.40869140625,
+    "estimated_incremental_numeric_arrays_mb": 64.0,
+    "estimated_total_disk_mb_without_statevectors": 9.259100914001465,
+    "eval_budget_per_run": 120,
+    "generated_task_json_mb": 0.8504095077514648,
+    "implementation_device": "CPU NumPy exact statevector (GPU not required or used)",
+    "largest_n_qubits": 19,
+    "largest_raw_complex128_statevector_mb": 8.0,
+    "largest_state_space_size": 524288,
+    "optimizer_seed_count": 5,
+    "phase1_penalty_x_run_count": 2625,
+    "raw_statevectors_persisted": false,
+    "timing_calibration": "affine fit to smoke seconds/evaluation = intercept + slope*(depth*qubit*state)",
+    "timing_fit_intercept_s_per_evaluation": 0.0008677320552211931,
+    "timing_fit_slope_s_per_depth_qubit_state": 9.333226051187797e-09,
+    "uniform_analytic_row_count": 175,
+    "wall_clock_central_hours_single_process": 3.7109269051167004,
+    "wall_clock_range_hours_single_process": [
+      1.8554634525583502,
+      18.554634525583502
+    ]
+  },
+  "size_strata": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "task_count": 175,
+  "task_file_count": 175,
+  "tightness_levels": [
+    "T1",
+    "T2",
+    "T3",
+    "T4",
+    "T5",
+    "T6",
+    "T7"
+  ],
+  "zero_feasible_count": 0
+}

@@ -1,0 +1,41 @@
+experiment_name: phase1_pilot_v1
+pre_run_git_sha: a626aa64a341daa8a26bcdb8c464a2ce64676250
+source_task_manifest: data/manifests/phase0_v2_dilution_stress.json
+pilot_manifest: data/manifests/phase1_pilot_v1.json
+selection_rule: lowest_two_base_indices_per_size_with_all_available_levels
+base_graphs_per_size: 2
+expected_task_count: 56
+
+algorithm: Penalty-X
+depths: [1, 2, 3]
+optimizer: COBYLA
+optimizer_seeds: [1103, 2207, 3301]
+eval_budget: 120
+timeout_s: 1800
+cobyla_rhobeg: 0.5
+cobyla_catol: 1.0e-8
+initial_gamma_interval: [0.0, 6.283185307179586]
+initial_beta_interval: [0.0, 3.141592653589793]
+optimizer_parameter_bounds: none_periodic_phases
+
+penalty_contract: penalty_contract_v2_scale_controlled
+penalty_contract_file: configs/penalty_contract_v2_scale_controlled.yaml
+flow_penalty_strength_raw: 172.0
+resource_penalty_strength_raw: 172.0
+raw_energy_formula: routing_cost + 172 * P_flow + 172 * P_resource
+flow_penalty_formula: 1[flow_raw > 0] + min(flow_raw / max_x(flow_raw), 1)
+resource_penalty_formula: 1[excess > 0] + min((excess / sum_edge_resources)^2, 1)
+
+hamiltonian_normalization_mode: global_fixed
+hamiltonian_normalization_factor: 172.0
+normalization_basis: generator_wide_bound_19_edges_times_max_edge_cost_9_plus_one
+qaoa_energy_formula: E_qaoa = E_raw / 172
+optimizer_objective: expected_normalized_hamiltonian_energy
+
+max_workers: 8
+worker_blas_threads: 1
+max_qubits: 19
+
+primary_seed_aggregation: metricwise_median_across_three_seeds
+secondary_multistart_selection: minimum_objective_final_only
+full_phase1_expansion_authorized: false

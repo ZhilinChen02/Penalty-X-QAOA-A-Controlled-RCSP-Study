@@ -1,0 +1,156 @@
+% SN Computer Science author-action draft.
+% Scientific content is frozen; unresolved personal metadata is deliberately
+% visible and must be replaced before this file becomes a submission candidate.
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,mathtools}
+\usepackage{booktabs,tabularx,array,multirow,longtable}
+\usepackage{placeins}
+\usepackage{xcolor}
+\usepackage{microtype}
+\usepackage{siunitx}
+\usepackage{enumitem}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\graphicspath{{figures/}}
+\sisetup{detect-all,group-separator={,},group-minimum-digits=4}
+\setlist{nosep,leftmargin=*}
+\setlength{\emergencystretch}{3em}
+
+\theoremstyle{thmstyleone}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{thmstylethree}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{thmstyletwo}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\pfeas}{P_{\mathrm{feas}}}
+\newcommand{\popt}{P_{\mathrm{opt}}}
+\newcommand{\pcond}{P_{\mathrm{opt}\mid\mathrm{feas}}}
+\newcommand{\gfeas}{G_{\mathrm{feas}}}
+\newcommand{\phistate}{\phi_{\mathrm{state}}}
+\newcommand{\phipath}{\phi_{\mathrm{path}}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\cvar}{\operatorname{CVaR}}
+\newcommand{\ind}{\mathbf{1}}
+\newcommand{\authoraction}[1]{\textcolor{red}{\textbf{AUTHOR ACTION REQUIRED: #1}}}
+\newcommand{\authorfield}[1]{\textcolor{red}{\textbf{[#1 REQUIRED]}}}
+
+\begin{document}
+
+\articletype{Original Research}
+\title[Feasible-space dilution in Penalty-X QAOA]{Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study}
+\subtitle{\textcolor{red}{AUTHOR-ACTION DRAFT --- NOT FOR SUBMISSION}}
+
+% Only the published-name spelling is attested in the repository. The star and
+% affiliation slot establish the required SN author-block structure; the author
+% must confirm the final author list/order and corresponding-author designation.
+\author*[1]{\fnm{Zhilin} \sur{Chen}}
+\email{\authorfield{ACTIVE CORRESPONDING-AUTHOR E-MAIL}}
+\affil*[1]{\orgdiv{\authorfield{DEPARTMENT}},
+  \orgname{\authorfield{INSTITUTION}},
+  \orgaddress{\city{\authorfield{CITY}},
+  \country{\authorfield{COUNTRY}}}}
+
+\abstract{
+\textbf{Purpose} Poor feasible sampling in full-space Penalty-X QAOA can reflect
+representation-induced dilution, classical optimizer inadequacy, objective
+misalignment, or limited ansatz capacity. We separate these explanations on a
+controlled routing benchmark.
+
+\textbf{Methods} Exact-statevector experiments use 140 resource-constrained
+shortest-path tasks and a scale-controlled Hamiltonian. Exact depth embeddings
+diagnose optimizer inadequacy. A frozen discovery/held-out design compares
+mean-energy training (O0), an exact-feasibility capacity control (O2), and
+CVaR-0.10 (O3), with post-hoc depth, optimizer, tail-fraction, and finite-shot
+checks.
+
+\textbf{Results} O2 showed that the fixed ansatz could reach feasible mass not
+induced by O0. On 84 held-out tasks from 15 graphs, O3 improved graph-level
+log-feasibility gain over O0 by $+0.3547$ decades and was non-inferior to O2:
+the O3--O2 effect was $-0.0086$, with lower bound $-0.0360$ above the frozen
+$-0.10$ margin. Certified nested failures occurred under COBYLA,
+Nelder--Mead, and SLSQP. Fixed-endpoint sampling was stable, whereas both
+finite-shot retraining intervals crossed zero.
+
+\textbf{Conclusion} Optimizer inadequacy and objective misalignment are
+distinct under the tested diagnostics, and CVaR approaches the mechanistic O2
+capacity control on held-out graphs. The classically tractable study supports
+no quantum-advantage or extrapolative scaling claim and does not test hardware
+noise.
+}
+
+\keywords{quantum approximate optimization algorithm, constrained optimization,
+resource-constrained shortest path, feasible-space dilution, conditional value
+at risk, variational quantum algorithms}
+
+\maketitle
+
+\input{sections/01_introduction}
+\input{sections/02_problem}
+\input{sections/03_methods}
+\input{sections/04_optimizer_attribution}
+\input{sections/08_theory}
+\input{sections/09_related_work}
+\input{sections/10_discussion}
+\input{sections/12_conclusion}
+
+\backmatter
+
+\section*{Supplementary information}
+
+Online Resource 1: Supplementary methods, proofs, robustness analyses,
+additional figures and tables, and reproducibility details.
+
+Online Resource 2: Reproducibility metadata and machine-readable result
+summaries.
+
+\section*{Acknowledgements}
+
+\authoraction{acknowledgements, or confirmation that there are none}
+
+\section*{Statements and Declarations}
+
+\subsection*{Funding}
+
+\authoraction{funding statement}
+
+\subsection*{Competing interests}
+
+\authoraction{competing-interests statement}
+
+\subsection*{Data availability}
+
+\authoraction{data-availability statement; add only a real archival URL or DOI}
+
+\subsection*{Code availability}
+
+\authoraction{code-availability statement; add only a real archival URL or DOI}
+
+\subsection*{Author contributions}
+
+\authoraction{final author-contribution statement}
+
+\subsection*{Ethics approval}
+
+Not applicable. This computational study uses synthetic graph instances and
+involves no human participants, human data, biological material, or animals.
+
+\subsection*{Consent to participate}
+
+Not applicable.
+
+\subsection*{Consent for publication}
+
+Not applicable.
+
+\bibliography{references}
+
+\end{document}

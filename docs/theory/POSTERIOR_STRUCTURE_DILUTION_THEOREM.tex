@@ -1,0 +1,238 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newcommand{\F}{\mathcal F}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Prb}{\mathop{\rm Pr}}
+\newcommand{\supp}{\mathop{\rm supp}}
+
+\title{Posterior Structure Dilution and Finite-Advice Tradeoffs}
+\author{Theory Validation v3 audit}
+\date{August 29, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Model}
+Let $\Omega=\{1,\ldots,N\}$ and let $\F$ be uniform over all size-$M$
+subsets of $\Omega$, with $\phi=M/N$.  Before search, an arbitrary classical
+channel depending on $\F$ produces $S$.  Conditioned on $S=s$, an algorithm
+may choose an $s$-dependent initial state, unitaries, ancillas, measurements,
+feed-forward, and stopping rule.  Every physical branch makes at most $q$
+membership queries.  After $S$, no other $\F$-dependent information is
+available except through those queries.
+
+Let
+\[
+ \Pi_{\F}=\sum_{x\in\F}|x\rangle\!\langle x|,
+ \qquad
+ \overline\Pi_s=\E[\Pi_{\F}\mid S=s],
+ \qquad
+ \lambda_s=\|\overline\Pi_s\|_\infty,
+ \qquad
+ \Lambda(S)=\E_S\lambda_S.
+\]
+Only positive-probability advice values are used.
+
+\begin{lemma}[Posterior projector]
+For every supported $s$,
+\[
+ \operatorname{Tr}\overline\Pi_s=M,
+ \qquad
+ \lambda_s=\max_x\Prb[x\in\F\mid S=s],
+ \qquad
+ \phi\le\lambda_s\le1.
+\]
+\end{lemma}
+\begin{proof}
+$\overline\Pi_s$ is diagonal, and its $x$th diagonal entry is the displayed
+posterior inclusion probability.  Its trace is the conditional expectation
+of $|\F|=M$.  The largest of $N$ nonnegative diagonal entries with sum $M$
+is at least $M/N$, and every entry is at most one.
+\end{proof}
+
+\section{Phase-sensitive posterior theorem}
+At slot $t$, let a purified history-controlled phase be
+$\gamma_t(s,h)$ and define
+\[
+ c_t(s)=\sup_h|e^{-i\gamma_t(s,h)}-1|,
+ \qquad C(s)=1+\sum_{t=1}^q c_t(s).
+\]
+
+\begin{theorem}[Conditional posterior dilution]
+\[
+ \E[P_{\rm success}\mid S=s]
+ \le \min\{1,C(s)^2\lambda_s\}.
+\]
+Consequently,
+\[
+ \E P_{\rm success}
+ \le \E_S\!\left[\min\{1,C(S)^2\lambda_S\}\right]
+ \le \min\{1,\E_S[C(S)^2\lambda_S]\}.
+\]
+\end{theorem}
+\begin{proof}
+Fix $s$.  Purify instruments, randomness, discarded data, and feed-forward,
+and pad early stopping with isolated scratch queries.  Every identity-oracle
+reference state $|\psi_s\rangle$ may depend on $s$ but is independent of the
+remaining posterior uncertainty.  Therefore
+\[
+ \E[\langle\psi_s|(\Pi_{\F}\otimes I)|\psi_s\rangle\mid s]
+ =\langle\psi_s|(\overline\Pi_s\otimes I)|\psi_s\rangle
+ \le\lambda_s.
+\]
+For the identity-reference state $|\varphi_{t,s}\rangle$ before slot $t$,
+\[
+ \|(U_{\F,t}-I)|\varphi_{t,s}\rangle\|
+ \le c_t(s)\|(\Pi_{\F}\otimes I)|\varphi_{t,s}\rangle\|.
+\]
+Conditional $L_2(\F\mid s)$ Minkowski bounds the final hybrid distance by
+$(\sum_t c_t(s))\sqrt{\lambda_s}$.  The identity-reference output has
+conditional marked $L_2$ norm at most $\sqrt{\lambda_s}$.  Projection
+contractivity and a second Minkowski application give
+$\sqrt{\E[P\mid s]}\le C(s)\sqrt{\lambda_s}$.  Square and cap at one.
+The averaged statements follow from total expectation, $\min(1,a)\le a$,
+and the fact that probabilities are at most one.
+\end{proof}
+
+If $c_t(s)=c_t$ is global for every supported advice value, then
+\[
+ \E P_{\rm success}
+ \le\min\left\{1,
+ \left(1+\sum_t c_t\right)^2\Lambda(S)\right\}.
+\]
+For advice-dependent coefficients, the product remains inside the expectation.
+
+\begin{corollary}[Adaptive hard cap]
+Since $c_t(s)\le2$,
+\[
+ \E P_{\rm success}
+ \le\min\{1,(2q+1)^2\Lambda(S)\}.
+\]
+For constant $S$, posterior symmetry gives $\Lambda(S)=\phi$, recovering the
+Theory-v2 theorem.
+\end{corollary}
+
+\section{Finite classical advice}
+\begin{lemma}[Advice alphabet]
+If $|\supp S|\le2^b$, then
+\[
+ \Lambda(S)\le\min\{1,2^b\phi\}.
+\]
+\end{lemma}
+\begin{proof}
+For each supported $s$, choose
+$x_s\in\arg\max_x\Prb[x\in\F\mid S=s]$.  Then
+\[
+\begin{aligned}
+ \Lambda
+ &=\sum_s\Prb(S=s,x_s\in\F)\\
+ &\le\sum_s\Prb(x_s\in\F)
+ =|\supp S|\phi\le2^b\phi.
+\end{aligned}
+\]
+Duplicate $x_s$ values merely repeat an upper-bound term and cause no problem.
+\end{proof}
+
+\begin{corollary}[Finite advice/query tradeoff]
+\[
+ \E P_{\rm success}\le\min\{1,(2q+1)^2 2^b\phi\}.
+\]
+For target $\tau>0$, a necessary integer condition is
+\[
+ b\ge\max\left\{0,
+ \left\lceil\log_2\frac{\tau}{(2q+1)^2\phi}\right\rceil
+ \right\}.
+\]
+For global advice-independent coefficients, $(2q+1)^2$ may be replaced by
+$(1+\sum_t c_t)^2$.  Advice-dependent coefficients must remain inside
+$\E_S[\min\{1,C(S)^2\lambda_S\}]$ unless uniform suprema are used.
+\end{corollary}
+
+\section{Effective structure and support}
+For $\phi>0$, define
+\[
+ b_{\rm eff}=\log_2\frac{\Lambda(S)}{\phi},
+ \qquad
+ K_{\rm eff}=\frac{M}{\Lambda(S)}.
+\]
+Then
+\[
+ 0\le b_{\rm eff}\le\log_2\frac1\phi,
+ \qquad b_{\rm eff}\le b\quad\hbox{for $b$ classical advice bits},
+\]
+and
+\[
+ M\le K_{\rm eff}\le N,
+ \qquad
+ \frac{N}{K_{\rm eff}}=\frac{\Lambda}{\phi}=2^{b_{\rm eff}}.
+\]
+The hard-cap theorem becomes
+\[
+ \E P_{\rm success}
+ \le\min\{1,(2q+1)^2 2^{b_{\rm eff}}\phi\}
+ =\min\left\{1,(2q+1)^2\frac{M}{K_{\rm eff}}\right\}.
+\]
+Thus target $\tau$ necessarily satisfies
+\[
+ b_{\rm eff}+2\log_2(2q+1)\ge\log_2\frac{\tau}{\phi},
+ \qquad
+ K_{\rm eff}\le\frac{(2q+1)^2M}{\tau}.
+\]
+These are necessary, not sufficient, conditions.
+
+If $S=s$ reveals a candidate set $\mathcal C_s$ of size $K$ and the posterior
+is uniform over size-$M$ subsets of $\mathcal C_s$, then
+$\lambda_s=M/K$ and $K_{\rm eff}=K$.  Candidate containment without
+conditional uniformity does not imply this identity.
+
+\begin{corollary}[Exponential dilution]
+If $\phi_n=2^{-\alpha n}$ for constant $\alpha>0$, target success is a fixed
+$\tau>0$, and $q(n)\le Cn^k$, then
+\[
+ b_{\rm eff}\ge\alpha n-2k\log_2n-O(1)
+ =\alpha n-O(\log n).
+\]
+\end{corollary}
+
+\section{Query-generated advice and structured oracles}
+If preprocessing uses membership queries to create $S$, it is part of the
+same adaptive interaction.  Charge
+$q_{\rm total}=q_{\rm pre}+q_{\rm post}$ and apply the Theory-v2 total-query
+theorem.  Storage as a classical transcript does not erase preprocessing
+queries.  Rich explicit preprocessing is a stronger information-access model.
+
+If an operation $W_{\F}$ uses at most $r$ membership queries per invocation
+and is invoked $L$ times, charge $rL$ membership calls.  Without an efficient
+simulation, feasible-state preparation, a feasible-neighbor oracle, or a
+feasibility-preserving mixer is a strictly stronger structure oracle.
+
+\section{Finite-dimensional quantum advice}
+For completeness, suppose one advice state $\rho_{\F}$ of total Hilbert
+dimension $d$ is supplied before an otherwise oracle-only interaction.  For
+every $\F$-independent trace-preserving channel $A$, $\rho_{\F}\le I_d$ gives
+\[
+ \E_{\F}\operatorname{Tr}[(\Pi_{\F}\otimes I)A(\rho_{\F})]
+ \le\phi\operatorname{Tr}A(I_d)=d\phi.
+\]
+A canonical purification preserves this projected norm, so the hybrid proof
+gives
+\[
+ \E P_{\rm success}
+ \le\min\left\{1,\left(1+\sum_t c_t\right)^2d\phi\right\}.
+\]
+Multiple advice registers count by joint dimension.  Interactive advice or a
+structure oracle supplied during search is outside this result.
+
+\section{Explicit nonclaims}
+This theorem does not imply a raw-edge-bit lower bound for natural explicit
+RCSP; does not cover free multilevel cost oracles; does not make a
+feasibility-preserving mixer free; does not identify $b_{\rm eff}$ with time,
+memory, or gate count; and does not say that satisfying the necessary budget
+guarantees success.  CVaR uses rich cost information and does not violate this
+membership-only theorem.
+
+\end{document}

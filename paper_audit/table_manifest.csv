@@ -1,0 +1,13 @@
+table_id,output_file,source,aggregation,rounding_policy
+T1,tables/table01_protocol_summary.tex,canonical stage configs and summary.json files,frozen stage counts,integers exact; no rounding
+T2,tables/table02_objectives.tex,configs/phase1_2_objective_alignment.yaml,verbatim frozen objective definitions,not applicable
+T3,tables/table03_optimizer_attribution.tex,results/finalization_audit_v1/reconstructed_headlines.json,independently rebuilt seed-level counts,counts exact
+T4,tables/table04_heldout_results.tex,results/finalization_audit_v1/heldout_statistics_rebuilt.json,independently rebuilt preregistered graph-level H1/H2,effects/bounds 4 decimals; p 3 significant digits
+T5,tables/table05_scaling_response.tex,results/finalization_audit_v1/scaling_exponents_rebuilt.csv,independently rebuilt mean graph-level eta by split/objective,4 decimals
+T6,tables/table06_theory_scope.tex,docs/theory/* theorem audits,statement/model/nonclaim synopsis,not applicable
+T7,tables/table07_related_work.tex,verified primary literature listed in references.bib and docs/related_work_audit.md,qualitative comparison of representative work,not applicable
+TS1,tables/tableS1_failure_census.tex,phase pilot/heldout/scaling failure censuses,retained denominators by stage,counts exact
+TS2,tables/tableS2_task_strata.tex,results/phase0_v2_dilution_stress/task_characterization.csv,group by size stratum,phi 3 significant digits
+TS3,tables/tableS3_statistics.tex,configs/phase2_confirmatory_v1.yaml,frozen inferential contract,not applicable
+TS4,tables/tableS4_proof_assumptions.tex,results/synthesis_v1/second_pass_proof_review.csv,publication-critical assumptions,not applicable
+TS5,tables/tableS5_artifact_hashes.tex,five canonical files,SHA-256,16-character prefix in table

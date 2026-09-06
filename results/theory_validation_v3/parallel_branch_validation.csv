@@ -1,0 +1,31 @@
+K,M,edge_count,feasible_routes,attribute_mapping_ok,attribute_queries_per_feasibility_check,phi_path,phi_state,K_over_M,sqrt_K_over_M,grover_big_O_query_cap,best_standard_grover_q_in_cap,best_standard_grover_success,query_model,bounded_error_scope
+2,1,4,1,True,1,0.5,0.0625,2.0,1.4142135623730951,3,2,0.5000000000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+2,2,4,2,True,1,1.0,0.125,1.0,1.0,0,0,1.0,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+4,1,8,1,True,1,0.25,0.00390625,4.0,2.0,3,1,1.0,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+4,2,8,2,True,1,0.5,0.0078125,2.0,1.4142135623730951,3,2,0.5000000000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+4,3,8,3,True,1,0.75,0.01171875,1.3333333333333333,1.1547005383792515,2,2,0.7500000000000007,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+4,4,8,4,True,1,1.0,0.015625,1.0,1.0,0,0,1.0,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+8,1,16,1,True,1,0.125,1.52587890625e-05,8.0,2.8284271247461903,4,2,0.9453124999999999,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+8,2,16,2,True,1,0.25,3.0517578125e-05,4.0,2.0,3,1,1.0,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+8,3,16,3,True,1,0.375,4.57763671875e-05,2.6666666666666665,1.632993161855452,3,3,0.9902343749999999,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+8,4,16,4,True,1,0.5,6.103515625e-05,2.0,1.4142135623730951,3,2,0.5000000000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+8,5,16,5,True,1,0.625,7.62939453125e-05,1.6,1.2649110640673518,2,2,0.9765625000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+8,6,16,6,True,1,0.75,9.1552734375e-05,1.3333333333333333,1.1547005383792515,2,2,0.7500000000000007,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+8,7,16,7,True,1,0.875,0.0001068115234375,1.1428571428571428,1.0690449676496976,2,0,0.875,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+8,8,16,8,True,1,1.0,0.0001220703125,1.0,1.0,0,0,1.0,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,1,32,1,True,1,0.0625,2.3283064365386963e-10,16.0,4.0,5,3,0.9613189697265625,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,2,32,2,True,1,0.125,4.656612873077393e-10,8.0,2.8284271247461903,4,2,0.9453124999999999,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,3,32,3,True,1,0.1875,6.984919309616089e-10,5.333333333333333,2.309401076758503,3,1,0.94921875,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,4,32,4,True,1,0.25,9.313225746154785e-10,4.0,2.0,3,1,1.0,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,5,32,5,True,1,0.3125,1.1641532182693481e-09,3.2,1.7888543819998317,3,1,0.9570312499999999,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,6,32,6,True,1,0.375,1.3969838619232178e-09,2.6666666666666665,1.632993161855452,3,3,0.9902343749999999,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,7,32,7,True,1,0.4375,1.6298145055770874e-09,2.2857142857142856,1.5118578920369088,3,3,0.8845062255859374,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,8,32,8,True,1,0.5,1.862645149230957e-09,2.0,1.4142135623730951,3,2,0.5000000000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,9,32,9,True,1,0.5625,2.0954757928848267e-09,1.7777777777777777,1.3333333333333333,3,2,0.7932128906250004,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,10,32,10,True,1,0.625,2.3283064365386963e-09,1.6,1.2649110640673518,2,2,0.9765625000000002,explicit topology + counted quantum random-access z array,nontrivial target-success regime
+16,11,32,11,True,1,0.6875,2.561137080192566e-09,1.4545454545454546,1.2060453783110545,2,2,0.969482421875,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,12,32,12,True,1,0.75,2.7939677238464355e-09,1.3333333333333333,1.1547005383792515,2,2,0.7500000000000007,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,13,32,13,True,1,0.8125,3.026798367500305e-09,1.2307692307692308,1.1094003924504583,2,0,0.8124999999999999,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,14,32,14,True,1,0.875,3.259629011154175e-09,1.1428571428571428,1.0690449676496976,2,0,0.875,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,15,32,15,True,1,0.9375,3.4924596548080444e-09,1.0666666666666667,1.0327955589886444,2,0,0.9375000000000001,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density
+16,16,32,16,True,1,1.0,3.725290298461914e-09,1.0,1.0,0,0,1.0,explicit topology + counted quantum random-access z array,zero-query target may already hold at high density

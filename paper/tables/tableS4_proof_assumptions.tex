@@ -1,0 +1,20 @@
+
+\begin{table}[ht]
+\centering
+\caption{Assumptions that bound the interpretation of the formal results.}
+\label{tab:proof-assumptions}
+\small
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\toprule
+Result & Required assumptions \\
+\midrule
+Fixed/adaptive dilution & Uniform fixed-cardinality prior; all remaining feasible-set dependence enters through counted membership queries; pathwise hard cap for adaptive protocols \\
+Trained specialization & Training, sampling, feedback, and final membership calls are counted jointly \\
+Expected-query form & Integer truncation with an explicit tail term; no substitution of $\mathbb{E}Q$ for a hard cap \\
+Posterior structure & One classical pre-search channel; conditional reference circuit independent of residual feasible-set uncertainty \\
+Classical advice & Advice support has cardinality at most $2^b$; $b$ is not mutual information \\
+Quantum advice & One accessible pre-search state of total dimension $d$; no refreshing or interactive provider \\
+Attribute-query RCSP & Explicit length-$K$ attribute array accessed only through counted quantum random access \\
+\bottomrule
+\end{tabularx}
+\end{table}

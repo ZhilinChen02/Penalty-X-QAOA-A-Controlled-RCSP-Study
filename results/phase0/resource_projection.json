@@ -1,0 +1,32 @@
+{
+  "active_penalty_contracts": [
+    "medium"
+  ],
+  "conservative_peak_process_rss_mb": 320.0,
+  "depths": [
+    1,
+    2,
+    3
+  ],
+  "estimated_canonical_csv_mb": 6.40869140625,
+  "estimated_incremental_numeric_arrays_mb": 64.0,
+  "estimated_total_disk_mb_without_statevectors": 9.259100914001465,
+  "eval_budget_per_run": 120,
+  "generated_task_json_mb": 0.8504095077514648,
+  "implementation_device": "CPU NumPy exact statevector (GPU not required or used)",
+  "largest_n_qubits": 19,
+  "largest_raw_complex128_statevector_mb": 8.0,
+  "largest_state_space_size": 524288,
+  "optimizer_seed_count": 5,
+  "phase1_penalty_x_run_count": 2625,
+  "raw_statevectors_persisted": false,
+  "timing_calibration": "affine fit to smoke seconds/evaluation = intercept + slope*(depth*qubit*state)",
+  "timing_fit_intercept_s_per_evaluation": 0.0008677320552211931,
+  "timing_fit_slope_s_per_depth_qubit_state": 9.333226051187797e-09,
+  "uniform_analytic_row_count": 175,
+  "wall_clock_central_hours_single_process": 3.7109269051167004,
+  "wall_clock_range_hours_single_process": [
+    1.8554634525583502,
+    18.554634525583502
+  ]
+}

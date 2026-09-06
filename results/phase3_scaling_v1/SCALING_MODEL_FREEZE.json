@@ -1,0 +1,357 @@
+{
+  "complexity_order": [
+    "M1",
+    "M2",
+    "M3",
+    "M4"
+  ],
+  "evidence_identity": "PREREGISTERED_EMPIRICAL_DILUTION_SCALING",
+  "holdout_qaoa_inspected": false,
+  "objectives": {
+    "O0": {
+      "coefficient_names": [
+        "eta"
+      ],
+      "cv_metrics": [
+        {
+          "aicc": -212.805081774701,
+          "cv_mae": 0.22418050572423773,
+          "cv_rmse": 0.3376916234050129,
+          "cv_rmse_se": 0.04825982154289315,
+          "model_id": "M1",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O0",
+          "one_se_threshold": 0.38595144494790606,
+          "selected": true,
+          "within_one_se": true
+        },
+        {
+          "aicc": -211.8180221500859,
+          "cv_mae": 0.23384082078573334,
+          "cv_rmse": 0.35052221564436337,
+          "cv_rmse_se": 0.049511666053849,
+          "model_id": "M2",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O0",
+          "one_se_threshold": 0.38595144494790606,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -211.11818794619353,
+          "cv_mae": 0.22661474814861968,
+          "cv_rmse": 0.3381498544399286,
+          "cv_rmse_se": 0.048001685280288454,
+          "model_id": "M3",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O0",
+          "one_se_threshold": 0.38595144494790606,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -210.34893352832998,
+          "cv_mae": 0.23530863129133162,
+          "cv_rmse": 0.35109611983514316,
+          "cv_rmse_se": 0.04914335805555728,
+          "model_id": "M4",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O0",
+          "one_se_threshold": 0.38595144494790606,
+          "selected": false,
+          "within_one_se": true
+        }
+      ],
+      "development_coefficients": {
+        "eta": 0.9734613723680208
+      },
+      "development_covariance": [
+        [
+          0.012103712138243397
+        ]
+      ],
+      "development_standard_errors": {
+        "eta": 0.11001687206171332
+      },
+      "formula": "Yc = -eta * Dc",
+      "model_selection_decision": "M1 is the simplest model within one standard error of minimum CV RMSE 0.337691623405",
+      "selected_model_id": "M1"
+    },
+    "O2": {
+      "coefficient_names": [
+        "eta"
+      ],
+      "cv_metrics": [
+        {
+          "aicc": -344.89802116065465,
+          "cv_mae": 0.1271592468825057,
+          "cv_rmse": 0.16922269047434993,
+          "cv_rmse_se": 0.019398802858179482,
+          "model_id": "M1",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O2",
+          "one_se_threshold": 0.18281580889342594,
+          "selected": true,
+          "within_one_se": true
+        },
+        {
+          "aicc": -343.668835167447,
+          "cv_mae": 0.1293398957509817,
+          "cv_rmse": 0.17347479009261818,
+          "cv_rmse_se": 0.019838285361606603,
+          "model_id": "M2",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O2",
+          "one_se_threshold": 0.18281580889342594,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -350.7679127215741,
+          "cv_mae": 0.12366103129001593,
+          "cv_rmse": 0.16427430306452073,
+          "cv_rmse_se": 0.0185415058289052,
+          "model_id": "M3",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O2",
+          "one_se_threshold": 0.18281580889342594,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -348.8979010755106,
+          "cv_mae": 0.12787277624779803,
+          "cv_rmse": 0.1694632691069293,
+          "cv_rmse_se": 0.019086024677826132,
+          "model_id": "M4",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O2",
+          "one_se_threshold": 0.18281580889342594,
+          "selected": false,
+          "within_one_se": true
+        }
+      ],
+      "development_coefficients": {
+        "eta": 0.6367995074008169
+      },
+      "development_covariance": [
+        [
+          0.0030573363873238916
+        ]
+      ],
+      "development_standard_errors": {
+        "eta": 0.05529318572232831
+      },
+      "formula": "Yc = -eta * Dc",
+      "model_selection_decision": "M1 is the simplest model within one standard error of minimum CV RMSE 0.164274303065",
+      "selected_model_id": "M1"
+    },
+    "O3": {
+      "coefficient_names": [
+        "eta"
+      ],
+      "cv_metrics": [
+        {
+          "aicc": -318.0900523637055,
+          "cv_mae": 0.1318500492682694,
+          "cv_rmse": 0.19390592635989706,
+          "cv_rmse_se": 0.02831654428262172,
+          "model_id": "M1",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O3",
+          "one_se_threshold": 0.2222224706425188,
+          "selected": true,
+          "within_one_se": true
+        },
+        {
+          "aicc": -318.60172619697005,
+          "cv_mae": 0.1349141142882325,
+          "cv_rmse": 0.19707774325317562,
+          "cv_rmse_se": 0.027532110478084862,
+          "model_id": "M2",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O3",
+          "one_se_threshold": 0.2222224706425188,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -318.89385571550906,
+          "cv_mae": 0.13348532036753835,
+          "cv_rmse": 0.19480412985590742,
+          "cv_rmse_se": 0.028435604394991824,
+          "model_id": "M3",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O3",
+          "one_se_threshold": 0.2222224706425188,
+          "selected": false,
+          "within_one_se": true
+        },
+        {
+          "aicc": -320.52999450146933,
+          "cv_mae": 0.13603960367062434,
+          "cv_rmse": 0.19806291430328338,
+          "cv_rmse_se": 0.02773573415224844,
+          "model_id": "M4",
+          "n_base_graphs": 16,
+          "n_rows": 96,
+          "objective": "O3",
+          "one_se_threshold": 0.2222224706425188,
+          "selected": false,
+          "within_one_se": true
+        }
+      ],
+      "development_coefficients": {
+        "eta": 0.650099252510852
+      },
+      "development_covariance": [
+        [
+          0.004042218804315189
+        ]
+      ],
+      "development_standard_errors": {
+        "eta": 0.06357844606716327
+      },
+      "formula": "Yc = -eta * Dc",
+      "model_selection_decision": "M1 is the simplest model within one standard error of minimum CV RMSE 0.19390592636",
+      "selected_model_id": "M1"
+    }
+  },
+  "schema_version": "phase3_scaling_v1.model_freeze.v1",
+  "selection_rule": "one_standard_error_choose_simplest",
+  "software_versions": {
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "platform": "Linux-4.18.0-553.139.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "python": "3.12.4 | packaged by Anaconda, Inc. | (main, Jun 18 2024, 15:12:24) [GCC 11.2.0]",
+    "scipy": "1.18.0"
+  },
+  "training_base_graph_ids": [
+    "g-0510569b7dbe24ff",
+    "g-22d56a3beb2cd856",
+    "g-275f626d73d8e8bd",
+    "g-2fd196f1ec0acd82",
+    "g-3973175f1911b646",
+    "g-3cf4bd3967c31b19",
+    "g-4baa18b9cb3958b8",
+    "g-5017fd274a1c10ec",
+    "g-595b062626366822",
+    "g-63a93cc8703f978f",
+    "g-6561c85f253791c6",
+    "g-8e75832e853cc6ea",
+    "g-c0fc2d5e7eacaffa",
+    "g-cd9098863d67a067",
+    "g-e7e26759e1ed20ef",
+    "g-f9e9faf277cb53e1"
+  ],
+  "training_row_count": 288,
+  "training_task_ids": [
+    "task-p3-07cdd1a1f394c642",
+    "task-p3-0a4af485d18a0ad5",
+    "task-p3-0aba913814f5b408",
+    "task-p3-0bf148a8545bb3da",
+    "task-p3-1293cd49b2f7317f",
+    "task-p3-17005ec889ac3a32",
+    "task-p3-1945829fa0700d95",
+    "task-p3-1bebe0fdf35e1111",
+    "task-p3-1d61a986ecef93ed",
+    "task-p3-1e07ffd5b6000802",
+    "task-p3-27a1403f5392965d",
+    "task-p3-29e2fa41ead6bf52",
+    "task-p3-2aa335d81a6c5b2a",
+    "task-p3-2e15b4f402c05649",
+    "task-p3-3085c55becb7a244",
+    "task-p3-309c66749a973b91",
+    "task-p3-354137ea30cee634",
+    "task-p3-367975b35905d665",
+    "task-p3-36fee5433e047900",
+    "task-p3-37baef352149cb65",
+    "task-p3-3bf9aa998655c1d6",
+    "task-p3-3c075f282cfb3fd5",
+    "task-p3-3d17acd5c2e5a10b",
+    "task-p3-3da056542192ad36",
+    "task-p3-40545d1e72d819c2",
+    "task-p3-430990bd4bb51ff0",
+    "task-p3-43c6ab33060f5bcf",
+    "task-p3-446eb3ddcbf65c5b",
+    "task-p3-486c7e857c1576e1",
+    "task-p3-49c4d5dae6a8f92a",
+    "task-p3-534079cbcb6aa71c",
+    "task-p3-544a26ce57064eff",
+    "task-p3-56c6c348117967f4",
+    "task-p3-570d4439775bbe3c",
+    "task-p3-5ff53b4412b3ab7a",
+    "task-p3-65c7a1b65ff60e55",
+    "task-p3-681084199b215be0",
+    "task-p3-6814312a4e36f3ab",
+    "task-p3-6afe15da00e4b23d",
+    "task-p3-6cba0807b5144d71",
+    "task-p3-6d8c1ca8f1cd0b67",
+    "task-p3-6e4d1f9f9dd178d7",
+    "task-p3-71a0a608986a513a",
+    "task-p3-72fdfc97535973f5",
+    "task-p3-742ad01cf4b5d731",
+    "task-p3-792beeb2f8a2ab19",
+    "task-p3-80b76edb78728176",
+    "task-p3-82aca830655428f2",
+    "task-p3-8464e365f66913a8",
+    "task-p3-87c2db0929de04c9",
+    "task-p3-8d8d0885533ef396",
+    "task-p3-8e9274e2ed3a6080",
+    "task-p3-9203110695eef505",
+    "task-p3-9332ee3dcfff4fa2",
+    "task-p3-a07c8b42ba6b3903",
+    "task-p3-a1690ae1e63fd0cb",
+    "task-p3-a16b2f751ccd76a6",
+    "task-p3-a4c941937da21328",
+    "task-p3-a5998f4aed640473",
+    "task-p3-aa18c0fe25b7a1f8",
+    "task-p3-aa28a19affb4eca6",
+    "task-p3-b12e7fb7d3bcb7e3",
+    "task-p3-b14747e889207fd9",
+    "task-p3-b1e8ffefbffe8436",
+    "task-p3-b36a74d436a6d25a",
+    "task-p3-b41b79df32f0fdb5",
+    "task-p3-b6a037038c8281f2",
+    "task-p3-b7c9af0733f91182",
+    "task-p3-b8e2da35bf423a1f",
+    "task-p3-ba6b71f64afcb032",
+    "task-p3-ba8f8a726d2a95e8",
+    "task-p3-bc9d9c5bdb69b31d",
+    "task-p3-bd261ddf18c10d04",
+    "task-p3-c0d5d0b8db783fa9",
+    "task-p3-c2b256f487cef0e9",
+    "task-p3-c3838972a3aa5aca",
+    "task-p3-c81637288d27101d",
+    "task-p3-caa0c0ea626868d3",
+    "task-p3-d68e836641aa0696",
+    "task-p3-dd568553252d555a",
+    "task-p3-e0c8183c0c2a1a94",
+    "task-p3-e3c4987cb4f420e6",
+    "task-p3-e41f24ea719a60d1",
+    "task-p3-e583c66df4316206",
+    "task-p3-e5b1288aa9c9bfcf",
+    "task-p3-e87d08a345aac418",
+    "task-p3-e8f743802f42a17f",
+    "task-p3-e9bcaf1b39a948a8",
+    "task-p3-eac9ec0e8d9747fc",
+    "task-p3-eba2c2d5b53b4e31",
+    "task-p3-ee4fc5c5e918e391",
+    "task-p3-f12b9c09c4ad922c",
+    "task-p3-f49c3edc31c95c96",
+    "task-p3-f7556266a069262a",
+    "task-p3-fa9bbbbc60ce0e0a",
+    "task-p3-ff25d52b46ff8fca"
+  ]
+}

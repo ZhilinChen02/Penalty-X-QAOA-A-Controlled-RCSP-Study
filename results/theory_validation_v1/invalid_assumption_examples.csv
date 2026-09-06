@@ -1,0 +1,5 @@
+example_id,construction,apparent_success,violated_assumption,status,hidden_resource
+F_DEPENDENT_INITIAL_GOOD_SUPERPOSITION,Prepare |G_F> directly and use q=0.,1.0,Initial state is independent of F.,OUTSIDE_THEOREM_CLASS,Knowledge and preparation of the marked set.
+F_DEPENDENT_UNITARY,Use a unitary V_F mapping |0> to one marked basis state.,1.0,All inter-query unitaries are independent of F.,OUTSIDE_THEOREM_CLASS,An F-dependent compiled operation.
+CLASSICALLY_ENUMERATED_F,"Enumerate F classically, then prepare a listed feasible item.",1.0,All information about F enters through counted phase queries.,OUTSIDE_THEOREM_CLASS,Uncounted classical enumeration and data loading.
+KNOWN_PREFIX_STRUCTURE,"For a known fixed-prefix feasible family, prepare the prefix and uniform suffix.",1.0,The feasible set is an unstructured unknown marked subset.,OUTSIDE_THEOREM_CLASS,A succinct structural description of F.

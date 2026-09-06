@@ -1,0 +1,13 @@
+depth,predictor,response,spearman_rho,n_tasks
+1,dilution_score,p_feas_median,-0.6353160091353228,56
+1,dilution_score,log_feasibility_gain_median,0.9235954364071594,56
+1,dilution_score,p_opt_median,-0.578303100692785,56
+1,dilution_score,p_opt_given_feasible_median,0.0498689223521601,56
+2,dilution_score,p_feas_median,-0.8671639433476588,56
+2,dilution_score,log_feasibility_gain_median,0.9423375322838905,56
+2,dilution_score,p_opt_median,-0.7971546910489935,56
+2,dilution_score,p_opt_given_feasible_median,-0.0232538716332631,56
+3,dilution_score,p_feas_median,-0.6196519946982008,56
+3,dilution_score,log_feasibility_gain_median,0.7606623255371832,56
+3,dilution_score,p_opt_median,-0.6222512634694264,56
+3,dilution_score,p_opt_given_feasible_median,-0.07384304664663047,56

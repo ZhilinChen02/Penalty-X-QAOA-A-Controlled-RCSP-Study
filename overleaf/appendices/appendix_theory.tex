@@ -1,0 +1,387 @@
+\section{Mathematical Proofs}
+\label{app:theory}
+
+This Online Resource records the formal results used to delimit the empirical
+interpretation. The search-theoretic core is established prior art; the exact
+posterior-projector presentation remains novelty-unresolved. These proofs have
+received a second machine audit, not independent human proof review.
+
+\subsection{Fixed-query phase-sensitive dilution}
+
+Let $\Omega=\{1,\ldots,N\}$ and let $\F$ be uniform over the size-$M$
+subsets of $\Omega$, with $\phi=M/N$. Define
+\begin{equation}
+  \Pi_{\F}=\sum_{x\in\F}|x\rangle\!\langle x|,
+  \qquad
+  Q_{\F}(\gamma)
+  =I+(e^{-i\gamma}-1)(\Pi_{\F}\otimes I_A),
+\end{equation}
+where $A$ is an arbitrary ancilla register.
+
+\begin{theorem}[Phase-sensitive average bound]
+Consider a normalized pure-state query algorithm
+\begin{equation}
+ |\psi_{\F}\rangle=
+ V_qQ_{\F}(\gamma_q)\cdots V_1Q_{\F}(\gamma_1)
+ V_0|\psi_{\mathrm{in}}\rangle,
+ \label{eq:fixed-query-algorithm}
+\end{equation}
+where the input, $V_t$, and $\gamma_t$ are independent of the particular
+$\F$. If
+\begin{equation}
+ P_{\F}=\langle\psi_{\F}|(\Pi_{\F}\otimes I_A)|\psi_{\F}\rangle,
+\end{equation}
+then
+\begin{equation}
+ \E_{\F}P_{\F}
+ \leq
+ \min\left\{1,
+ \left(1+\sum_{t=1}^{q}|e^{-i\gamma_t}-1|\right)^2\phi
+ \right\}.
+ \label{eq:phase-sensitive-bound}
+\end{equation}
+\label{thm:phase-sensitive}
+\end{theorem}
+
+\begin{proof}
+Replace every query in \cref{eq:fixed-query-algorithm} by the identity and let
+$|\varphi_t\rangle$ be the normalized reference state immediately before
+slot $t$. It is independent of $\F$. Write
+$|\varphi_t\rangle=\sum_x|x\rangle|\alpha_{t,x}\rangle$. Then
+\begin{align}
+ \E_{\F}\| (\Pi_{\F}\otimes I_A)|\varphi_t\rangle\|^2
+ &=\sum_x\Pr[x\in\F]\|\alpha_{t,x}\|^2\\
+ &=\frac{M}{N}\sum_x\|\alpha_{t,x}\|^2=\phi.
+ \label{eq:reference-overlap}
+\end{align}
+Let $c_t=|e^{-i\gamma_t}-1|$ and let $d_t(\F)$ be the Euclidean distance
+between actual and reference states after slot $t$ and the following
+$\F$-independent unitary. Inserting and subtracting the query applied to the
+reference state, and using unitarity, gives
+\begin{equation}
+ d_t(\F)\leq d_{t-1}(\F)
+  +c_t\|(\Pi_{\F}\otimes I_A)|\varphi_t\rangle\|.
+\end{equation}
+The $L^2(\F)$ triangle inequality (Minkowski) and
+\cref{eq:reference-overlap} therefore yield
+\begin{equation}
+  \|d_q\|_{L^2(\F)}\leq\sqrt{\phi}\sum_{t=1}^{q}c_t.
+\end{equation}
+The final identity-reference state is also independent of $\F$, so its
+average marked mass is $\phi$. Projection contractivity gives pointwise
+\begin{equation}
+ \sqrt{P_{\F}}
+ \leq\|(\Pi_{\F}\otimes I_A)|\varphi_{q+1}\rangle\|+d_q(\F).
+\end{equation}
+A second $L^2$ triangle inequality gives
+$\sqrt{\E P_{\F}}\leq(1+\sum_t c_t)\sqrt\phi$. Squaring the nonnegative sides
+and applying the probability cap proves \cref{eq:phase-sensitive-bound}.
+\end{proof}
+
+The proof is average over random fixed-cardinality subsets. It does not claim
+that every particular $\F$ has small overlap with every reference state.
+The cases $M=0$ and $M=N$ follow directly, and the cap retains a valid
+probability bound at all $q$.
+
+\subsection{Adaptive hard cap, training, and expected queries}
+
+For the phase-flip membership oracle $O_{\F}=I-2\Pi_{\F}$,
+$|e^{-i\pi}-1|=2$, so \cref{thm:phase-sensitive} immediately gives the
+coarse fixed-schedule form. The following explains the adaptive extension.
+
+\begin{proof}[Proof of the membership-only dilution theorem in the main article]
+Introduce registers for the query label, work space, classical transcript,
+random seed, discarded environment, halt flag, scratch query, and output.
+Replace each measurement/instrument by a Stinespring isometry and retain its
+outcome in an orthogonal transcript register. Purify classical randomness and
+make feed-forward coherently controlled on the transcript. Mixed initial
+states are covered by a purifying environment.
+
+Pad every branch to $q$ query slots. Once a branch halts, coherently swap an
+isolated scratch label into the query port, apply the ordinary oracle, and swap
+back. The scratch data never recouple to the output. Finally, reversibly copy
+the selected classical output label into a designated query register. The
+result is a pure $q$-slot algorithm with $\F$-independent interquery unitaries.
+
+For each slot, $\|(O_{\F}-I)|\varphi_t\rangle\|
+=2\|(\Pi_{\F}\otimes I)|\varphi_t\rangle\|$. The identity-reference
+calculation in \cref{eq:reference-overlap} and the same two Minkowski steps
+give
+\begin{equation}
+ \sqrt{\E P_{\mathrm{success}}}\leq(2q+1)\sqrt\phi.
+\end{equation}
+Squaring and capping at one proves the theorem. Orthogonal histories also
+cover early stopping and feed-forward. A history-controlled direct sum counts
+as one query slot only under this explicit controlled membership interface.
+\end{proof}
+
+The bit-query oracle
+$B_{\F}|x,b\rangle=|x,b\oplus\ind[x\in\F]\rangle$ obeys
+$B_{\F}-I=\Pi_{\F}\otimes(X-I)$ and $\|X-I\|=2$, so the same coarse theorem
+holds. If slot $t$ instead uses a history-controlled phase $\gamma_t(h)$, the
+phase-sensitive result holds with
+$c_t=\sup_h|e^{-i\gamma_t(h)}-1|$ under the corresponding counted direct-sum
+interface.
+
+If a training procedure satisfies the same membership-only premise, regard
+all training circuits, sampled outputs, optimizer transcripts, feedback, and
+the final circuit as one adaptive interaction. A deterministic pathwise cap
+\begin{equation}
+ q_{\mathrm{total}}=q_{\mathrm{training}}+q_{\mathrm{sampling}}
+ +q_{\mathrm{feedback}}+q_{\mathrm{final}}
+\end{equation}
+is substituted for $q$. Classical storage of a query-generated transcript
+does not erase its calls. Free explicit coefficients or rich cost values would
+instead define a stronger access model.
+
+\subsubsection{Expected-query truncation}
+\label{app:expected-query}
+
+Let $Q$ be a nonnegative integer-valued number of membership calls and let
+$\bar q=\E Q$, with the expectation covering the subset prior and internal
+randomness. For any deterministic integer $T\geq0$, convert executions with
+$Q>T$ into failures. The retained protocol has hard cap $T$, and Markov's
+inequality on the integer event gives
+\begin{equation}
+  \Pr(Q>T)=\Pr(Q\geq T+1)\leq\frac{\bar q}{T+1}.
+\end{equation}
+Therefore
+\begin{equation}
+ \E P\leq\min\left\{1,
+ \frac{\bar q}{T+1}
+ +\min\{1,(2T+1)^2\phi\}\right\}.
+ \label{eq:expected-query-truncation}
+\end{equation}
+This is the audited replacement for the invalid substitution
+$q=\E Q$ in the main article's hard-cap membership bound. If $Q$ is sampled independently
+before the interaction, conditioning additionally yields a bound in terms of
+$\E(2Q+1)^2$; that statement is not transferred to transcript-dependent
+stopping.
+
+\subsection{Raw-density counterexample and representation padding}
+
+\begin{proof}[Proof of the raw-density counterexample in the main article]
+Let
+$s=v_0\to v_1\to\cdots\to v_m=t$, assign objective cost and resource one to
+every edge, and set budget $m$. The only source--target path uses all $m$
+edges and is feasible and optimal. Exactly one of $2^m$ edge selections
+encodes it, so $\phistate=2^{-m}$. Starting from $s$, an adjacency-list
+algorithm follows the unique outgoing edge at each internal vertex, checks
+the additive totals, and writes the $m$ edge identifiers in $O(m)$ time.
+
+If constants $a,c>0$ satisfied both the algorithmic upper bound
+$T(I_m)\leq am+a$ and a purported universal lower bound
+$T(I_m)\geq c\phistate^{-1/2}=c2^{m/2}$, then
+$(am+a)/2^{m/2}\geq c$ for all $m$. The left side tends to zero, a
+contradiction for sufficiently large $m$.
+\end{proof}
+
+\begin{lemma}[Edge-subdivision representation padding]
+Let $I$ be an explicit directed RCSP instance with additive rational
+objective coefficients and nonnegative rational resource vectors. Replace one
+edge $e=(u,v)$ by a private serial path of $r\geq1$ edges, and assign each
+segment $1/r$ of every coefficient of $e$. Then routes are in bijection,
+feasibility and objective ordering are preserved, and
+\begin{equation}
+ \phistate(I^{(r)})=2^{-(r-1)}\phistate(I).
+\end{equation}
+\label{lem:padding}
+\end{lemma}
+
+\begin{proof}
+Every new internal vertex has indegree and outdegree one and is incident to no
+other edge. A path avoiding $e$ is unchanged. A path using $e$ expands to all
+$r$ segments, while any path entering the serial chain must traverse it and
+contracts uniquely to $e$. These maps are mutual inverses.
+
+For a route using $e$, the new contribution is
+$\sum_{k=1}^{r}c_e/r=c_e$ and likewise
+$\sum_{k=1}^{r}a_{e,j}/r=a_{e,j}$ for every resource $j$. Hence paired route
+totals, feasibility, objective comparisons, and tied optima are identical.
+The number of valid feasible route bitstrings is unchanged, while the raw
+edge-bit denominator gains $r-1$ binary variables and hence a factor
+$2^{r-1}$.
+
+If a rational coefficient is represented in lowest terms as $p/q$, the
+unreduced segment coefficient is $p/(qr)$. Its binary encoding grows by at
+most $\lceil\log_2r\rceil+O(1)$. The explicit topology still contains $r$
+segments and $r-1$ vertices, so its listing and route-output overhead is
+$\Theta(r)$ rather than $O(\log r)$.
+\end{proof}
+
+\subsection{Explicit-attribute-query RCSP}
+
+\begin{proof}[Proof of the explicit-attribute-query RCSP theorem in the main article]
+Let the known topology contain $K$ two-edge branches
+$P_i:s\to u_i\to t$. The first edge of each branch has resource one. The
+second has resource one when $z_i=1$ and two when $z_i=0$. With budget two,
+\begin{equation}
+  P_i\text{ is feasible}\quad\Longleftrightarrow\quad z_i=1.
+\end{equation}
+Equal fixed objective costs leak no marked index. One branch-feasibility check
+uses exactly one query to the attribute oracle defined in the main article, and conversely the
+feasibility bit is $z_i$. Finding any feasible route is thus multiple-marked
+search over $K$ labels with $M$ marks.
+
+For a uniform size-$M$ array, the membership-only dilution theorem gives
+\begin{equation}
+ \E_zP_{\mathrm{success}}\leq
+ \min\left\{1,(2q+1)^2\frac{M}{K}\right\}.
+\end{equation}
+Average target success $\tau$ requires
+$q\geq\tfrac12(\sqrt{\tau K/M}-1)$. A uniform worst-case guarantee implies
+the same average lower bound. In the nontrivial regime $M/K<\tau$, integrality
+converts this to $\Omega_\tau(\sqrt{K/M})$. A uniform superposition over
+branches plus amplitude amplification uses $O(\sqrt{K/M})$ attribute queries,
+giving the matching upper bound.
+
+When $M/K\geq\tau$, a zero-query uniformly random branch already achieves the
+target, so the unqualified all-$M$ expression would be false. For exact
+success, the order holds for $1\leq M<K$, and $M=K$ needs zero queries. The
+input contains $\Theta(K)$ attribute cells and graph entries; no compact
+$O(\log K)$ input or RAM-time result is asserted.
+\end{proof}
+
+\subsection{Posterior structure and finite classical advice}
+
+Condition on a supported advice value $S=s$ and define
+$\overline\Pi_s$, $\lambda_s$, and $\Lambda(S)$ as in the main article.
+
+\begin{lemma}[Posterior projector]
+For every supported $s$,
+\begin{equation}
+ \operatorname{Tr}\overline\Pi_s=M,
+ \qquad
+ \lambda_s=\max_x\Pr[x\in\F\mid S=s],
+ \qquad
+ \phi\leq\lambda_s\leq1.
+\end{equation}
+\label{lem:posterior-projector}
+\end{lemma}
+
+\begin{proof}
+$\overline\Pi_s$ is diagonal in the label basis and its $x$th diagonal entry
+is the posterior inclusion probability. Its trace is the conditional
+expectation of $|\F|=M$. The maximum of $N$ nonnegative entries summing to $M$
+is at least $M/N$, and every inclusion probability is at most one.
+\end{proof}
+
+\begin{proof}[Proof of the posterior structure theorem in the main article]
+Fix $s$. Purify measurements, randomness, discarded data, feed-forward, and
+early stopping as above. Every identity-oracle reference state
+$|\psi_s\rangle$ may depend on $s$ but is independent of the residual
+uncertainty in $\F$ conditional on $s$. Consequently,
+\begin{align}
+ &\E[\langle\psi_s|(\Pi_{\F}\otimes I)|\psi_s\rangle\mid S=s]\\
+ &\qquad=\langle\psi_s|(\overline\Pi_s\otimes I)|\psi_s\rangle
+ \leq\lambda_s.
+ \label{eq:posterior-reference}
+\end{align}
+Repeating the two conditional $L^2(\F\mid s)$ Minkowski steps with per-slot
+phase coefficient $c_t(s)$ gives
+\begin{equation}
+ \E[P\mid S=s]
+ \leq\min\left\{1,
+ \left(1+\sum_{t=1}^{q}c_t(s)\right)^2\lambda_s\right\}.
+ \label{eq:posterior-conditional}
+\end{equation}
+Averaging the already capped conditional expression is valid. Since
+$c_t(s)\leq2$ and probabilities are at most one,
+\begin{align}
+ \E P
+ &\leq\E_S\!\left[\min\{1,(2q+1)^2\lambda_S\}\right]\\
+ &\leq\min\{1,(2q+1)^2\Lambda(S)\}.
+\end{align}
+The cap is not moved through expectation in the phase-dependent statement;
+the displayed hard-cap form is its valid coarser consequence.
+\end{proof}
+
+\begin{lemma}[Finite advice alphabet]
+If $|\supp S|\leq2^b$, then
+\begin{equation}
+ \Lambda(S)\leq\min\{1,2^b\phi\}.
+\end{equation}
+\label{lem:finite-advice}
+\end{lemma}
+
+\begin{proof}
+For each supported $s$, choose
+$x_s\in\arg\max_x\Pr[x\in\F\mid S=s]$. Then
+\begin{align}
+ \Lambda(S)
+ &=\sum_s\Pr(S=s)\Pr(x_s\in\F\mid S=s)\\
+ &=\sum_s\Pr(S=s,x_s\in\F)\\
+ &\leq\sum_s\Pr(x_s\in\F)
+ =|\supp S|\phi\leq2^b\phi.
+\end{align}
+Duplicate maximizing labels merely repeat a marginal term in an upper bound;
+they may loosen, but cannot invalidate, the inequality. The cap by one follows
+from $\lambda_s\leq1$.
+\end{proof}
+
+Combining the posterior structure theorem in the main article with
+\cref{lem:finite-advice} proves the finite-advice inequality stated there. If
+target success is $\tau>0$, a necessary integer
+condition is
+\begin{equation}
+ b\geq\max\left\{0,
+ \left\lceil\log_2\frac{\tau}{(2q+1)^2\phi}\right\rceil\right\}.
+\end{equation}
+For $b_{\mathrm{eff}}=\log_2(\Lambda/\phi)$ and
+$K_{\mathrm{eff}}=M/\Lambda$,
+\begin{equation}
+ 0\leq b_{\mathrm{eff}}\leq\log_2(1/\phi),\quad
+ M\leq K_{\mathrm{eff}}\leq N,\quad
+ \frac{N}{K_{\mathrm{eff}}}=2^{b_{\mathrm{eff}}}.
+\end{equation}
+The target conditions
+\begin{equation}
+ b_{\mathrm{eff}}+2\log_2(2q+1)\geq\log_2(\tau/\phi),
+ \qquad
+ K_{\mathrm{eff}}\leq\frac{(2q+1)^2M}{\tau}
+\end{equation}
+are necessary only. A candidate set of size $K$ gives
+$\lambda_s=M/K$ only when the conditional posterior is uniform over size-$M$
+subsets of that candidate set.
+
+\subsection{One-shot finite-dimensional quantum advice}
+
+% CLAIM: C-T10
+For completeness, the audited extension covers one pre-search advice state,
+not a refreshed or interactive structure provider.
+
+\begin{proposition}[One-shot quantum-advice dimension bound]
+Suppose one $\F$-dependent density operator $\rho_{\F}$ on a total accessible
+advice register of Hilbert-space dimension $d$ is supplied before an otherwise
+membership-only fixed-query interaction. Then
+\begin{equation}
+ \E P_{\mathrm{success}}
+ \leq\min\left\{1,
+ \left(1+\sum_t c_t\right)^2d\phi\right\},
+\end{equation}
+and hence the coarse hard-cap factor is $(2q+1)^2d\phi$.
+\label{prop:quantum-advice}
+\end{proposition}
+
+\begin{proof}
+For an $\F$-independent trace-preserving reference channel $A$ acting before a
+query, $\rho_{\F}\preceq I_d$ implies
+\begin{align}
+ \E_{\F}\operatorname{Tr}[(\Pi_{\F}\otimes I)A(\rho_{\F})]
+ &\leq\E_{\F}\operatorname{Tr}[(\Pi_{\F}\otimes I)A(I_d)]\\
+ &=\phi\operatorname{Tr}A(I_d)=d\phi.
+\end{align}
+A canonical purification of each $\rho_{\F}$ preserves the marked projected
+norm; an inaccessible purifying reference does not enlarge the counted advice
+dimension. The phase-sensitive hybrid proof then replaces the reference
+overlap $\phi$ by $d\phi$. Multiple simultaneously supplied advice registers
+count by their joint accessible dimension.
+\end{proof}
+
+Mixed advice and entanglement with an inaccessible purifier are included.
+Fresh copies, repeatedly refreshed advice, and an interactive
+$\F$-dependent provider are outside \cref{prop:quantum-advice}.
+
+The assumptions and corresponding interpretation boundaries are consolidated
+in \cref{tab:proof-assumptions}.
+\input{tables/tableS4_proof_assumptions.tex}

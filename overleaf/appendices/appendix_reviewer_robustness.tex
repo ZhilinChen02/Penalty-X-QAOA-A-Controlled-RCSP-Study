@@ -1,0 +1,174 @@
+\section{Reviewer-Robustness Experiments}
+\label{app:reviewer-robustness}
+
+All studies in this Online Resource section are post-hoc robustness or sensitivity analyses.
+Their task selections, seeds, factors, and output paths were frozen before
+formal execution, and no result changes the original 56-task discovery set,
+84-task held-out set, $\alpha=0.10$ selection, or preregistered H1/H2 family.
+An audit confirmed that the original Phase-2 inference already aggregates
+tasks within base graph, bootstraps whole graph units, applies graph-level
+sign flips, and uses the frozen Holm correction. It therefore requires no
+pseudo-replication correction. New intervals below likewise aggregate paired
+task effects within graph and resample graphs with equal weight.
+
+The complete protocol grid is listed in \cref{tab:reviewer-protocols}.
+\input{tables/tableS6_reviewer_protocols.tex}
+
+\FloatBarrier
+\subsection{Optimizer Robustness}
+
+The formal matrix contains 2,016 runs: 56 tasks, three seeds, two depths, two
+objectives, and three local optimizers. Each run has a strict cap of 120
+actual objective calls. Wrapper and SciPy counts agree on every one of the
+1,512 runs for which SciPy returns an \texttt{nfev}; the 504 SLSQP runs stop
+at the wrapper cap while numerical finite differences are being evaluated, so
+the absent SciPy terminal count is retained as missing rather than imputed.
+Termination status, message, iteration count, wall time, and both counters are
+stored per run.
+
+Nested failures occur in both O0 and O3 under every optimizer
+(\cref{tab:reviewer-optimizer}). The dual-PASS restriction then retains only
+task--seed pairs for which neither arm has a positive signed nested regret
+above $10^{-10}$. The positive graph intervals and frequent O0
+lower-energy/lower-feasibility pairs persist in that restricted population.
+The post-hoc COBYLA/O0 count of 28/168 is a separately frozen strict-cap
+rerun, not a redefinition of the historical 29/168 observation, which remains
+unchanged.
+This supports empirical separation of optimizer inadequacy and objective
+misalignment under the diagnostic, not a universal statement about either
+optimizer or loss landscape.
+
+\input{tables/table08_reviewer_optimizer.tex}
+
+\Cref{fig:reviewer-optimizer} visualizes the failure rates and PASS-only
+effects.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig13_reviewer_optimizer_robustness.pdf}
+  \caption{Optimizer robustness. Nested-failure rates are shown separately
+  for O0 and O3; paired graph-level O3-minus-O0 feasibility effects are
+  evaluated on runs passing both diagnostics. All configurations use the same
+  120-call resource unit, but the figure is not an optimizer leaderboard}
+  \label{fig:reviewer-optimizer}
+\end{figure}
+
+\FloatBarrier
+\subsection{CVaR Tail-Fraction Sensitivity}
+
+The discovery scan completes 1,008/1,008 planned runs with no failed records.
+The response peaks at the historically frozen $\alpha=0.10$ in the
+equal-weight graph mean, but the nearby 0.05 and 0.25 responses differ by only
+$-0.0386$ and $-0.0329$ decades; both graph-cluster intervals for these
+differences include zero. By contrast, the optimized response is not assumed
+to interpolate monotonically, and 54/56 task trajectories are non-monotone.
+Additional held-out scans at $\alpha=0.05,0.25,0.50,1.00$ are labelled
+\texttt{POST\_HOC\_SENSITIVITY}; none is used to select a new primary tail
+fraction.
+
+The $\alpha=1$ control covers 222 executed discovery and post-hoc held-out
+cells and gives a maximum direct objective discrepancy of
+$2.42\times10^{-13}$ from mean energy. For the 168 discovery cells matched to
+the closest historical O0 control, task, depth, seed, exact embedded-$p=2$
+initial parameters, nominal budget, optimizer family, initial trust-region
+radius, and constraint tolerance agree. The initial objective discrepancy is
+at most $2.02\times10^{-13}$. The historical and post-hoc wrappers and SciPy
+versions differ, however, and complete comparable trajectories were not
+persisted; their terminal parameters need not coincide. This audit therefore
+validates objective equivalence only.
+
+\Cref{tab:reviewer-alpha} reports the numerical tail-fraction summary.
+\input{tables/tableS8_alpha_sensitivity.tex}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig14_reviewer_alpha_sensitivity.pdf}
+  \caption{Post-hoc tail-fraction sensitivity. Discovery task summaries and
+  equal-weight graph effects are displayed across the frozen grid. The curve
+  is allowed to be non-monotone; $\alpha=0.10$ remains the sole confirmatory
+  choice used in the original held-out family}
+  \label{fig:reviewer-alpha}
+\end{figure}
+
+\FloatBarrier
+\subsection{Depth--Budget Ablation}
+
+The 24 tasks were selected using graph, size, feasible fraction, and dilution,
+without reference to O0/O3 outcomes. The formal run stores one deterministic
+480-call trajectory only after a smoke gate confirmed that its first 120 and
+240 objective calls match separately capped runs exactly. Each reported
+checkpoint is the best evaluated incumbent in that genuine prefix, rather
+than necessarily the solver's last evaluated point.
+
+\input{tables/tableS7_depth_budget.tex}
+
+The failure-rate direction and aggregation were independently audited. All 16
+structural checks passed, and 24 stratified PASS/FAIL cases were recomputed
+from their saved parameters. Maximum absolute discrepancies were
+$1.55\times10^{-15}$ for the deeper objective,
+$2.22\times10^{-16}$ for the embedded objective, and
+$1.42\times10^{-15}$ for signed regret; both embedding identities were exact
+at stored precision. The licensed conclusion is limited to the tested subset,
+COBYLA, O0/O3, depths, seeds, and budgets: increasing the tested classical
+evaluation budget did not monotonically reduce certified nested-ansatz
+failures. The positive $p=4-p=3$ feasibility effects in
+\cref{tab:reviewer-depth-budget} show why that
+diagnostic must not be conflated with final-state quality.
+
+\FloatBarrier
+\subsection{Finite-Shot Estimation}
+
+The all-held-out fixed-endpoint protocol and its 20 replicates per cell are
+detailed in \cref{app:finite-shot}. A separate outcome-blind 18-task subset
+uses 50 sampling seeds to cross
+$\alpha\in\{0.02,0.05,0.10,0.25,0.50\}$ with
+$N_{\rm shots}\in\{10^3,10^4,10^5\}$. The mean of the separately computed
+O0 and O3 CVaR-0.10 RMSE values falls from 0.04839 to 0.01570 and 0.00486 as
+shots increase. The heat map in \cref{fig:reviewer-alpha-shots} shows the larger
+sampling cost of more aggressive lower tails. No quantum optimization is
+rerun for this estimator analysis.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.92\textwidth]{fig16_reviewer_alpha_shots.pdf}
+  \caption{CVaR estimator robustness across tail fraction and shot count on
+  fixed exact-trained endpoints. Cells report sampling error, not retrained
+  circuit quality. Smaller tails generally require more shots for comparable
+  precision}
+  \label{fig:reviewer-alpha-shots}
+\end{figure}
+
+\FloatBarrier
+\subsection{Finite-Shot Training}
+\label{app:reviewer-finite-shot}
+
+The finite-shot training matrix completes 200/200 runs with no failed records.
+Each objective evaluation uses a fresh reproducible sample; final parameters
+are evaluated exactly. The two shot-trained point estimates preserve the
+exact O3-minus-O0 direction, but both graph-cluster intervals cross zero
+(\cref{tab:reviewer-finite-training}). The 10,000-shot condition has positive
+effects on eight of ten graphs, compared with six of ten at 1,000 shots and
+nine of ten for matched exact training. This is mixed evidence about noisy
+training and stronger evidence about fixed-endpoint estimation; it is not a
+hardware or device-noise experiment.
+
+\input{tables/tableS9_finite_shot_training.tex}
+
+The main article's robustness figure displays these graph intervals and
+terminal-state distributions; the complete numerical matrix remains in
+\cref{tab:reviewer-finite-training}.
+
+\FloatBarrier
+\subsection{Classical RCSP Context}
+
+An instrumented exact label-setting solver reproduces the frozen optimum on
+140/140 canonical tasks. Across repeated high-resolution solves, the median,
+95th-percentile, and maximum per-task medians are 50.0, 95.4, and
+188.1 microseconds; generated-label counts have median 13 and maximum 30.
+These small descriptive values confirm the intended context: the instances
+are classically tractable mechanism probes. They do not define a
+quantum--classical runtime comparison.
+
+\Cref{tab:reviewer-classical} gives the compact classical-solver summary.
+\input{tables/tableS10_classical_context.tex}
+
+\FloatBarrier

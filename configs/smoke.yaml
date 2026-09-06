@@ -1,0 +1,32 @@
+experiment_name: smoke
+master_seed: 20260827
+instances_per_cell: 2
+quantile_method: lower
+
+size_strata:
+  S1:
+    target_n_edges: 7
+    layer_widths: [1, 2, 2, 1]
+  S2:
+    target_n_edges: 10
+    layer_widths: [1, 2, 2, 2, 1]
+
+tightness_levels:
+  T1: 1.00
+  T4: 0.50
+  T7: 0.00
+
+qaoa:
+  depths: [1]
+  optimizer_seeds: [1103, 2207]
+  optimizer: COBYLA
+  eval_budget: 48
+  timeout_s: 60
+  max_qubits: 12
+  flow_penalty_strength: 50.0
+  resource_penalty_strength: 20.0
+  active_penalty_contracts: [medium]
+  penalty_contracts:
+    weak: {flow_penalty_strength: 12.5, resource_penalty_strength: 5.0}
+    medium: {flow_penalty_strength: 50.0, resource_penalty_strength: 20.0}
+    strong: {flow_penalty_strength: 200.0, resource_penalty_strength: 80.0}

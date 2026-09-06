@@ -1,0 +1,44 @@
+\section{Scope of the Dilution Interpretation}
+\label{sec:theory}
+
+Raw edge-bit feasible density is not intrinsic RCSP hardness. An explicit
+$m$-edge directed chain has one route and hence $\phistate=2^{-m}$, yet its
+solution is read in $O(m)$ time. Subdividing an edge similarly changes the
+encoding statistic while preserving route order and optima:
+\begin{equation}
+ \phistate(I^{(r)})=2^{-(r-1)}\phistate(I).
+ \label{eq:padding}
+\end{equation}
+Thus $\phistate$ is operationally relevant to the tested full-space encoding,
+but does not alone imply an explicit-input lower bound; graph-query conclusions
+depend on representation and access \cite{durr2006graph,galperin1983succinct}.
+
+A narrower statement applies when the only unknown-set information is a
+counted membership query. For a uniformly random size-$M$ marked subset of an
+$N$-label domain, a protocol with a pathwise hard cap of $q$ such queries
+satisfies
+\begin{equation}
+ \mathbb E_{\mathcal F}P_{\rm success}
+ \leq \min\{1,(2q+1)^2M/N\}.
+ \label{eq:membership-bound}
+\end{equation}
+Training and feedback queries count if they use that interface. This is an
+average-case oracle statement, not a pointwise claim for every natural
+feasible set. The membership-query arguments adapt standard Grover/BBBV-style
+search bounds \cite{bennett1997strengths,boyer1998tight,zalka1999optimal,
+hoyer2000arbitrary,brassard2002amplitude} and are used here to delimit the
+information-access model rather than as a claim of a new generic quantum-
+search lower bound.
+
+The experiment exposes the full multilevel RCSP energy, and CVaR uses its
+ordering and weights. The membership-only bound therefore does not lower-bound
+the rich-energy O3 experiment. Candidate lists, advice, warm starts, feasible-
+state loaders, oracles, and structured mixers also change the accessible
+information. Search-with-advice results make this dependence explicit
+\cite{montanaro2010advice,he2021prior,nayebi2015inverting,
+chung2020advice,konig2009entropy,anderson2024easier}. Such structure can reduce
+the search-space burden while relocating cost into preprocessing, information
+storage, state preparation, mixer or oracle construction, validation, and
+reuse. Full theorem statements, assumptions, boundary cases, proofs,
+posterior/advice formulations, and counterexamples are in Online Resource~1,
+Sec.~S1.

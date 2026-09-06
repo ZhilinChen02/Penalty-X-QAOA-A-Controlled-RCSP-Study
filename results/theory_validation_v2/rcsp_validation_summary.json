@@ -1,0 +1,7 @@
+{
+  "bijection_failures": 0,
+  "mapping_failures": 0,
+  "primary_verdict": "ORACLE_RCSP_ONLY",
+  "rich_cost_oracle": "RICH_COST_ORACLE_EXTENSION_OPEN",
+  "small_case_rows": 15
+}

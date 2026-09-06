@@ -1,0 +1,69 @@
+experiment_name: phase1_1_optimization_diagnostic
+pre_run_git_sha: 96d6dc6b2d9d14d9df7cb6fd3a54a8364ba435f9
+source_pilot_manifest: data/manifests/phase1_pilot_v1.json
+source_pilot_results: results/phase1_pilot_v1/master_seed_level_results.csv
+source_pilot_config: configs/phase1_pilot_v1.yaml
+expected_task_count: 56
+expected_p2_seed_rows: 168
+expected_original_p3_seed_rows: 168
+
+penalty_contract: penalty_contract_v2_scale_controlled
+hamiltonian_normalization_mode: global_fixed
+hamiltonian_normalization_factor: 172.0
+qaoa_objective: expected_normalized_hamiltonian_energy
+qaoa_parameter_order: gammas_then_betas
+
+identity_tolerance: 1.0e-10
+comparison_tolerance: 1.0e-10
+
+continuation:
+  optimizer: COBYLA
+  depth: 3
+  eval_budget: 120
+  cobyla_rhobeg: 0.5
+  cobyla_catol: 1.0e-8
+  timeout_s: 1800
+  initial_layer_rule: append_gamma_3_zero_and_beta_3_zero
+
+budget_scaling:
+  seed_selection: minimum_frozen_p2_objective_final
+  multipliers: [1, 2, 4]
+  budgets: [120, 240, 480]
+  independent_restarts_from_same_embedded_p2_point: true
+  reuse_b1_continuation: true
+  timeout_s_by_budget:
+    120: 1800
+    240: 3600
+    480: 7200
+
+optimizer_control:
+  optimizer: Nelder-Mead
+  eval_budget: 120
+  xatol: 1.0e-8
+  fatol: 1.0e-8
+  adaptive: false
+  timeout_s: 1800
+  seed_selection: minimum_frozen_p2_objective_final
+
+response_slice:
+  representative_rule: first_base_graph_per_size_then_least_median_most_diluted
+  grid_size: 41
+  gamma3_interval: [-3.141592653589793, 3.141592653589793]
+  beta3_interval: [-1.5707963267948966, 1.5707963267948966]
+  interval_rationale: symmetric_zero_centered_windows_with_same_width_as_phase1_initialization_domains
+  earlier_layers: frozen_objective_best_p2
+
+execution:
+  max_workers: 8
+  response_slice_max_workers: 4
+  worker_blas_threads: 1
+  raw_statevectors_persisted: false
+  full_phase1_expansion_authorized: false
+  warm_start_authorized: false
+
+immutable_paths:
+  - results/phase1_pilot_v1
+  - results/phase0
+  - results/phase0_v2_dilution_stress
+  - results/smoke
+  - data/manifests/phase1_pilot_v1.json

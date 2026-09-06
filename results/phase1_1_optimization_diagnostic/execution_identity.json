@@ -1,0 +1,17 @@
+{
+  "config_sha256": "4125a14ecf0cf9f70644007cd1634ecf6f1e07fa3cd07fca5698b5513f958820",
+  "immutable_evidence_hash_manifest": "results/phase1_1_optimization_diagnostic/immutable_evidence_sha256.json",
+  "immutable_file_count": 49,
+  "original_p3_seed_rows": 168,
+  "p2_seed_rows": 168,
+  "pilot_manifest_sha256": "b27089081b6e298956b6a6c192053c5cdfdac06280d440d3c5549fe8237349de",
+  "pilot_master_results_sha256": "2547acd1e1d54a5eadc295ab6f2bcd022039fbd4e45b82a0cb354c0d24adc0b2",
+  "planned_new_optimization_runs": {
+    "budget_b2_b4": 112,
+    "continuation_b1": 168,
+    "nelder_mead_b1": 56,
+    "total": 336
+  },
+  "pre_run_git_sha": "96d6dc6b2d9d14d9df7cb6fd3a54a8364ba435f9",
+  "task_count": 56
+}

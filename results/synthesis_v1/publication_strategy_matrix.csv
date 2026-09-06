@@ -1,0 +1,4 @@
+option,description,scientific_coherence,novelty_defensibility,evidence_maturity,reviewer_risk,venue_fit,manuscript_length,proof_burden,empirical_burden,artifact_clarity,chance_of_overclaim,favorable_total,recommendation,rationale
+A_INTEGRATED,One theory plus explicit-RCSP plus empirical case-study paper,3,2,4,2,2,1,2,3,2,1,22,NOT_PRIMARY,"Broad but combines different access models, unresolved theory priority and a long empirical chain."
+B_TWO_PAPER_SPLIT,Separate theory and empirical papers,4,2,3,3,3,4,2,4,4,4,33,CONTINGENCY,"Cleaner separation, but the theory manuscript is not defensible until independent proof and prior-art review resolve contribution priority."
+C_EMPIRICAL_PRIMARY,Empirical RCSP objective-alignment paper with scoped search theory and structure taxonomy as boundaries,5,4,5,4,5,4,4,4,5,5,45,PRIMARY,Centers the preregistered result and mechanistic evidence while using theory conservatively without depending on unresolved priority.

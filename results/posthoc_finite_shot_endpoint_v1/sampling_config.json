@@ -1,0 +1,30 @@
+{
+  "cvar_alpha": 0.1,
+  "depth": 3,
+  "empirical_cvar": "mean of the lowest alpha*N sampled normalized-Hamiltonian energies; a fractional final order statistic is weighted if alpha*N is noninteger",
+  "evidence_label": "POSTHOC_FINITE_SHOT_ENDPOINT_ROBUSTNESS",
+  "finite_shot_training": false,
+  "hardware_noise_model": false,
+  "objectives": [
+    "O0",
+    "O3"
+  ],
+  "optimizer_invoked": false,
+  "raw_samples_persisted": false,
+  "raw_statevectors_persisted": false,
+  "replicates_per_task_objective_shot_count": 20,
+  "requested_tail_counts": {
+    "1000": 100,
+    "10000": 1000,
+    "100000": 10000
+  },
+  "schema_version": "posthoc_finite_shot_endpoint_v1.sampling.v1",
+  "scientific_role": "POSTHOC_ROBUSTNESS_ONLY",
+  "seed_derivation": "uint64(first 8 bytes SHA256('POSTHOC_FINITE_SHOT_ENDPOINT_ROBUSTNESS|v1|<task_id>|<objective>|<shots>|<replicate>'))",
+  "shot_counts": [
+    1000,
+    10000,
+    100000
+  ],
+  "task_selection": "all 84 held-out tasks; no result-dependent selection"
+}

@@ -1,0 +1,13 @@
+{
+  "complete_before_tail_rebalancing": 966,
+  "execution_code_fingerprint": "623e42097292a26032959f6f8e7b3e7727d30efbdea743940336438e888777e8",
+  "failed_runs_after_rebalancing": 0,
+  "formal_discovery_runs_after_rebalancing": 1008,
+  "missing_runs_before_tail_rebalancing": 42,
+  "records_completed_by_tail_rebalancing": 42,
+  "scheduling_only": true,
+  "scientific_choices_changed": false,
+  "strategy": "After 53/56 discovery tasks were complete, resolve the 42 missing frozen run IDs and split each of the three remaining task-local alpha/seed lists into two seven-run chunks for six workers.",
+  "task_selection_changed": false,
+  "worker_chunks": 6
+}

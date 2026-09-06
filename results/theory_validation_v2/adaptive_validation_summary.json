@@ -1,0 +1,10 @@
+{
+  "master_seed": 2765389394,
+  "maximum_coarse_residual": 2.220446049250313e-16,
+  "maximum_equivalence_difference": 5.551115123125783e-16,
+  "maximum_hybrid_recursion_residual": 0.0,
+  "maximum_phase_residual": 2.220446049250313e-16,
+  "protocols": 528,
+  "subset_evaluations": 12960,
+  "violations": 0
+}

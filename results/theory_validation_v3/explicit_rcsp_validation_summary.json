@@ -1,0 +1,7 @@
+{
+  "construction_failures": 0,
+  "lower_bound_proof_source": "analytic reduction, not numerical validation",
+  "padding_rows": 7,
+  "parallel_branch_rows": 30,
+  "unique_chain_rows": 40
+}

@@ -1,0 +1,121 @@
+\section{Additional Interpretation and Literature Material}
+\label{app:context-material}
+
+This section relocates detailed visual and tabular context from the main
+article. It introduces no additional analysis and changes no experimental or
+theoretical claim.
+
+\subsection{Theory access and cost-accounting diagrams}
+
+\Cref{fig:theory-scope,fig:cost-relocation} delineate the access models and
+resource categories summarized in \cref{tab:theory-scope}.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig09_theory_scope.pdf}
+  \caption{Access-model boundary. Raw edge-bit density is an encoding
+  statistic. A membership-only barrier applies only after all remaining
+  feasible-set information is charged to membership queries. Structure or
+  advice changes the posterior or invokes a stronger access interface whose
+  implementation costs must be recorded}
+  \label{fig:theory-scope}
+\end{figure}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig10_structure_cost_relocation.pdf}
+  \caption{Structure-cost relocation. Filled cells identify resource
+  categories associated with each method, not measured magnitudes. The
+  diagram is an accounting taxonomy rather than a runtime comparison}
+  \label{fig:cost-relocation}
+\end{figure}
+
+\input{tables/table06_theory_scope.tex}
+
+\subsection{Related-work comparison matrices}
+
+All works in \cref{tab:related-work-design,tab:related-work-validation} are
+cited and discussed in the Related Work section of the main article; full
+bibliographic details are in its reference list.
+
+\input{tables/table07_related_work.tex}
+
+\subsection{Objective-discovery visualization}
+
+\Cref{fig:objective-discovery} displays the exploratory objective comparison.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig05_objective_discovery.pdf}
+  \caption{Objective discovery on 56 tasks. \textbf{a}, feasibility gain under
+  four classical losses applied to the same $p=3$ ansatz. \textbf{b}, paired
+  contrasts against O0; horizontal segments mark medians. O2 is an exact-
+  feasibility capacity control, not a deployable method. This figure is
+  exploratory and was used to select O3 before held-out analysis}
+  \label{fig:objective-discovery}
+\end{figure}
+
+\subsection{Mean-energy/feasibility mismatch}
+
+\Cref{fig:objective-misalignment} gives the detailed decomposition moved from
+the main article.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig04_objective_misalignment.pdf}
+  \caption{Mean energy and feasible mass are distinct targets. \textbf{a},
+  paired original-minus-continuation differences. \textbf{b}, median energy-
+  component differences. \textbf{c}, median state-class mass differences}
+  \label{fig:objective-misalignment}
+\end{figure}
+
+\subsection{Size-conditioned response visualization}
+
+\Cref{fig:scaling} retains the split visualization while the main article
+reports only the reversal and censoring boundaries.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig08_scaling_response.pdf}
+  \caption{Graph-level response exponents from protocol-defined splits. Small
+  points are graphs, diamonds are split means, and the dashed line marks
+  uniform-state response $\eta=1$. The $m=22$ column is administratively
+  censored under the preregistered computational budget; no outcome or
+  extrapolation is drawn}
+  \label{fig:scaling}
+\end{figure}
+
+\subsection{Held-out feasible-entry decomposition}
+
+\Cref{fig:feas-opt} displays the task-level decomposition.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.82\textwidth]{fig07_feasibility_optimality.pdf}
+  \caption{Held-out feasible-entry and conditional-optimality decomposition.
+  Each point is an O3-versus-O0 task contrast. Above the dashed line,
+  $\Delta\log_{10}\popt>0$ by $\popt=\pfeas\pcond$. Positive feasible-entry
+  effects can coexist with heterogeneous conditional route quality}
+  \label{fig:feas-opt}
+\end{figure}
+
+\subsection{Experimental-stage summary}
+
+\Cref{tab:protocol-summary} records the role and size of each stage.
+\input{tables/table01_protocol_summary.tex}
+
+\subsection{Training-objective matrix}
+
+\Cref{tab:objectives} compares the four frozen classical losses.
+\input{tables/table02_objectives.tex}
+
+\subsection{Controlled-attribution flowchart}
+
+\Cref{fig:concept} summarizes the attribution sequence.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\textwidth]{fig01_experimental_concept.pdf}
+  \caption{Controlled attribution logic. Nested-depth diagnostics distinguish
+  optimizer failure from feasible-space dilution, and matched objectives test
+  loss alignment. Discovery-selected CVaR is evaluated on held-out graphs;
+  post-hoc stress tests leave that frozen confirmation unchanged. The $m=20$
+  reversal and $m=22$ censoring bound the scaling claim}
+  \label{fig:concept}
+\end{figure}
+
+\FloatBarrier

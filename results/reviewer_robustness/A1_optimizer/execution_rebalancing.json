@@ -1,0 +1,18 @@
+{
+  "completed_before_rebalancing": 1914,
+  "completed_by_rebalanced_tail": 102,
+  "execution_code_fingerprint": "f8c23ecf893f3e7ab05000dc374f073c2ec933e5f7f4e4cb3b6e544c51f52e98",
+  "finished_at": "2026-09-04T07:26:55+02:00",
+  "formal_run_count_after_rebalancing": 2016,
+  "formal_status_counts_after_rebalancing": {
+    "COMPLETE": 2016,
+    "FAILED": 0,
+    "TIMEOUT": 0
+  },
+  "reason": "After 53 of 56 task batches were complete, task-level scheduling would leave only three active workers for the three remaining m=19 tasks.",
+  "scheduling_only": true,
+  "scientific_choices_changed": false,
+  "strategy": "Resolve the 102 missing run IDs from the frozen manifest, split each of the three task-local ordered spec lists into its even and odd positions, and execute the six chunks with the unchanged _execute_run implementation.",
+  "task_selection_changed": false,
+  "worker_chunks": 6
+}

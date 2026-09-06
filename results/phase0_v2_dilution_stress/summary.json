@@ -1,0 +1,94 @@
+{
+  "audit_report": "results/phase0/PHASE0_DILUTION_AUDIT.md",
+  "audit_verdict": "V2_RECOMMENDED",
+  "base_graph_count": 25,
+  "dilution_score_max": 5.719569917615643,
+  "dilution_score_min": 1.630088714928206,
+  "duplicate_budget_count": 0,
+  "duplicate_feasible_set_count": 0,
+  "feasible_state_fraction_max": 0.0234375,
+  "feasible_state_fraction_median": 0.0001220703125,
+  "feasible_state_fraction_min": 1.9073486328125e-06,
+  "figures": [
+    "results/phase0_v2_dilution_stress/figures/figure_A_effective_distinct_levels.png",
+    "results/phase0_v2_dilution_stress/figures/figure_B_phi_histogram_ecdf.png",
+    "results/phase0_v2_dilution_stress/figures/figure_C_v2_dilution_heatmap.png",
+    "results/phase0_v2_dilution_stress/figures/figure_D_v1_vs_v2_coverage.png"
+  ],
+  "full_phase1_executed": false,
+  "insufficient_distinct_graph_count": 10,
+  "phase05_wall_time_s": 17.95911626610905,
+  "pilot_projection": {
+    "active_penalty_contracts": [
+      "medium"
+    ],
+    "conservative_peak_process_rss_mb": 320.0,
+    "depths": [
+      1,
+      2,
+      3
+    ],
+    "estimated_canonical_csv_mb": 1.23046875,
+    "estimated_incremental_numeric_arrays_mb": 64.0,
+    "estimated_total_disk_mb_without_statevectors": 3.9662914276123047,
+    "eval_budget_per_run": 120,
+    "full_phase1_executed": false,
+    "generated_task_json_mb": 0.7358226776123047,
+    "implementation_device": "CPU NumPy exact statevector (GPU not required or used)",
+    "largest_n_qubits": 19,
+    "largest_raw_complex128_statevector_mb": 8.0,
+    "largest_state_space_size": 524288,
+    "optimizer_seed_count": 3,
+    "phase1_penalty_x_run_count": 504,
+    "pilot_selection": "up to 2 base instances per size_stratum x stress_level",
+    "pilot_task_count": 56,
+    "raw_statevectors_persisted": false,
+    "timing_calibration": "affine fit to smoke seconds/evaluation = intercept + slope*(depth*qubit*state)",
+    "timing_fit_intercept_s_per_evaluation": 0.0008677320552211931,
+    "timing_fit_slope_s_per_depth_qubit_state": 9.333226051187797e-09,
+    "uniform_analytic_row_count": 56,
+    "wall_clock_central_hours_single_process": 0.8865937822123278,
+    "wall_clock_range_hours_single_process": [
+      0.4432968911061639,
+      4.432968911061638
+    ]
+  },
+  "recommended_task_universe": "use v2 for Phase 1",
+  "resource_tie_graph_count": 0,
+  "task_count": 140,
+  "total_candidate_routes_across_graphs": 169,
+  "total_unique_resource_consumptions_across_graphs": 169,
+  "v1": {
+    "dilution_score_max": 5.719569917615643,
+    "dilution_score_min": 1.630088714928206,
+    "distinct_feasible_sets_summed_over_graphs": 122,
+    "feasible_state_fraction_max": 0.0234375,
+    "feasible_state_fraction_median": 0.0006103515625,
+    "feasible_state_fraction_min": 1.9073486328125e-06,
+    "globally_distinct_phi_values": 33,
+    "task_rows": 175
+  },
+  "v1_duplicate_cause_counts": {
+    "budget_rounding": 0,
+    "integer_resource_ties_at_distinct_indices": 18,
+    "repeated_quantile_indices_due_to_too_few_routes": 35
+  },
+  "v1_evidence_hashes_verified": {
+    "results/phase0/resource_projection.json": "5c3b2eabe5c511c25b6405fe718ac9bbb42726ef4dd5bc0baf84e910f0969413",
+    "results/phase0/summary.json": "07792747c40a6a7081fd21764fe600dc682923e71102bafd433bdbe282ba60c0",
+    "results/phase0/task_characterization.csv": "105e2658e2f29a9232356e9384829be0e60c483c01e6d0b7b90eb8eff98cdef9",
+    "results/smoke/master_results.csv": "c782553c8dce810b8052680a0f973eb31b3fe137d2deb93ecb5bece081fca482",
+    "results/smoke/summary.json": "6d287093c2df9951527e2e2880a25e1dac31c719f099f6fba160a07f2f6a6426",
+    "results/smoke/task_characterization.csv": "b52361123380f24d9005b93a827ce3906375ff50e2fa793ce306bb19b788c8b8"
+  },
+  "v2": {
+    "dilution_score_max": 5.719569917615643,
+    "dilution_score_min": 1.630088714928206,
+    "distinct_feasible_sets_summed_over_graphs": 140,
+    "feasible_state_fraction_max": 0.0234375,
+    "feasible_state_fraction_median": 0.0001220703125,
+    "feasible_state_fraction_min": 1.9073486328125e-06,
+    "globally_distinct_phi_values": 29,
+    "task_rows": 140
+  }
+}

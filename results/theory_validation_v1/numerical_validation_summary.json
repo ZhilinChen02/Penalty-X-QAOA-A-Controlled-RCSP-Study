@@ -1,0 +1,20 @@
+{
+  "feasible_set_evaluations": 732000,
+  "formal_proof_assistant": "FORMAL_PROOF_ASSISTANT_NOT_AVAILABLE",
+  "historical_hashes": {
+    "file_count": 1314,
+    "inventory_sha256": "a4bbd21a183f1621f721e6fe46e604d3d7542db64ba96da695510bdf778f63f2",
+    "unchanged": true
+  },
+  "hybrid_maximum_final_projection_residual": -0.5713033072872434,
+  "hybrid_maximum_recursion_residual": 4.440892098500626e-16,
+  "hybrid_maximum_single_query_identity_residual": 4.440892098500626e-16,
+  "maximum_inclusion_marginal_error": 0.0,
+  "maximum_phase_bound_residual": 5.551115123125783e-16,
+  "maximum_phase_to_coarse_residual": 0.0,
+  "parameter_cells": 208,
+  "random_algorithms": 7400,
+  "schema_version": "theory_validation_v1.numerical_summary.v1",
+  "unique_feasible_sets_across_algorithm_rows": 584000,
+  "violations": 0
+}

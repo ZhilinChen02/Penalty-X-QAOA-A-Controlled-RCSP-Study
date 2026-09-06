@@ -1,0 +1,25 @@
+{
+  "comparisons": [
+    {
+      "budget": 120,
+      "long_prefix_nfev": 120,
+      "maximum_objective_difference": 0.0,
+      "maximum_parameter_difference": 0.0,
+      "pass": true,
+      "short_nfev": 120
+    },
+    {
+      "budget": 240,
+      "long_prefix_nfev": 139,
+      "maximum_objective_difference": 0.0,
+      "maximum_parameter_difference": 0.0,
+      "pass": true,
+      "short_nfev": 139
+    }
+  ],
+  "interpretation": "A checkpoint is the best evaluated incumbent in the verified prefix of one deterministic 480-call trajectory.",
+  "long_run_nfev": 139,
+  "method": "COBYLA",
+  "pass": true,
+  "task_id": "task-v2-4e78b3f98433"
+}

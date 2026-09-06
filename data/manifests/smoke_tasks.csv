@@ -1,0 +1,13 @@
+task_id,graph_id,base_instance_id,size_stratum,tightness_level,target_n_edges,actual_n_edges,budget,generation_seed,duplicate_budget,duplicate_feasible_set,task_path
+task-b9af4e74fe83,g-030e22a4b8e64e77,S1-b000-g-030e22a4b8e64e77,S1,T1,7,7,13.0,855259900,False,False,data/tasks/smoke/task-b9af4e74fe83.json
+task-994084fbcff0,g-030e22a4b8e64e77,S1-b000-g-030e22a4b8e64e77,S1,T4,7,7,10.0,855259900,False,False,data/tasks/smoke/task-994084fbcff0.json
+task-bb1ce826122e,g-030e22a4b8e64e77,S1-b000-g-030e22a4b8e64e77,S1,T7,7,7,10.0,855259900,True,True,data/tasks/smoke/task-bb1ce826122e.json
+task-7b49bba79406,g-c6bcaa76a703859c,S1-b001-g-c6bcaa76a703859c,S1,T1,7,7,20.0,4286309960,False,False,data/tasks/smoke/task-7b49bba79406.json
+task-b7456ec5dd73,g-c6bcaa76a703859c,S1-b001-g-c6bcaa76a703859c,S1,T4,7,7,13.0,4286309960,False,False,data/tasks/smoke/task-b7456ec5dd73.json
+task-873e9cfcf181,g-c6bcaa76a703859c,S1-b001-g-c6bcaa76a703859c,S1,T7,7,7,9.0,4286309960,False,False,data/tasks/smoke/task-873e9cfcf181.json
+task-ee5e2ea8e960,g-c0608305feeffbb0,S2-b000-g-c0608305feeffbb0,S2,T1,10,10,27.0,2869898689,False,False,data/tasks/smoke/task-ee5e2ea8e960.json
+task-3055188b40aa,g-c0608305feeffbb0,S2-b000-g-c0608305feeffbb0,S2,T4,10,10,18.0,2869898689,False,False,data/tasks/smoke/task-3055188b40aa.json
+task-f81feb5c73a8,g-c0608305feeffbb0,S2-b000-g-c0608305feeffbb0,S2,T7,10,10,17.0,2869898689,False,False,data/tasks/smoke/task-f81feb5c73a8.json
+task-da525fcc95dc,g-43af4a2bb7f827f7,S2-b001-g-43af4a2bb7f827f7,S2,T1,10,10,26.0,2964847996,False,False,data/tasks/smoke/task-da525fcc95dc.json
+task-8c3c093f9a2e,g-43af4a2bb7f827f7,S2-b001-g-43af4a2bb7f827f7,S2,T4,10,10,15.0,2964847996,False,False,data/tasks/smoke/task-8c3c093f9a2e.json
+task-52c1f8aedc9f,g-43af4a2bb7f827f7,S2-b001-g-43af4a2bb7f827f7,S2,T7,10,10,13.0,2964847996,False,False,data/tasks/smoke/task-52c1f8aedc9f.json

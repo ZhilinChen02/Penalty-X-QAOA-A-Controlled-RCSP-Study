@@ -1,0 +1,29 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+In shallow full-space Penalty-X QAOA, poor feasible sampling did not have a
+single cause. Exact depth nesting exposed run-specific optimizer inadequacy,
+while matched lower-energy/lower-feasibility states showed that optimizer
+repair does not resolve objective misalignment. O2 then demonstrated that the
+same ansatz retained feasible-concentration capacity not induced by
+mean-energy training.
+
+This makes the O0$\rightarrow$O2$\rightarrow$O3 sequence the central result.
+On graph-disjoint held-out data, CVaR-0.10 improved feasibility compensation
+over O0 and met the preregistered non-inferiority criterion against the
+exact-feasibility O2 capacity control. CVaR therefore used the available
+energy distribution more effectively for feasible entry in this controlled
+setting; O2 itself remains mechanistic and non-deployable.
+
+The robustness evidence sets equally important boundaries. Greater depth can
+improve terminal feasibility while increasing certified optimization
+failures. Fixed-endpoint sampling is more stable than finite-shot retraining,
+whose intervals cross zero. The $m=20$ reversal and administrative $m=22$
+censoring rule out extrapolative scaling claims.
+
+These synthetic RCSP tasks are classically tractable, and the study tests
+neither structured mixers, objective-specific initialization, hardware noise,
+real networks, nor quantum advantage. Its practical message is diagnostic:
+constrained-QAOA evaluations should distinguish representation dilution,
+ansatz capacity, optimizer adequacy, objective alignment, and sampling effects
+before treating a poor endpoint as a fundamental algorithmic limitation.

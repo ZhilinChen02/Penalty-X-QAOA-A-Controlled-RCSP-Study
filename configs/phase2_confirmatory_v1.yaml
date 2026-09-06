@@ -1,0 +1,127 @@
+experiment_name: phase2_confirmatory_v1
+evidence_identity: PREREGISTERED_HELDOUT_OBJECTIVE_CONFIRMATION
+pre_run_git_sha: 99c928f1e76652b2bf562364b9a03c821df9e0b0
+
+task_universe_manifest: data/manifests/phase0_v2_dilution_stress.json
+discovery_manifest: data/manifests/phase1_pilot_v1.json
+phase2_manifest: data/manifests/phase2_confirmatory_v1.json
+phase1_2_config: configs/phase1_2_objective_alignment.yaml
+phase1_2_results: results/phase1_2_objective_alignment/objective_results.csv
+phase1_2_summary: results/phase1_2_objective_alignment/summary.json
+penalty_contract_file: configs/penalty_contract_v2_scale_controlled.yaml
+characterization: results/phase0_v2_dilution_stress/task_characterization.csv
+preregistration: results/phase2_confirmatory_v1/PREREGISTRATION.md
+
+heldout_selection_rule: task_and_base_graph_set_difference_from_discovery_manifest
+expected_task_count: 84
+expected_base_graph_count: 15
+expected_counts_by_size:
+  S1: {tasks: 9, base_graphs: 3, levels_per_graph: 3}
+  S2: {tasks: 12, base_graphs: 3, levels_per_graph: 4}
+  S3: {tasks: 21, base_graphs: 3, levels_per_graph: 7}
+  S4: {tasks: 21, base_graphs: 3, levels_per_graph: 7}
+  S5: {tasks: 21, base_graphs: 3, levels_per_graph: 7}
+
+algorithm: Penalty-X
+depth: 3
+optimizer: COBYLA
+parameter_order: gammas_then_betas
+parameter_bounds: none_periodic_phases
+cobyla_rhobeg: 0.5
+cobyla_catol: 1.0e-8
+
+p2_preparation:
+  objective: MEAN_ENERGY
+  depth: 2
+  optimizer_seeds: [1103, 2207, 3301]
+  eval_budget: 120
+  timeout_s: 1800
+  selection_rule: minimum_objective_final_only
+  selection_tiebreak: optimizer_seed_ascending
+  planned_runs: 252
+
+p3_comparison:
+  objective_ids: [O0, O2, O3]
+  eval_budget: 240
+  timeout_s: 3600
+  initialization_rule: selected_p2_then_append_zero_gamma3_beta3
+  planned_runs: 252
+  O0:
+    name: MEAN_ENERGY
+    definition: E_theta[H_C]
+    role: STANDARD_BASELINE
+  O2:
+    name: EXACT_FEASIBILITY_CAPACITY_CONTROL
+    definition: 1 - P_feas(theta)
+    role: MECHANISTIC_CAPACITY_CONTROL
+  O3:
+    name: CVAR_ENERGY
+    definition: exact_weighted_lowest_energy_CVaR_alpha_0.10
+    role: TAIL_FOCUSED_ROUTING_OBJECTIVE
+
+cvar_alpha: 0.10
+noninferiority_margin_decades: 0.10
+gap_closure_stability_tolerance_decades: 1.0e-6
+numerical_tolerance: 1.0e-10
+
+primary_inference:
+  analysis_unit: base_graph_id
+  graph_estimand: arithmetic_mean_across_all_planned_dilution_levels
+  population_estimand: arithmetic_mean_of_15_graph_level_contrasts
+  family_alpha: 0.05
+  sidedness: one_sided_greater
+  bootstrap_resamples: 10000
+  bootstrap_seed: 20261017
+  bootstrap_lower_bound_quantile: 0.05
+  p_value_method: exact_32768_cluster_sign_flips_of_mean_contrast
+  multiplicity: Holm_two_hypothesis_family
+  pass_rule: both_Holm_adjusted_p_below_0.05_and_bootstrap_lower_bound_above_null_margin
+  complete_graph_rule: all_planned_levels_finite_and_paired_across_O0_O2_O3
+
+power_preflight:
+  source: phase1_2_discovery_graph_level_contrasts_only
+  simulation_model: bivariate_normal_with_discovery_mean_and_covariance
+  inference_approximation: one_sample_t_p_values_with_two_hypothesis_Holm
+  simulations: 100000
+  seed: 20260828
+  heldout_base_graph_n: 15
+  minimum_target: 0.80
+  preferred_target: 0.90
+
+preflight:
+  source: discovery_tasks_only
+  task_ids: [task-v2-e442db508705, task-v2-4746dcc3bd93]
+  p2_seeds: [1103, 2207, 3301]
+  p3_objective_ids: [O0, O2, O3]
+
+penalty_contract: penalty_contract_v2_scale_controlled
+hamiltonian_normalization_mode: global_fixed
+hamiltonian_normalization_factor: 172.0
+ansatz_cost_phase_hamiltonian: normalized_mean_energy_H_C
+
+failure_statuses:
+  - TIMEOUT
+  - OOM
+  - OPTIMIZER_FAILURE
+  - NUMERICAL_FAILURE
+  - ZERO_P_FEAS
+  - ZERO_P_OPT
+  - RESOURCE_CENSORED
+
+execution:
+  max_workers: 8
+  worker_blas_threads: 1
+  raw_statevectors_persisted: false
+  warm_start_authorized: false
+  alpha_search_authorized: false
+  result_dependent_extensions_authorized: false
+
+immutable_paths:
+  - results/phase0
+  - results/phase0_v2_dilution_stress
+  - results/phase1_pilot_v1
+  - results/phase1_1_optimization_diagnostic
+  - results/phase1_2_objective_alignment
+  - results/smoke
+  - data/manifests/phase0_v2_dilution_stress.json
+  - data/manifests/phase1_pilot_v1.json

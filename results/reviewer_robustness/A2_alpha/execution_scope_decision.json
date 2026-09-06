@@ -1,0 +1,21 @@
+{
+  "decision": "EXPAND_TO_ALL_56_DISCOVERY_TASKS",
+  "decision_basis": "RESOURCE_COST_ONLY",
+  "decision_recorded_before_full_expansion": true,
+  "initial_scope_complete_runs": 432,
+  "initial_scope_failed_runs": 0,
+  "initial_scope_tasks": 24,
+  "initial_scope_worker_runtime_hours": 3.433527430477811,
+  "outcome_based_selection_used": false,
+  "remaining_planned_runs": 576,
+  "remaining_tasks": 32,
+  "remaining_tasks_by_m": {
+    "7": 2,
+    "10": 3,
+    "13": 10,
+    "16": 8,
+    "19": 9
+  },
+  "resource_judgment": "The measured representative cost and stable six-worker memory footprint permit full discovery coverage without changing alpha, seeds, budget, or task selection.",
+  "scientific_choices_changed": false
+}

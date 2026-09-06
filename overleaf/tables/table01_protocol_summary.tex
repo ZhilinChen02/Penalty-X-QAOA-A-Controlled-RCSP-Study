@@ -1,0 +1,20 @@
+
+\begin{table}[t]
+\centering
+\caption{Experimental stages and protocol roles. Discovery and held-out rows are never pooled for inference.}
+\label{tab:protocol-summary}
+\small
+\begin{tabularx}{\textwidth}{@{}lXrrl@{}}
+\toprule
+Stage & Scientific role & Tasks & Graphs & QAOA setting \\
+\midrule
+Task audit v1 & Expose duplicate feasible-set levels & 175 & 25 & No QAOA \\
+Distinct-cardinality v2 & Controlled universe and scale audit & 140 & 25 & No QAOA \\
+Depth pilot & Exploratory dilution response & 56 & 10 & Penalty-X, $p=1,2,3$ \\
+Optimizer diagnostic & Nested-ansatz and continuation attribution & 56 & 10 & Penalty-X, $p=3$ \\
+Objective discovery & Select the held-out objective & 56 & 10 & O0--O3, $p=3$ \\
+Held-out evaluation & Preregistered graph-level confirmation & 84 & 15 & O0/O2/O3, $p=3$ \\
+Scaling boundary & Prespecified size-conditioned response; $m=22$ administratively censored & 180 planned & 30 & O0/O2/O3, $p=3$ \\
+\bottomrule
+\end{tabularx}
+\end{table}

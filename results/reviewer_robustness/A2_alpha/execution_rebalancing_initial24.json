@@ -1,0 +1,14 @@
+{
+  "execution_code_fingerprint": "623e42097292a26032959f6f8e7b3e7727d30efbdea743940336438e888777e8",
+  "final_complete_runs": 432,
+  "final_failed_runs": 0,
+  "first_task_batch_complete_records": 372,
+  "first_tail_missing_runs": 60,
+  "first_tail_records_completed": 36,
+  "final_tail_missing_runs": 24,
+  "final_tail_records_completed": 24,
+  "scheduling_only": true,
+  "scientific_choices_changed": false,
+  "strategy": "At each task-batch tail, recompute missing run IDs from the frozen manifest and divide only those alpha/seed specifications into task-local chunks. Every record used the unchanged A2 _execute_run implementation.",
+  "task_selection_changed": false
+}

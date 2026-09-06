@@ -1,0 +1,151 @@
+{
+  "capacity_gaps": {
+    "IQR_O2_minus_O0_G": 0.2927986637279505,
+    "capacity_gap_vs_dilution": {
+      "capacity_gap_cvar": {
+        "n": 56,
+        "spearman_D_vs_gap": -0.18447968094724002
+      },
+      "capacity_gap_mean": {
+        "n": 56,
+        "spearman_D_vs_gap": 0.6622663221843449
+      },
+      "capacity_gap_penalty": {
+        "n": 56,
+        "spearman_D_vs_gap": 0.671739972837364
+      }
+    },
+    "median_O2_minus_O0_G": 0.21929835458021296,
+    "median_O2_minus_O0_P_feas": 0.01521876658102175,
+    "median_O2_minus_O0_P_opt": 0.0048987258537801,
+    "median_O2_minus_O1_G": 0.24171774777838473,
+    "median_O2_minus_O3_G": 0.006897021383468704
+  },
+  "evidence_identity": "PHASE1_2_OBJECTIVE_ALIGNMENT_AND_FEASIBILITY_CAPACITY_DIAGNOSTIC",
+  "historical_O0_reused_runs": 56,
+  "matched_eval_budget": 240,
+  "mechanistic_tags": {
+    "CAPACITY_LIMITED": 7,
+    "CVAR_PARTIAL_ALIGNMENT": 7,
+    "OBJECTIVE_LIMITED": 44,
+    "PENALTY_SURROGATE_SUCCESS": 2
+  },
+  "new_optimization_runs": 168,
+  "next_recommendation": "PREREGISTER_FEASIBILITY_ALIGNED_PHASE2",
+  "objective_result_rows": 224,
+  "objectives": {
+    "O0": {
+      "median_G_feas": 2.1161044490705643,
+      "median_conditional_route_cost": 13.04254527649622,
+      "median_kappa": 0.07771460972004621,
+      "median_p_feas": 0.0216781246412454,
+      "median_p_opt": 0.00956306274442515,
+      "median_p_opt_given_feasible": 0.437314027935285,
+      "name": "MEAN_ENERGY",
+      "spearman_D_vs_G_feas": 0.9009202364687054,
+      "spearman_D_vs_P_feas": -0.8719520700314951,
+      "spearman_D_vs_P_opt": -0.8963715161190609
+    },
+    "O1": {
+      "median_G_feas": 2.172807485010149,
+      "median_conditional_route_cost": 13.013144030461714,
+      "median_kappa": 0.04571540639867758,
+      "median_p_feas": 0.02335738875288725,
+      "median_p_opt": 0.009509212832012899,
+      "median_p_opt_given_feasible": 0.4347269546211925,
+      "name": "EXPECTED_PENALTY",
+      "spearman_D_vs_G_feas": 0.9091968554507656,
+      "spearman_D_vs_P_feas": -0.8968503287874445,
+      "spearman_D_vs_P_opt": -0.9179180861963248
+    },
+    "O2": {
+      "median_G_feas": 2.3208689396079993,
+      "median_conditional_route_cost": 12.98711732931936,
+      "median_kappa": 0.1885206377174449,
+      "median_p_feas": 0.0399153648052299,
+      "median_p_opt": 0.01645784888356395,
+      "median_p_opt_given_feasible": 0.43447406037829983,
+      "name": "EXACT_FEASIBILITY_CONTROL",
+      "spearman_D_vs_G_feas": 0.9649101295076906,
+      "spearman_D_vs_P_feas": -0.8910019740521871,
+      "spearman_D_vs_P_opt": -0.8478404320878904
+    },
+    "O3": {
+      "median_G_feas": 2.427455362063174,
+      "median_conditional_route_cost": 13.024087470230388,
+      "median_kappa": 0.17258078155369738,
+      "median_p_feas": 0.04278747858252345,
+      "median_p_opt": 0.0166964857962785,
+      "median_p_opt_given_feasible": 0.40815319758446167,
+      "name": "CVAR_ENERGY",
+      "spearman_D_vs_G_feas": 0.9675093982789162,
+      "spearman_D_vs_P_feas": -0.8604263650854032,
+      "spearman_D_vs_P_opt": -0.8758509731883334
+    }
+  },
+  "optional_cvar_alpha_0_25_executed": false,
+  "optional_response_slice_executed": false,
+  "paired_comparisons_vs_O0": {
+    "O1": {
+      "P_feas_improved": 35,
+      "P_feas_worsened": 21,
+      "P_opt_given_feasible_improved": 23,
+      "P_opt_given_feasible_unchanged": 10,
+      "P_opt_given_feasible_worsened": 23,
+      "P_opt_improved": 35,
+      "P_opt_worsened": 21,
+      "conditional_route_cost_improved": 26,
+      "conditional_route_cost_unchanged": 10,
+      "conditional_route_cost_worsened": 20
+    },
+    "O2": {
+      "P_feas_improved": 53,
+      "P_feas_worsened": 3,
+      "P_opt_given_feasible_improved": 21,
+      "P_opt_given_feasible_unchanged": 10,
+      "P_opt_given_feasible_worsened": 25,
+      "P_opt_improved": 50,
+      "P_opt_worsened": 6,
+      "conditional_route_cost_improved": 21,
+      "conditional_route_cost_unchanged": 10,
+      "conditional_route_cost_worsened": 25
+    },
+    "O3": {
+      "P_feas_improved": 50,
+      "P_feas_worsened": 6,
+      "P_opt_given_feasible_improved": 27,
+      "P_opt_given_feasible_unchanged": 10,
+      "P_opt_given_feasible_worsened": 19,
+      "P_opt_improved": 51,
+      "P_opt_worsened": 5,
+      "conditional_route_cost_improved": 26,
+      "conditional_route_cost_unchanged": 10,
+      "conditional_route_cost_worsened": 20
+    }
+  },
+  "pareto_nondominated_counts": {
+    "O0": 15,
+    "O1": 20,
+    "O2": 38,
+    "O3": 39
+  },
+  "penalty_surrogate_diagnostic": {
+    "O1_lower_penalty_but_lower_P_feas_than_O2_count": 51,
+    "O1_own_objective_improved_count": 56
+  },
+  "phase": "Phase 1.2 \u2014 Objective Alignment and Feasibility-Capacity Diagnostic",
+  "pytest_result": "60 passed in 1.95s",
+  "raw_statevectors_persisted": false,
+  "recommendation_executed": false,
+  "scientific_verdict": "CVAR_PARTIALLY_CLOSES_GAP",
+  "status": "COMPLETE",
+  "task_count": 56,
+  "theoretical_audit": {
+    "basis_penalty_contract_pass_count": 140,
+    "cvar_tail_condition_pass_count": 56,
+    "optimization_state_penalty_bound_pass_count": 224,
+    "random_state_penalty_bound_pass_count": 140,
+    "strict_energy_separation_count": 140,
+    "v2_task_count": 140
+  }
+}

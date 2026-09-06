@@ -1,0 +1,17 @@
+{
+  "budget_equality_pass": true,
+  "common_initialization_pass": true,
+  "cvar_correctness_pass": true,
+  "memory_accounting_pass": true,
+  "objective_correctness_pass": true,
+  "p2_rows": 6,
+  "p3_rows": 6,
+  "resume_semantics_pass": true,
+  "row_writing_pass": true,
+  "scaling_analysis_pipeline_pass": true,
+  "status": "PASSED",
+  "task_ids": [
+    "task-p3-49c4d5dae6a8f92a",
+    "task-p3-6d8c1ca8f1cd0b67"
+  ]
+}

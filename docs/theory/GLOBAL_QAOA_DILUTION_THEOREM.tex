@@ -1,0 +1,85 @@
+\section{Global full-space feasible-space dilution theorem}
+\label{sec:global-dilution-theorem}
+
+\begin{theorem}[Audited phase-sensitive dilution bound]
+Let $N\ge 1$, $0\le M\le N$, $\phi=M/N$, and let $\mathcal F$ be uniform
+over the size-$M$ subsets of an $N$-element computational basis.  For an
+arbitrary ancilla Hilbert space, consider a normalized pure-state query
+algorithm
+\[
+ |\psi_{\mathcal F}\rangle=
+ V_qQ_{\mathcal F}(\gamma_q)\cdots V_1Q_{\mathcal F}(\gamma_1)
+ V_0|\psi_{\rm in}\rangle,
+\]
+where the input, the unitaries $V_t$, and the phases $\gamma_t$ are independent
+of the particular $\mathcal F$, and
+\[
+ Q_{\mathcal F}(\gamma)=I+(e^{-i\gamma}-1)
+ (\Pi_{\mathcal F}\otimes I_A).
+\]
+If
+\[
+ P_{\mathcal F}=\langle\psi_{\mathcal F}|(\Pi_{\mathcal F}\otimes I_A)
+ |\psi_{\mathcal F}\rangle,
+\]
+then
+\[
+ \mathbb E_{\mathcal F}P_{\mathcal F}
+ \le \min\left\{1,
+ \left(1+\sum_{t=1}^q|e^{-i\gamma_t}-1|\right)^2\frac MN
+ \right\}.
+\]
+\end{theorem}
+
+\begin{proof}
+In the identity-query reference computation, write the state before query $t$
+as $|\varphi_t\rangle=\sum_x|x\rangle|\alpha_{t,x}\rangle$.  Then
+\[
+ \mathbb E_{\mathcal F}\|(\Pi_{\mathcal F}\otimes I_A)
+ |\varphi_t\rangle\|^2
+ =\sum_x\Pr[x\in\mathcal F]\|\alpha_{t,x}\|^2=M/N.
+\]
+Let $a_t$ be the projected norm, $c_t=|e^{-i\gamma_t}-1|$, and let $d_t$
+be the true/reference distance after query $t$ and $V_t$.  Since
+$(Q_{\mathcal F}-I)|\varphi_t\rangle$ has norm $c_ta_t$, unitarity and the
+triangle inequality give $d_{t+1}\le d_t+c_{t+1}a_{t+1}$.  Hence
+\[
+ \|d_q\|_{L_2(\mathcal F)}\le\sqrt{M/N}\sum_t c_t
+\]
+by Minkowski.  If $R_{\mathcal F}$ is the final reference success, then
+$\mathbb ER_{\mathcal F}=M/N$ and
+$\sqrt{P_{\mathcal F}}\le\sqrt{R_{\mathcal F}}+d_q$.  A second use of
+Minkowski and squaring the nonnegative sides proves the nontrivial term; the
+minimum with one is the probability bound.
+\end{proof}
+
+Since $|e^{-i\gamma_t}-1|\le2$,
+\[
+ \mathbb E P_{\mathcal F}\le\min\{1,(2q+1)^2\phi\}.
+\]
+Uniform or average success at least $\tau$ therefore requires
+\[
+ q\ge\max\left\{0,\frac12(\sqrt{\tau/\phi}-1)\right\}.
+\]
+For $H_{\mathcal F}=I-\Pi_{\mathcal F}$,
+\[
+ e^{-i\gamma H_{\mathcal F}}=e^{-i\gamma}
+ [I+(e^{i\gamma}-1)\Pi_{\mathcal F}],
+\]
+so a fixed instance-independent schedule with one binary cost query per layer
+has $q=p$.  This statement does not directly apply to instance-trained
+parameters without total-query accounting, nor to structured RCSP Hamiltonians
+without a reduction.
+
+\paragraph{Grover achievability.}
+For $0<M<N$ and $\theta=\arcsin\sqrt\phi$, the standard two-dimensional
+construction gives
+\[
+ P_{\rm Grover}(q)=\sin^2((2q+1)\theta)
+ =(2q+1)^2\phi+O((2q+1)^4\phi^2)
+\]
+when $(2q+1)\sqrt\phi\to0$.  This supplies asymptotic achievability, not a
+universal exact upper bound.
+
+\subsection*{External prior-art verification required before publication}
+No novelty or priority claim is made by this offline audit.
