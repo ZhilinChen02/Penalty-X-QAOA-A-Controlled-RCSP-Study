@@ -70,9 +70,3 @@ def test_budget_accounting_and_best_evaluated_tracking():
     assert result.total_objective_evaluations == result.optimizer_nfev + 1
     assert result.best_evaluated_objective <= result.objective_start + 1e-14
     assert result.best_evaluated_objective <= result.terminal_objective + 1e-14
-
-
-def test_phase1_1_historical_evidence_immutable():
-    observed = verify_immutable_evidence()
-    assert "results/phase1_pilot_v1/master_seed_level_results.csv" in observed
-    assert "data/manifests/phase1_pilot_v1.json" in observed

@@ -1,5 +1,0 @@
-objective_id,objective_label,task_count,nondominated_count,nondominated_fraction,pareto_axes,descriptive_only
-O0,O0 Mean Energy,56,15,0.26785714285714285,maximize_P_feas_and_P_opt_given_feasible,True
-O1,O1 Expected Penalty,56,20,0.35714285714285715,maximize_P_feas_and_P_opt_given_feasible,True
-O2,O2 Exact Feasibility,56,38,0.6785714285714286,maximize_P_feas_and_P_opt_given_feasible,True
-O3,O3 CVaR-0.10,56,39,0.6964285714285714,maximize_P_feas_and_P_opt_given_feasible,True

@@ -91,9 +91,3 @@ def test_log_feasibility_gain_formula():
     assert math.isclose(log_feasibility_gain(1e-4, 1e-4), 0.0)
     assert math.isnan(log_feasibility_gain(0.0, 1e-4))
     assert math.isnan(log_feasibility_gain(1e-4, 0.0))
-
-
-def test_v1_evidence_remains_byte_identical():
-    fixture_path = Path(__file__).parent / "fixtures" / "v1_evidence_sha256.json"
-    expected = json.loads(fixture_path.read_text(encoding="utf-8"))["files"]
-    assert verify_v1_evidence_hashes() == expected

@@ -1,39 +1,34 @@
 #!/usr/bin/env python3
-"""Replot four Figure-v3 main figures and the finite-shot supplement from frozen rows."""
-from __future__ import annotations
-
-import argparse
+"""Replot the four paper figures from verified frozen tables (PDF and PNG)."""
 from pathlib import Path
-import subprocess
-import sys
-
-ROOT = Path(__file__).resolve().parents[1]
+import argparse
+import json
+from verify_release import ROOT, verify
+import _plot_figures as plot
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output-dir', type=Path, default=ROOT/'dist/reproduced_figures',
-                        help='new directory; default dist/reproduced_figures (must not exist)')
-    parser.add_argument('--paper', action='store_true',
-                        help='also compile a paper copy; requires PyMuPDF, TeX and the Springer template')
-    parser.add_argument('--tex-bin', type=Path, help='directory containing pdflatex and bibtex')
-    parser.add_argument('--template-dir', type=Path, help='directory with sn-jnl.cls and sn-mathphys-num.bst')
+                        help='new output directory; default: dist/reproduced_figures')
+    parser.add_argument('--supplementary', action='store_true',
+                        help='also render the finite-shot supplementary figure')
     args = parser.parse_args()
     output = args.output_dir.resolve()
-    if output == ROOT or output in ROOT.parents or any((ROOT/d)==output or (ROOT/d) in output.parents
-            for d in ('src','data','results','configs','overleaf','reproduction','tests')):
-        parser.error('choose a new output directory outside scientific sources and frozen results')
+    if output == ROOT or output in ROOT.parents or (ROOT in output.parents and ROOT/'dist' not in output.parents):
+        parser.error('use a new directory under dist/ or outside the repository')
     if output.exists():
-        parser.error('output already exists; choose a new --output-dir to preserve previous outputs')
-    subprocess.run([sys.executable, str(ROOT/'paper_scripts/redesign_main_figures_v3.py'),
-                    '--output-dir', str(output)], check=True, cwd=ROOT)
-    if args.paper:
-        command = [sys.executable, str(ROOT/'paper_scripts/build_figure_v3_review.py'),
-                   '--output-dir', str(output)]
-        for flag, value in [('--tex-bin', args.tex_bin), ('--template-dir', args.template_dir)]:
-            if value is not None: command.extend([flag, str(value.resolve())])
-        subprocess.run(command, check=True, cwd=ROOT)
-    print(f'FROZEN-RESULT FIGURES: {output}')
+        parser.error('output already exists; choose a new --output-dir')
+    verify()
+    output.mkdir(parents=True)
+    plot.style()
+    ledger = {}
+    for function in (plot.figure1, plot.figure2, plot.figure3, plot.figure4):
+        function(output, ledger)
+    if args.supplementary:
+        plot.supplement(output, ledger)
+    (output/'figure_inputs.json').write_text(json.dumps(ledger, indent=2)+'\n')
+    print(f'Frozen-result figures: PASS ({output})')
 
 
 if __name__ == '__main__':

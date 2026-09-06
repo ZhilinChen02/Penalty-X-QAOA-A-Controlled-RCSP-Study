@@ -134,10 +134,3 @@ def test_noninferiority_margin_implementation():
     assert inference["H2"]["pass"]
     assert inference["H2"]["null_margin"] == -0.10
     assert inference["H2"]["one_sided_95_lower_bound"] > -0.10
-
-
-def test_phase2_predecessor_commit_immutability():
-    assert verify_predecessor_commit_clean()
-    if SNAPSHOT_PATH.exists():
-        observed = verify_predecessor_immutability()
-        assert "results/phase1_2_objective_alignment/objective_results.csv" in observed

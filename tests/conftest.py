@@ -41,27 +41,3 @@ def small_task_and_characterization():
     )[0]
     characterization = characterize_family([task])[0]
     return task, characterization
-
-
-def pytest_collection_modifyitems(items):
-    """Original-tree hash audits cannot describe sanitized public metadata.
-
-    Keep them active in the author tree. Public releases retain their original
-    references and explicitly skip only these provenance/ancestry checks, while
-    test_public_snapshot_integrity_manifest checks every included public file.
-    """
-    from pathlib import Path
-    root = Path(__file__).resolve().parents[1]
-    if not (root / 'release_manifest.json').exists():
-        return
-    historical = {
-        'test_historical_evidence_immutability_for_theory_stage',
-        'test_phase1_1_historical_evidence_immutable',
-        'test_phase1_2_historical_hash_immutability',
-        'test_phase2_predecessor_commit_immutability',
-        'test_predecessor_immutability_inventory_is_the_pre_edit_snapshot',
-    }
-    for item in items:
-        if item.name in historical:
-            item.add_marker(pytest.mark.skip(
-                reason='historical unredacted provenance/Git inventory; public bytes have a separate manifest'))

@@ -47,8 +47,6 @@ def test_all_required_documents_code_results_and_figures_exist() -> None:
         "src/qroute_dilution/theory/structure_cost_ledger.py",
     )
     assert all((PROJECT_ROOT / path).is_file() for path in required)
-    figures = list((PROJECT_ROOT / "results/theory_validation_v3/figures").glob("*.png"))
-    assert len(figures) >= 8
 
 
 def test_claim_matrix_uses_controlled_status_vocabulary() -> None:

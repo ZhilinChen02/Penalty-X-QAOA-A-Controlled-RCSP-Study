@@ -1,20 +1,17 @@
-# Frozen scientific evidence
+# Frozen results
 
-The existing stage directories are retained because manifests and scientific
-regressions refer to their paths. `phase0_v2_dilution_stress/` is the corrected
-140-task benchmark. Phase 1 is discovery/diagnostic evidence; Phase 2 is the
-84-task held-out study; Phase 3 records completed and resource-censored cells.
-`theory_validation_v1/` through `v3/` hold numerical theory checks.
-`reviewer_robustness/` and `posthoc_finite_shot_endpoint_v1/` are separate post-hoc
-analyses. Earlier Phase-0/synthesis material remains historical evidence.
+Canonical tables retain the original phase-directory names to preserve source
+and manifest references. `manifest.json` records their hashes, schemas, row counts
+and original provenance. `headline_results.csv` is an exact column projection of
+the frozen headline table; `canonical/headlines.json` is the unchanged reference.
 
-Failures, negative effects, all formal run receipts and all m=22 censoring rows
-are retained. Development smoke outputs, machine package dumps, private worktree
-records and obsolete compiled revision archives are excluded only by documented
-release rules, never by scientific outcome. The public manifest records every
-included file and all exclusions. Only hostname/path strings in public metadata
-are redacted; numeric values and the original-tree results are unchanged.
+Use `python scripts/verify_release.py` to reconstruct/check the main claims and
+`python scripts/reproduce_figures.py` to replot. Neither command reruns optimization
+or refits scaling. All formal rows in the compact matrices, including negative
+comparisons, optimizer termination information and resource censoring, remain.
+No absent m=22 outcome is filled with zero or extrapolated.
 
-Use `python scripts/reproduce_core_results.py` to reconstruct reported claims,
-and `python scripts/reproduce_figures.py` to replot. Both preserve these files.
-See `docs/RESULT_PROVENANCE.md` and `docs/REPRODUCIBILITY.md` at repository root.
+The post-hoc reviewer directories contain scientific robustness studies, separate
+from held-out H1/H2. Detailed provenance is in `docs/RESULT_PROVENANCE.md`.
+Thousands of redundant run receipts and iteration traces are archived in the
+initial public commit; they are not needed for these commands.

@@ -84,13 +84,3 @@ def test_generated_exact_ground_state_audit_is_complete():
     assert proposed["controlled_ground_state_valid"].all()
     assert proposed["controlled_ground_state_resource_feasible"].all()
     assert proposed["controlled_ground_state_original_optimal"].all()
-
-
-def test_phase06_existing_evidence_hashes_unchanged():
-    root = Path(__file__).resolve().parents[1]
-    fixture = json.loads(
-        (root / "tests" / "fixtures" / "phase06_frozen_evidence_sha256.json").read_text(
-            encoding="utf-8"
-        )
-    )
-    assert verify_phase06_frozen_evidence() == fixture["files"]

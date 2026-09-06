@@ -1,182 +1,154 @@
-# Q-RouteDilution
+# Penalty-X QAOA: A Controlled RCSP Study
 
-Reproducible code for a controlled exact-statevector study of feasible-space
-dilution, optimizer failure and objective alignment in full-space,
-penalty-based, non-feasibility-preserving QAOA for resource-constrained shortest
-paths (RCSP).
+**Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study**
 
-Start with the frozen-result commands below. They reconstruct the reported
-results without rerunning the experimental optimizations. The public candidate
-still needs a confirmed copyright holder and final citation metadata; see
-[LICENSE_REVIEW.md](LICENSE_REVIEW.md).
+**Zhilin Chen — University of Copenhagen**
+
+Code, benchmark definitions and frozen results for a controlled exact-statevector
+study of shallow, full-space Penalty-X QAOA on resource-constrained shortest paths.
 
 ## Overview
 
-The layered RCSP benchmark uses edge-bit states and a Penalty-X QAOA ansatz.
-Feasible routes occupy a small fraction of the full state space. A global scale
-contract removes a Hamiltonian energy-span confound while preserving exact
-optima. Nested depth embeddings diagnose optimizer inadequacy; matched objective
-comparisons distinguish mean-energy improvement from feasible-mass improvement.
-CVaR is selected on discovery data and evaluated on a frozen held-out split.
-The conclusions concern this tested protocol and its information-access models.
-They establish neither quantum advantage nor a failure of all constrained QAOA.
+Edge-bit encoding makes feasible routes sparse within the full state space.
+This study separates feasible-space dilution, Hamiltonian scale, optimizer
+inadequacy and objective alignment. It compares mean energy (O0), expected
+penalty (O1), exact feasibility as a mechanistic capacity control (O2), and
+lower-tail CVaR (O3). CVaR is selected on discovery data and evaluated on a
+frozen, preregistered held-out split. Scaling and post-hoc robustness studies
+identify boundaries of the observed behavior.
 
-Frozen findings include:
+The conclusions apply to this controlled RCSP benchmark and tested protocol.
+They establish neither quantum advantage nor failure of all constrained QAOA,
+and do not establish a universal scaling law or hardware advantage.
 
-- Corrected benchmark: 140 tasks / 25 graphs; discovery 56 / 10; held-out 84 / 15.
-- Nested diagnostic: 29/168 certified optimizer failures; continuation improves
-  their objective in 29/29 and feasibility in 27/29.
-- Discovery: O2 exposes capacity not induced by O0; CVaR-0.10 closes a median
-  97.8783% of the taskwise O2–O0 gap under the stated matched design.
-- Held-out H1: +0.3547 decades, one-sided lower bound +0.2374. H2: −0.0086,
-  lower bound −0.0360 above the −0.10 noninferiority margin. Both Holm-adjusted
-  p-values are 0.000244140625. Graphs are the independent analysis units.
-- Phase 3: 180 planned tasks / 30 graphs. At m=20 the earlier O3/O0 exponent
-  ordering reverses; 180 planned m=22 run rows are resource-censored, with no
-  scientific outcomes. No global extrapolative scaling law is inferred.
-- Post-hoc finite-shot training is less decisive than fixed-endpoint sampling:
-  both shot-trained graph-effect intervals cross zero. It does not revise H1/H2.
+## Main findings
+
+- **Benchmark:** 140 corrected tasks on 25 graphs; discovery 56/10 and held-out
+  84/15. Scale control preserves all exact optima.
+- **Optimizer diagnosis:** 29/168 certified nested failures. Continuation repairs
+  their objective in 29/29 cases and improves feasibility in 27/29.
+- **Objective alignment:** CVaR closes a median 97.8783% of the taskwise O2–O0
+  gap on discovery tasks under the matched protocol.
+- **Held-out inference:** H1 (O3–O0) is +0.3547 decades, with one-sided 95% lower
+  bound +0.2374. H2 (O3–O2) is −0.0086, with lower bound −0.0360 above the frozen
+  −0.10 noninferiority margin. Both Holm-adjusted p-values are 0.000244140625;
+  graphs are the independent analysis units.
+- **Scaling:** 180 planned tasks on 30 graphs. At m=20 the earlier O3/O0 exponent
+  ordering reverses. All 180 planned m=22 run rows are resource-censored, with
+  unavailable scientific outcomes.
+- **Finite-shot training:** both post-hoc shot-trained graph-effect intervals
+  cross zero; this analysis does not replace or revise the held-out H1/H2 family.
 
 ## Installation
 
-Tested baseline: Linux, Python **3.11.15**. Install the five pinned scientific and
-plotting dependencies plus pytest, then install the project in editable mode:
+Tested on Linux with Python 3.11.15. Install the pinned scientific stack and pytest:
 
 ```bash
+git clone https://github.com/ZhilinChen02/Penalty-X-QAOA-A-Controlled-RCSP-Study.git
+cd Penalty-X-QAOA-A-Controlled-RCSP-Study
 python3.11 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements-dev.txt
 python -m pip install --no-deps -e .
 ```
 
-Conda alternative:
-
-```bash
-conda env create -f environment.yml
-conda activate qroute-release
-```
-
-The pip route is checked in a clean environment. The conda file expresses the
-same minimal stack; it is not a full export of an author's environment.
-Editable installation is intentional: legacy workflows locate configs and
-frozen results beside the source. A standalone wheel alone is insufficient.
+Alternatively, `conda env create -f environment.yml` followed by
+`conda activate qroute-release` installs the same minimal stack. Editable
+installation is intentional: experiment modules locate configs and results
+relative to this checkout. A standalone wheel without these files is insufficient.
 
 ## Quick start
 
 ```bash
 python scripts/smoke_test.py
+python scripts/verify_release.py
 pytest -q
-python scripts/reproduce_core_results.py
-python scripts/reproduce_figures.py
 ```
 
-The smoke test exercises graph generation, exact feasibility, Hamiltonians and
-small QAOA optimization on the existing 12-task smoke configuration. It writes
-only to a new temporary workspace and does not run a full experiment. The other
-two reproduction commands read frozen evidence. Figure outputs are PDF/SVG/PNG
-under a new `dist/reproduced_figures/` directory; choose `--output-dir` for later
-runs, since existing outputs are protected against accidental replacement.
+The existing smoke configuration runs 12 small tasks and writes 36 rows to a
+new temporary workspace. It exercises graph generation, exact feasibility,
+Hamiltonians and small QAOA optimization. No HPC system is needed.
+
+## Reproduce results
+
+```bash
+python scripts/reproduce_core_results.py
+```
+
+This reconstructs core statistics from compact frozen tables, checks 21 headline
+values, graph-level H1/H2 inference, benchmark splits, stored scaling exponents,
+resource censoring and theory numerical residuals. It also checks file hashes
+and figure inputs. It performs no optimization or scaling refit and writes no
+canonical results. The retained tables include complete matched comparisons,
+negative outcomes and failed/censored statuses.
+
+Full experiments are opt-in and expensive; they must run in a separate experiment
+workspace. The stage map, seeds, budgets and historical freeze prerequisites are
+in [docs/EXPERIMENTS.md](docs/EXPERIMENTS.md). Different optimizer environments may
+produce different trajectories; keep reruns separate from the paper's results.
+
+## Reproduce figures
+
+```bash
+python scripts/reproduce_figures.py
+# Include the finite-shot supplementary figure, in a different new directory:
+python scripts/reproduce_figures.py --supplementary --output-dir dist/figures_with_supplement
+```
+
+The default output is a new `dist/reproduced_figures/`, containing PDF and PNG.
+Existing directories are protected against replacement. Plotting uses frozen
+inputs and stored confidence intervals. The final four main figures are in
+[figures/main/](figures/main/), with one PDF and one PNG per figure.
 
 ## Repository structure
 
-| Path | Contents |
+| Directory | Contents |
 | --- | --- |
-| `src/qroute_dilution/` | RCSP, exact statevectors, objectives, optimization, statistics and theory |
-| `scripts/` | Safe smoke/reconstruction/replot entry points and original phase drivers |
-| `configs/`, `protocols/`, `data/manifests/` | Benchmark definitions, seeds, budgets, splits and preregistration |
-| `results/` | Frozen canonical rows, failures, censoring, summaries and necessary historical evidence |
-| `reproduction/` | Deterministic reconstruction and unchanged reference hashes |
-| `paper_scripts/` | Figure v3, historical asset builders and manuscript support |
-| `figures/main_v3/` | Small pre-rendered main figures and finite-shot supplement in the public package |
-| `overleaf/` | Manuscript and supplementary LaTeX sources; v3 is integrated into a generated copy |
-| `paper/`, `manuscript/`, `review_package/` | Historical synthesis sources needed for provenance and regressions |
-| `tests/`, `docs/` | Scientific invariants, experiment map and result provenance |
+| `src/qroute_dilution/` | Benchmark, Hamiltonians, exact simulation, objectives, optimizers, statistics and theory |
+| `configs/`, `data/manifests/` | Seeds, graph/task definitions, resource budgets and discovery/held-out splits |
+| `results/` | Compact canonical tables in their original phase paths; `manifest.json` records hashes and provenance |
+| `results/headline_results.csv` | Frozen headline values and paper display values |
+| `scripts/` | Verification, smoke, plotting, task materialization and original experiment drivers |
+| `figures/main/`, `figures/supplementary/` | Final main figures and finite-shot supplement |
+| `tests/` | Public-data scientific invariants and integrity checks; optional CUDA infrastructure check |
+| `docs/` | Reproduction, experiment map, result provenance and scoped theory statements |
+| `analysis/`, `protocols/` | Frozen post-hoc protocol and preregistration |
 
-Directories referenced by frozen manifests were retained. Renaming the Python
-package or moving canonical results would break existing evidence references.
-See [RESULT_PROVENANCE.md](docs/RESULT_PROVENANCE.md) for result → data → analysis
-→ figure mappings and [data/README.md](data/README.md) for input policy.
+Original phase paths are retained to preserve imports and manifest references.
+[RESULT_PROVENANCE.md](docs/RESULT_PROVENANCE.md) maps each claim to its data and
+analysis. Redundant manuscript packages, optimizer traces and internal reviews
+are not part of the current source tree.
 
-## Reproducing paper results
+## Computational requirements
 
-### Replot frozen results
+The scientific simulator uses NumPy on **CPU**. Smoke, verification, tests and
+replotting need neither CUDA nor HPC. PyTorch is optional for a small CUDA
+infrastructure test; it is not a scientific simulation backend.
 
-```bash
-python scripts/reproduce_figures.py --output-dir dist/my_figures
-python scripts/reproduce_core_results.py
-# Historical tables and asset set, rebuilt only in a disposable copy:
-python scripts/validate_release.py --from-existing-results --assets
-```
-
-Figure v3 uses stored numerical results, including stored confidence intervals;
-it does not refit statistics or run optimization. The core reconstruction checks
-21 claims, exact reference hashes, held-out graph inference, scaling/censoring and
-theory numerical validation. It writes its reconstructed files outside the frozen
-tree. PDF bytes can vary across font/renderer versions even when the data agree.
-
-For a compiled v3 paper copy, install the optional review dependency and supply
-the official Springer template yourself; vendor files are omitted pending their
-redistribution review:
-
-```bash
-python -m pip install -e '.[review]'
-python scripts/reproduce_figures.py --paper --output-dir dist/paper_review --template-dir /path/to/springer-template
-```
-
-`pdflatex` and `bibtex` must be on PATH, or pass `--tex-bin /path/to/texlive/bin`.
-A v2 comparison is optional; v3 paper generation works without author-local
-`dist/figures_v2/`. See [paper/README.md](paper/README.md).
-
-### Re-run experiments
-
-Full optimization is opt-in. The original phase drivers retain fixed stage
-outputs, resume behavior, freeze prerequisites and historical seed handling.
-Use an isolated experiment copy and the ordered commands in
-[EXPERIMENTS.md](docs/EXPERIMENTS.md) and
-[REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md); do not launch them in the frozen
-release checkout. Different optimizer/dependency environments may produce
-numerically different trajectories. New results must remain distinct from the
-paper's canonical evidence. A fresh full optimization campaign was not run for
-this cleanup.
-
-## Tests
-
-```bash
-pytest -q
-# Equivalent convenience entry point:
-sh scripts/run_tests.sh
-```
-
-Scientific checks cover RCSP ground truth, exact membership, Hamiltonians, scale
-control, nested embedding, O0/O1/O2/O3, CVaR, deterministic seeds, manifests and
-headline reconstruction. In a public snapshot, 10 historical provenance tests
-explicitly skip because they require private worktrees, old Git commits or
-unredacted inventories. Public manifest/hash tests replace their byte-inventory
-role without changing any scientific expectations or golden data. The optional
-GPU check skips when PyTorch/CUDA is unavailable; skips are reported normally.
-
-## Hardware and computational requirements
-
-Scientific simulation uses **NumPy on CPU**. No GPU or HPC system is required for
-smoke tests, ordinary tests or replotting. PyTorch is only an optional tiny CUDA
-infrastructure check, not a scientific acceleration backend.
-
-A complex128 statevector alone needs `16 * 2**m` bytes: 16 MiB at m=20 and
-64 MiB at m=22. Energy arrays, state copies, masks and concurrent workers add
-memory; these are not whole-process RAM estimates. Runtime grows with depth,
-evaluations, seeds and tasks. Full optimizer, scaling and finite-shot campaigns
-can be expensive. Reported m=22 censoring reflects the frozen computational
-budget, not a universal qubit or RAM ceiling. See [ENVIRONMENT.md](docs/ENVIRONMENT.md).
+A complex128 statevector alone uses `16 * 2**m` bytes: 16 MiB at m=20 and 64 MiB
+at m=22. Energy arrays, masks, additional states and parallel workers add memory.
+Runtime also grows with depth, evaluations, seeds and tasks. These are storage
+identities, not measured whole-process resource limits. The reported m=22
+censoring reflects the frozen protocol's computational budget.
 
 ## Citation
 
-[CITATION.cff](CITATION.cff) carries the manuscript title and explicit metadata
-TODOs. The final author list, public URL, DOI and arXiv identifier have not been
-invented. Fill them only when confirmed or assigned.
+Use [CITATION.cff](CITATION.cff) for machine-readable author, title and repository
+metadata. DOI and arXiv identifiers will be added when assigned.
+
+```bibtex
+@misc{chen2026penaltyx,
+  author = {Chen, Zhilin},
+  title = {Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study},
+  year = {2026},
+  howpublished = {Companion research code},
+  url = {https://github.com/ZhilinChen02/Penalty-X-QAOA-A-Controlled-RCSP-Study}
+}
+```
 
 ## License
 
-The requested MIT text is prepared in [LICENSE](LICENSE), with year 2026.
-**The copyright holder remains to be filled in.** The paper's draft author block
-is not sufficient to decide ownership. Review [LICENSE_REVIEW.md](LICENSE_REVIEW.md)
-for third-party templates, paper/data rights and remaining release actions.
+Original project code is released under the [MIT License](LICENSE), copyright
+2026 Zhilin Chen. Third-party font components retain their own license; see
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No third-party LaTeX templates,
+external datasets or downloaded papers are bundled.

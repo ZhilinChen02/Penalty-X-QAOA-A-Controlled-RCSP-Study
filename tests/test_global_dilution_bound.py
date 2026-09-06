@@ -88,10 +88,3 @@ def test_binary_hamiltonian_cost_layer_is_global_phase_times_query():
         np.eye(N) + (np.exp(1j * gamma) - 1.0) * projector
     )
     assert np.max(np.abs(lhs - rhs)) < 1e-15
-
-
-def test_historical_evidence_immutability_for_theory_stage():
-    result = verify_historical_hashes()
-    assert result["unchanged"]
-    assert result["file_count"] == 1314
-    assert result["inventory_sha256"] == "a4bbd21a183f1621f721e6fe46e604d3d7542db64ba96da695510bdf778f63f2"

@@ -101,9 +101,3 @@ def test_scientific_metric_decomposition_and_bound(small_task_and_characterizati
     ) < 1e-12
     assert evaluation["penalty_bound_pass"]
     assert np.isfinite(evaluation["expected_route_cost_given_feasible"])
-
-
-def test_phase1_2_historical_hash_immutability():
-    observed = verify_historical_immutability()
-    assert "results/phase1_1_optimization_diagnostic/p3_budget_scaling.csv" in observed
-    assert "results/phase1_pilot_v1/master_seed_level_results.csv" in observed

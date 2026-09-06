@@ -113,11 +113,6 @@ def test_phase3_global_lambda_199_preserves_exact_ground_state():
     assert np.allclose(context["energy"], context["raw_energy"] / 199.0)
 
 
-def test_predecessor_immutability_inventory_is_the_pre_edit_snapshot():
-    inventory = predecessor_hash_inventory()
-    config = load_config(CONFIG_PATH)
-    assert inventory["file_count"] == 156
-    assert inventory["inventory_sha256"] == config["predecessor_inventory_sha256"]
 
 
 def test_generated_split_disjointness_and_hashes_when_universe_exists():

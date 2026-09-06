@@ -22,7 +22,7 @@ results/**/checkpoints/
 data/tasks/**/*.json
 !data/tasks/.gitkeep
 
-# Private/local release material. Existing tracked files remain tracked.
+# Local credentials, editor state and generated artifacts.
 KEY.txt
 .env
 .env.*

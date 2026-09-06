@@ -1,9 +1,0 @@
-claim,status,evidence
-optimizer failure is not COBYLA-specific,SUPPORTED,"Nested failures occur under COBYLA, Nelder-Mead, and SLSQP."
-objective misalignment is distinct from certified optimizer failure,SUPPORTED,PASS-only O3−O0 graph CIs are positive for all three optimizers.
-CVaR alpha=0.10 is not a brittle isolated choice,SUPPORTED,Discovery alpha=0.05/0.10/0.25 form a similar high-feasibility neighborhood.
-finite-shot estimator is stable at tested shot counts,SUPPORTED_WITH_QUALIFICATION,Endpoint ordering is usually retained at 1k and strongly retained at 10k/100k; this is fixed-theta evidence only.
-finite-shot training preserves O3-vs-O0 ordering,MIXED,"Mean signs remain positive, but 1k/10k graph-cluster intervals include zero."
-depth degradation is optimization-budget dependent,MIXED,"p4 is not worse than p3, and nested failure does not fall as budget grows."
-p=4 provides additional evidence beyond p=2/p=3,SUPPORTED,"p3→p4 has more nested failures while terminal state metrics generally improve, separating diagnostics."
-current benchmark is classically easy by design,SUPPORTED,The exact label-setting solver matches 140/140 optima with sub-millisecond timings.
