@@ -1,43 +1,61 @@
 # Penalty-X QAOA: A Controlled RCSP Study
 
-**Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study**
+**Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA**
+Zhilin Chen · University of Copenhagen
 
-**Zhilin Chen — University of Copenhagen**
+> **TL;DR** — When QAOA searches for constrained shortest paths, valid routes are
+> an exponentially tiny fraction of the quantum state space. Swapping the training
+> objective from mean energy to **lower-tail CVaR** recovers almost all of the
+> feasibility that is recoverable — confirmed on a frozen, preregistered held-out set.
 
-Code, benchmark definitions and frozen results for a controlled exact-statevector
-study of shallow, full-space Penalty-X QAOA on resource-constrained shortest paths.
+<p align="center">
+  <img src="figures/main/fig3.png" width="720" alt="Held-out result: CVaR (O3) beats mean energy (O0) and matches the feasibility-oracle control (O2)">
+</p>
 
-## Overview
+<p align="center"><sub><b>Headline result (held-out, 84 tasks / 15 graphs).</b>
+Left: CVaR beats mean-energy training on 13 of 15 graphs (+0.35 decades of feasible probability).
+Right: CVaR is non-inferior to directly maximizing feasibility (margin −0.10, lower bound −0.036).</sub></p>
 
-Edge-bit encoding makes feasible routes sparse within the full state space.
-This study separates feasible-space dilution, Hamiltonian scale, optimizer
-inadequacy and objective alignment. It compares mean energy (O0), expected
-penalty (O1), exact feasibility as a mechanistic capacity control (O2), and
-lower-tail CVaR (O3). CVaR is selected on discovery data and evaluated on a
-frozen, preregistered held-out split. Scaling and post-hoc robustness studies
-identify boundaries of the observed behavior.
+## The problem in one picture
 
-The conclusions apply to this controlled RCSP benchmark and tested protocol.
-They establish neither quantum advantage nor failure of all constrained QAOA,
-and do not establish a universal scaling law or hardware advantage.
+<p align="center">
+  <img src="figures/main/fig1.png" width="720" alt="RCSP instance, feasible-space dilution, and Hamiltonian scale control">
+</p>
 
-## Main findings
+Encoding a route as one bit per edge means the feasible routes shrink from
+~10⁻² to ~10⁻⁶ of all bitstrings as the graph grows (**b**). So a shallow QAOA
+starting from uniform superposition almost never samples a valid route. We first
+rule out the boring explanation — raw penalty Hamiltonians span ~10⁹ in energy,
+so we rescale them while keeping all 140/140 exact optima (**c**).
 
-- **Benchmark:** 140 corrected tasks on 25 graphs; discovery 56/10 and held-out
-  84/15. Scale control preserves all exact optima.
-- **Optimizer diagnosis:** 29/168 certified nested failures. Continuation repairs
-  their objective in 29/29 cases and improves feasibility in 27/29.
-- **Objective alignment:** CVaR closes a median 97.8783% of the taskwise O2–O0
-  gap on discovery tasks under the matched protocol.
-- **Held-out inference:** H1 (O3–O0) is +0.3547 decades, with one-sided 95% lower
-  bound +0.2374. H2 (O3–O2) is −0.0086, with lower bound −0.0360 above the frozen
-  −0.10 noninferiority margin. Both Holm-adjusted p-values are 0.000244140625;
-  graphs are the independent analysis units.
-- **Scaling:** 180 planned tasks on 30 graphs. At m=20 the earlier O3/O0 exponent
-  ordering reverses. All 180 planned m=22 run rows are resource-censored, with
-  unavailable scientific outcomes.
-- **Finite-shot training:** both post-hoc shot-trained graph-effect intervals
-  cross zero; this analysis does not replace or revise the held-out H1/H2 family.
+## What we found
+
+| Question | Answer |
+| --- | --- |
+| Is poor performance just the optimizer? | **Partly.** 29/168 runs are certified optimizer failures (deeper circuit did worse than shallower); a continuation start fixes the objective in 29/29 and raises feasibility in 27/29. |
+| Is the training objective the real bottleneck? | **Yes.** CVaR closes a median **97.9 %** of the gap between mean-energy training (O0) and a feasibility-oracle ceiling (O2). |
+| Does it hold on unseen data? | **Yes.** Preregistered held-out test: H1 (CVaR > mean energy) **+0.355** decades, L95 = +0.237; H2 (CVaR ≈ oracle) **−0.009**, L95 = −0.036; both Holm p = 2.4×10⁻⁴. |
+| Does it scale? | **Not indefinitely.** At m = 20 the CVaR-vs-mean-energy scaling advantage reverses; m = 22 exceeds the frozen compute budget. |
+| Do more optimizer calls fix it? | **No.** Failure rates stay ~21–33 % from 120 to 480 calls (Fig. 4). |
+
+**Scope.** These are controlled, exact-statevector results on one RCSP benchmark.
+They do not claim quantum advantage, a universal scaling law, or that constrained
+QAOA fails in general.
+
+<details>
+<summary><b>More figures</b> (optimizer diagnosis, budget robustness)</summary>
+
+<p align="center"><img src="figures/main/fig2.png" width="700" alt="Certified optimizer failures and continuation repair"></p>
+<p align="center"><img src="figures/main/fig4.png" width="700" alt="Failure persists across objective-call budgets"></p>
+
+</details>
+
+## Benchmark at a glance
+
+- **140** corrected tasks on **25** graphs, m = 7–19 edge-bit qubits
+- Discovery split 56 tasks / 10 graphs; held-out split 84 tasks / 15 graphs
+- Objectives: O0 mean energy · O1 expected penalty · O2 exact feasibility (capacity control) · O3 CVaR
+- Scaling study: 180 tasks on 30 graphs; graphs are the independent statistical units
 
 ## Installation
 
