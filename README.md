@@ -170,3 +170,11 @@ Original project code is released under the [MIT License](LICENSE), copyright
 2026 Zhilin Chen. Third-party font components retain their own license; see
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). No third-party LaTeX templates,
 external datasets or downloaded papers are bundled.
+
+## Archive and citation
+
+The permanent archive of this repository is
+<https://doi.org/10.5281/zenodo.24356887>.
+[`analysis/posthoc_revision_analyses.py`](analysis/posthoc_revision_analyses.py)
+contains the post-hoc (not preregistered) analyses added for the revised
+manuscript.

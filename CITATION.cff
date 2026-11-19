@@ -1,7 +1,7 @@
 cff-version: 1.2.0
 message: "Please cite this software when using the code or frozen results."
 type: software
-title: "Feasible-Space Dilution and Objective Alignment in Shallow Penalty-X QAOA: A Controlled RCSP Study"
+title: "Penalty-X QAOA controlled RCSP study: code and frozen results"
 authors:
   - family-names: Chen
     given-names: Zhilin
@@ -9,6 +9,7 @@ authors:
     email: zwq152@alumni.ku.dk
 repository-code: https://github.com/ZhilinChen02/Penalty-X-QAOA-A-Controlled-RCSP-Study
 url: https://github.com/ZhilinChen02/Penalty-X-QAOA-A-Controlled-RCSP-Study
+doi: 10.5281/zenodo.24356887
 license: MIT
 keywords:
   - QAOA
