@@ -14,31 +14,58 @@ recorded in the manifest. `results/canonical/headlines.json` is an unchanged
 copy of the frozen reconstruction reference, which uses 12 decimal places.
 Full-precision inference is checked against the original confirmatory JSON.
 
-| Result | Frozen source below `results/` unless stated otherwise | Analysis / figure |
+| Result | Frozen source below `results/` unless stated otherwise | Analysis / figure (original submission; revision) |
 | --- | --- | --- |
-| 140 corrected tasks / 25 graphs | `phase0_v2_dilution_stress/task_characterization.csv`; `data/manifests/phase0_v2_dilution_stress.json` | Original graph generator and exact RCSP solver; Figure 1 |
+| 140 corrected tasks / 25 graphs | `phase0_v2_dilution_stress/task_characterization.csv`; `data/manifests/phase0_v2_dilution_stress.json` | Original graph generator and exact RCSP solver; original Fig. 1 |
 | Discovery 56/10; held-out 84/15 | `data/manifests/phase1_pilot_v1.json`, `phase2_confirmatory_v1.json` | Public split verification, graph-level analysis |
-| Scale audit | `phase0_v2_dilution_stress/hamiltonian_scale_audit.csv`, `penalty_contract_comparison.csv` | Hamiltonian invariant tests; Figure 1 |
+| Scale audit | `phase0_v2_dilution_stress/hamiltonian_scale_audit.csv`, `penalty_contract_comparison.csv` | Hamiltonian invariant tests; original Fig. 1 |
 | Phase-1 diagnostics | `phase1_pilot_v1/master_seed_level_results.csv`, `task_depth_summary.csv` | Original `phase1_analysis.py` and unit tests |
-| Nested identities and 29/168 failures | `phase1_1_optimization_diagnostic/nested_ansatz_identity.csv`, `p3_random_vs_embedded.csv` | `publication.reconstruct_optimizer`; Figure 2 |
-| Continuation repairs 29/29; feasibility gains 27/29 | `phase1_1_optimization_diagnostic/analysis/continuation_paired_comparison.csv`, `p3_continuation_seed_level.csv` | Same reconstruction; Figure 2 |
-| O0/O1/O2/O3 and CVaR capacity-gap closure | `phase1_2_objective_alignment/objective_results.csv`, `capacity_gap.csv` | Original `phase1_2_objectives.py`; `publication.reconstruct_discovery` |
+| Nested identities and 29/168 failures | `phase1_1_optimization_diagnostic/nested_ansatz_identity.csv`, `p3_random_vs_embedded.csv` | `publication.reconstruct_optimizer`; original Fig. 2; revision Fig. 2a |
+| Continuation repairs 29/29; feasibility gains 27/29 | `phase1_1_optimization_diagnostic/analysis/continuation_paired_comparison.csv`, `p3_continuation_seed_level.csv` | Same reconstruction; original Fig. 2; revision Fig. 2b |
+| O0/O1/O2/O3 and CVaR capacity-gap closure | `phase1_2_objective_alignment/objective_results.csv`, `capacity_gap.csv` | Original `phase1_2_objectives.py`; `publication.reconstruct_discovery`; revision Fig. 2c |
 | Frozen held-out evaluation | `phase2_confirmatory_v1/PREREGISTRATION.md`, `p2_initialization_runs.csv`, `p3_objective_results.csv` | `publication.reconstruct_heldout` |
-| H1/H2, lower bounds and Holm significance | `phase2_confirmatory_v1/graph_level_contrasts.csv`, `confirmatory_statistics.json` | Original sign flips and grouped bootstrap preserved in `publication.py`; Figure 3 |
+| H1/H2, lower bounds and Holm significance | `phase2_confirmatory_v1/graph_level_contrasts.csv`, `confirmatory_statistics.json` | Original sign flips and grouped bootstrap preserved in `publication.py`; original Fig. 3; revision Fig. 3a–b and Table 3 |
 | O3 P_opt improvement counts | `phase2_confirmatory_v1/p3_objective_results.csv`, `task_level_contrasts.csv` | Complete taskwise contrasts; verification |
 | Phase-3 task/split design | `data/manifests/phase3_scaling_v1/`; `phase3_scaling_v1/PREREGISTRATION.md` | 180 tasks / 30 graphs, m=12–22 |
-| m=20 reversal / m=22 censoring | `phase3_scaling_v1/canonical_results.csv`, `base_graph_exponents.csv`, `resource_preflight.csv`, `failure_census.csv` | Stored exponent aggregation and status checks; no model refit |
+| m=20 exponents / m=22 censoring | `phase3_scaling_v1/canonical_results.csv`, `base_graph_exponents.csv`, `resource_preflight.csv`, `failure_census.csv` | Stored exponent aggregation and status checks; no model refit |
 | Optimizer and alpha robustness | `reviewer_robustness/A1_optimizer/`, `A2_alpha/` compact run/graph tables | Original post-hoc analysis modules; retained negative outcomes |
-| Depth / budget boundary | `reviewer_robustness/B1_depth_budget/depth_budget_runs.csv`, `nested_diagnostics.csv`, graph summaries and `B1_DEPTH_BUDGET.md` | Figure 4; stored intervals retain the report's four-decimal precision |
+| Depth / budget boundary | `reviewer_robustness/B1_depth_budget/depth_budget_runs.csv`, `nested_diagnostics.csv`, graph summaries and `B1_DEPTH_BUDGET.md` | Original Fig. 4 (revision: Table 4 and Sect. 4.4); stored intervals retain the report's four-decimal precision |
 | Fixed-endpoint finite-shot sampling | `posthoc_finite_shot_endpoint_v1/aggregate.csv`, `exact_reference.csv`, manifest/config | Distinct post-hoc endpoint experiment |
 | Finite-shot training | `reviewer_robustness/A3_finite_shot/finite_shot_training_runs.csv`, task/graph/effect summaries | Supplementary finite-shot plot; two noisy intervals cross zero |
 | Theory numerical validation | `theory_validation_v1/finite_case_summary.csv`; `theory_validation_v2/adaptive_finite_case_summary.csv`; `theory_validation_v3/posterior_advice_validation.csv` and explicit RCSP tables | `publication.reconstruct_theory`, original theorem modules/tests, `docs/theory/` |
 
 The default figure driver is `scripts/reproduce_figures.py`; its single plotting
 implementation is `scripts/_plot_figures.py`. `INPUTS` lists all numerical inputs.
-Final assets are `figures/main/fig1` through `fig4` (PDF/PNG) and
-`figures/supplementary/finite_shot` (PDF/PNG). The figure functions preserve the
-reviewed v3 layouts and data; only public filenames and export formats changed.
+Final assets of the original submission are `figures/main/fig1` through `fig4`
+(PDF/PNG) and `figures/supplementary/finite_shot` (PDF/PNG). The figure functions
+preserve the reviewed v3 layouts and data; only public filenames and export
+formats changed. The revised manuscript's Figs. 1–3 are in `figures/revision/`:
+Fig. 1 is a schematic; Figs. 2 and 3 are written from the frozen tables by
+`figures/revision/make_drawio_figures.py`, which records the plotted numbers in
+`figures/revision/figure_ledger.json`.
+
+## Numbers added in the revised manuscript
+
+The revised manuscript (2026) reports descriptive counts, a preregistered
+secondary endpoint and post-hoc sensitivity calculations that the original
+submission did not. All of them are computed from the frozen tables below; none
+required a new optimization run. The first column gives the manuscript section.
+
+| Number in the revised manuscript | Frozen source below `results/` | Computation |
+| --- | --- | --- |
+| 4.1: median G_feas gain of 2.1–2.4 decades per loss; Spearman −0.86 to −0.90 between log10 P_feas and the dilution D | `phase1_2_objective_alignment/objective_results.csv` (`log_feasibility_gain`, `p_feas`, `dilution_score`) | Per-loss medians over the 56 tasks; rank correlation per loss |
+| 4.1: D = 1.6–5.7 decades | `phase0_v2_dilution_stress/task_characterization.csv` | Range over the 140 tasks |
+| 4.1: median G_feas change of −0.26 decades from p = 2 to p = 3 (pilot, random starts) | `phase1_pilot_v1/task_depth_summary.csv` | Median over tasks of the per-task median change |
+| 4.2: the original three-layer run had the lower mean energy in 108 of 168 pairs, and in 82 of these also the lower G_feas | `phase1_1_optimization_diagnostic/analysis/continuation_paired_comparison.csv` | Original against continued run, per pair |
+| 4.2: O2 beat O0 on 53 tasks, yet O0 reached the lower mean energy on 51 of them; O1 beat O0 on 35 and had a lower expected penalty but a lower P_feas than O2 on 51; O3 beat O0 on 50 | `phase1_2_objective_alignment/objective_results.csv` | Taskwise comparisons |
+| 4.2: the state with the lower loss (own state against the O2 state) had the higher P_feas on 47 tasks for O3 (5 CVaR ties), 5 for O0 and 5 for O1 | Same table (`mean_energy`, `expected_total_penalty`, `cvar_value`, `p_feas`) | Each loss evaluated in its own trained state and in the O2 state |
+| 4.2: median G_feas gaps to O2 of 0.219 (O0), 0.242 (O1) and 0.0069 (O3) decades; median closure of 97.9 % on the 53 tasks where O2 beat O0 | `objective_results.csv`, `capacity_gap.csv` | `figures/revision/figure_ledger.json`; `analysis/posthoc_revision_analyses.py` |
+| 4.3: O3 raised P_opt on 80 of 84 tasks; P(opt given feasible) rose on 35 and fell on 33; O0 reached the lower mean energy on 81 | `phase2_confirmatory_v1/task_level_contrasts.csv` | Taskwise O3 against O0 |
+| 4.3: 20 tasks with P_feas(O3) ≥ 0.10 (median O3 − O0 contrast 0.056 decades) against 64 below (0.386) | Same table (`p_feas_O3`, `Delta_CVAR_MEAN`) | Preregistered secondary endpoint; revision Fig. 3c |
+| 4.3: H2 passes for any margin of 0.039 decades or wider (Holm p = 0.048 at 0.039) | `phase2_confirmatory_v1/graph_level_contrasts.csv` | Same exact sign-flip test and Holm step; `analysis/posthoc_revision_analyses.py` tabulates margins 0.10–0.03 |
+| 4.4: mean η per size and loss (m = 20: 0.615 for O0, 0.788 for O2, 1.282 for O3) | `phase3_scaling_v1/base_graph_exponents.csv` | `analysis/posthoc_revision_analyses.py` |
+| 4.4: at m = 20, O3 beat O0 on 26 of 30 tasks; graph-mean contrasts O3 − O0 = +0.40 and O3 − O2 = −0.15 decades | `phase3_scaling_v1/canonical_results.csv` | Graph means of taskwise G_feas contrasts |
+| 4.4: m = 22 censored before any run (predicted 2,249 s per optimization against the 1,200 s limit) | `phase3_scaling_v1/resource_preflight.csv` | Preregistered pre-optimization time guard |
 
 ## Finite-shot grouping caveat
 
@@ -61,4 +88,5 @@ tables/configs/manifests rather than thousands of repeated JSON receipts.
 
 Raw receipt/iteration detail and older packaging material remain recoverable
 from initial commit `dc4106f03905b8ea86a0596fa2f007a094cfa4b1`. The current checkout
-retains the compact evidence needed for the paper; no Git history was rewritten.
+retains the compact evidence needed for the paper, and the initial commit is an
+ancestor of the current `main` branch.

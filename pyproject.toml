@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "qroute-dilution"
 version = "0.1.0"
-description = "Controlled RCSP benchmark for representation-induced feasible-space dilution in shallow QAOA"
+description = "Controlled RCSP study of shallow penalty-based QAOA: dilution, certified optimizer failure, objective misalignment and CVaR training"
 readme = "README.md"
 license = "MIT"
 authors = [{name = "Zhilin Chen", email = "zwq152@alumni.ku.dk"}]

@@ -13,7 +13,10 @@ doi: 10.5281/zenodo.24356887
 license: MIT
 keywords:
   - QAOA
+  - constrained optimization
   - resource-constrained shortest path
-  - feasible-space dilution
-  - objective alignment
+  - conditional value at risk
   - CVaR
+  - variational quantum algorithms
+  - feasible-space dilution
+  - objective misalignment

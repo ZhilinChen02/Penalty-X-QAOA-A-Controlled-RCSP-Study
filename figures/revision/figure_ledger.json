@@ -1,0 +1,39 @@
+{
+  "Fig2": {
+    "nesting": {
+      "pairs": 168,
+      "failures": 29,
+      "continued_runs_gaining_G": 27
+    },
+    "median_gap_to_control": {
+      "O0": -0.21929835458021296,
+      "O1": -0.24171774777838473,
+      "O3": -0.006897021383468704
+    }
+  },
+  "Fig3": {
+    "H1": {
+      "bootstrap_standard_error": 0.07472582111285479,
+      "effect_mean": 0.3547149490180106,
+      "holm_adjusted_p_value": 0.000244140625,
+      "null_margin": 0.0,
+      "one_sided_95_lower_bound": 0.23737853648218638,
+      "pass": true,
+      "raw_p_value": 0.0001220703125
+    },
+    "H2": {
+      "bootstrap_standard_error": 0.016676047763212343,
+      "effect_mean": -0.008595149938274194,
+      "holm_adjusted_p_value": 0.000244140625,
+      "null_margin": -0.1,
+      "one_sided_95_lower_bound": -0.03604874990402986,
+      "pass": true,
+      "raw_p_value": 0.000152587890625
+    },
+    "cvar_tail_split": {
+      "tasks_pfeas_at_least_alpha": 20,
+      "median_contrast_pfeas_at_least_alpha": 0.05611574161494737,
+      "median_contrast_pfeas_below_alpha": 0.38649112437198974
+    }
+  }
+}

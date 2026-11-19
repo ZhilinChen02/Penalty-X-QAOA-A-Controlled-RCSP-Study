@@ -4,7 +4,8 @@ Install the pinned dependencies and editable package as described in the root
 README. `python scripts/verify_release.py` is the read-only entry point. It checks
 compact evidence hashes, CSV schemas and row counts, the discovery/held-out
 partition, 21 headline values, graph-level H1/H2 inference, stored scaling
-exponents, censoring, theory residuals and the four figures' inputs.
+exponents, censoring, theory residuals and the inputs of the original
+submission's four figures.
 
 The paired inference functions retain the original floating-point operations,
 group order, bootstrap seed and exact sign-flip enumeration. The scaling check
@@ -18,6 +19,20 @@ python scripts/reproduce_core_results.py
 python scripts/reproduce_figures.py --output-dir dist/replotted
 pytest -q
 ```
+
+The revised manuscript adds post-hoc re-analyses and redrawn figures. Both read
+only frozen tables:
+
+```bash
+python analysis/posthoc_revision_analyses.py .
+python figures/revision/make_drawio_figures.py --repo . --out dist/revision_figures
+```
+
+The first prints the H2 margin sensitivity, the mean scaling exponent per size
+and loss, and the discovery gap closure of O1 and O3. The second writes
+`Fig2.drawio`, `Fig3.drawio` and `figure_ledger.json`, identical to those in
+`figures/revision/`; exporting them to PDF needs the draw.io desktop command line
+(see `figures/revision/README.md`).
 
 For a byte/value comparison against a separately available original research
 checkout, use `python scripts/verify_release.py --original-checkout /path/to/research`.
@@ -70,4 +85,5 @@ Git history and contains the earlier complete bundle, including optional raw
 receipts and extra intermediate artifacts. They are unnecessary for the main
 verification/replot commands. For example, `git show COMMIT:path/to/file` reads
 an archived file without replacing the current checkout. The original research
-working directory is also retained separately; no history was rewritten.
+working directory is also retained separately. The initial public commit is an
+ancestor of the current `main` branch.

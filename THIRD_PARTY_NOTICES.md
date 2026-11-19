@@ -11,6 +11,15 @@ The plots themselves are project-generated scientific figures. No standalone
 font files are bundled. NumPy, SciPy, pandas, Matplotlib, PyYAML and optional
 testing/GPU packages are installed separately under their upstream licenses.
 
+## Fonts in the revision figures
+
+The PDFs in `figures/revision/` embed subsets of FreeSans from GNU FreeFont, as
+shipped with TeX Live, which draw.io used in place of Helvetica; the PNGs there
+are renderings of these PDFs. GNU FreeFont is licensed under the GNU General
+Public License, version 3 or later, with the font exception: embedding the font, or unaltered
+portions of it, in a document does not by itself cause the document to be
+covered by the GPL. No standalone font files are bundled.
+
 ## Templates and data
 
 No Springer LaTeX class/style, third-party manuscript template, downloaded
